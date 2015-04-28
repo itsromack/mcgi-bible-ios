@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>184AC63C-BE35-438D-8571-79C2C24F41B3</string>
+	<key>IDESourceControlProjectName</key>
+	<string>MCGIBible</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>8E227BE6515FD1971B2EA7BECAD52F64E0C5EC07</key>
+		<string>https://github.com/MCGI/MCGIBible.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>MCGIBible.xcodeproj</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>8E227BE6515FD1971B2EA7BECAD52F64E0C5EC07</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/MCGI/MCGIBible.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>8E227BE6515FD1971B2EA7BECAD52F64E0C5EC07</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>8E227BE6515FD1971B2EA7BECAD52F64E0C5EC07</string>
+			<key>IDESourceControlWCCName</key>
+			<string>MCGIBible</string>
+		</dict>
+	</array>
+</dict>
+</plist>

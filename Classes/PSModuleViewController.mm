@@ -35,11 +35,11 @@
 	CGFloat viewHeight = [[UIScreen mainScreen] bounds].size.height;
 	
 	UIView *baseView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, viewWidth, viewHeight)];
-	
+	baseView.backgroundColor = [UIColor blackColor];
 	PSWebView *wv = [[PSWebView alloc] initWithFrame:CGRectMake(0, 0, viewWidth, viewHeight)];
 	wv.delegate = self;
 	wv.psDelegate = self;
-	wv.backgroundColor = [UIColor whiteColor];
+ 	 
 	wv.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
 	NSString *html = @"<html><body bgcolor=\"white\">@nbsp;</body></html>";
 	if([[NSUserDefaults standardUserDefaults] boolForKey:DefaultsNightModePreference]) {
@@ -71,7 +71,9 @@
 	switch(tabType) {
 		case BibleTab:
 		{
-			UITabBarItem *tbi = [[UITabBarItem alloc] initWithTitle:NSLocalizedString(@"TabBarTitleBible", @"Bible") image:[UIImage imageNamed:@"bible.png"] tag:10];
+			 UITabBarItem *tbi = [[UITabBarItem alloc] initWithTitle:NSLocalizedString(@"TabBarTitleBible", @"Bible") image:[UIImage imageNamed:@"Bookmark-30.png"] tag:10];
+        
+        
 			self.tabBarItem = tbi;
 			[tbi release];
 			[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(setModuleNameViaNotification) name:NotificationNewPrimaryBible object:nil];
@@ -97,7 +99,8 @@
 	forwardImg.accessibilityLabel = NSLocalizedString(@"VoiceOverNextChapterButton", @"");
 	NSArray *segments = [NSArray arrayWithObjects:backImg, @"Gen 23:23", forwardImg, nil];
 	UISegmentedControl *segControl = [[UISegmentedControl alloc] initWithItems:segments];
-	segControl.segmentedControlStyle = UISegmentedControlStyleBar;
+    segControl.segmentedControlStyle = UISegmentedControlStyleBordered;
+    segControl.tintColor=[UIColor grayColor];
 	segControl.momentary = YES;
 	
 	static CGFloat arrowWidth = 50.0;
@@ -322,10 +325,12 @@
 	UIBarButtonItem *searchButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"history.png"] style:UIBarButtonItemStyleBordered target:vc action:@selector(toggleMultiList:)];
 	searchButton.accessibilityLabel = NSLocalizedString(@"VoiceOverHistoryAndSearchButton", @"");
 	self.navigationItem.leftBarButtonItem = searchButton;
+    self.navigationItem.leftBarButtonItem.tintColor=[UIColor grayColor];
 	[searchButton release];
 	
 	UIBarButtonItem *switchModuleButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"None" style:UIBarButtonItemStyleBordered target:vc action:@selector(toggleModulesListFromButton:)];
 	self.navigationItem.rightBarButtonItem = switchModuleButtonItem;
+    self.navigationItem.rightBarButtonItem.tintColor=[UIColor grayColor];
 	self.moduleButton = switchModuleButtonItem;
 	[switchModuleButtonItem release];
 	[self setModuleNameViaNotification];

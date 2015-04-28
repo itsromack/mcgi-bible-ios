@@ -56,7 +56,7 @@
 		UITabBarController *tbc = [[UITabBarController alloc] init];
 		tbc.delegate = self;
 		self.tabBarController = tbc;
-//		[self tabColorChanged];
+ 		[self tabColorChanged];
 		[tbc release];
 		
 		[self nightModeChanged];
@@ -72,13 +72,14 @@
 		// 05: Downloads
 		// 06: Preferences
 		// 07: About
-		
+		/*
 		if([tabBarController.tabBar respondsToSelector:@selector(isTranslucent)]) {// iOS 7 only
 			UIColor *tintColor = [UIColor whiteColor];
  	//		UIColor *tintColor = [UIColor blackColor];
             //UIColor *barTintColor = [UIColor  whiteColor];
-		 	UIColor *barTintColor = [UIColor blackColor];
-//			UIColor *barTintColor = [UIColor redColor];
+		 //	UIColor *barTintColor = [UIColor blackColor];
+			UIColor *barTintColor = [UIColor blackColor];
+           // UIColor *barTintColor = [UIColor whiteColor];
 			
 			[[UINavigationBar appearance] setTintColor:tintColor];
 			//[[UINavigationBar appearance] setBackgroundImage:[UIImage imageNamed:@"Pocket Blue Background.png"] forBarMetrics:UIBarMetricsDefault];
@@ -91,7 +92,7 @@
 			//[[UITabBar appearance] setBackgroundImage:[UIImage imageNamed:@"Pocket Blue Background TabBar.png"]];
 			[[UITabBar appearance] setBarTintColor:barTintColor];
 			//NSLog(@"%f", self.tabBarController.tabBar.frame.size.height);
-		}
+		}*/
 		/*
 		//add the Commentary Tab.
 		PSCommentaryViewController *cvc = [[PSCommentaryViewController alloc] init];
@@ -115,7 +116,7 @@
 		[bvc setDelegate:self];
 		bvc.commentaryView = commentaryTabController;
 		UINavigationController *bTab = [[UINavigationController alloc] initWithRootViewController:bvc];
-		bTab.navigationBar.barStyle = UIBarStyleBlack;
+		 bTab.navigationBar.barStyle = UIBarStyleBlack;
 		[tabs insertObject:bTab atIndex:0];
 		self.bibleTabController = bvc;
 		[bTab release];
@@ -138,7 +139,10 @@
 		PSBookmarksNavigatorController *bookmarksViewController = [[PSBookmarksNavigatorController alloc] initWithStyle:UITableViewStyleGrouped];
 		UINavigationController *bookmarksTab = [[UINavigationController alloc] initWithRootViewController:bookmarksViewController];
 		bookmarksTab.navigationBar.barStyle = UIBarStyleBlack;
-		UITabBarItem *tbI = [[UITabBarItem alloc] initWithTabBarSystemItem:UITabBarSystemItemBookmarks tag:0];
+		//UITabBarItem *tbI = [[UITabBarItem alloc] initWithTabBarSystemItem:UITabBarSystemItemBookmarks tag:0];
+        
+        UITabBarItem *tbI = [[UITabBarItem alloc] initWithTitle: @"Bookmark" image:[UIImage imageNamed:@"bookmark-7.png"] tag:0];
+        
 		bookmarksTab.tabBarItem = tbI;
 		[tbI release];
 		[tabs insertObject:bookmarksTab atIndex:2];
@@ -256,19 +260,19 @@
 		[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(nightModeChanged) name:NotificationNightModeChanged object:nil];
 
 		[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(redisplayBibleChapterAfterBookmarksChange) name:NotificationBookmarksChanged object:nil];
-//		[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(tabColorChanged) name:NotificationBarColorChanged object:nil];
+ 		[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(tabColorChanged) name:NotificationBarColorChanged object:nil];
 		
 	}
 	return self;
 }
 
-//- (void)tabColorChanged {
-//	if([tabBarController.tabBar respondsToSelector:@selector(isTranslucent)]) {
-//		tabBarController.tabBar.translucent = [PSTabBarControllerDelegate getBarTranslucentDefault];
-//		tabBarController.tabBar.barTintColor = [PSTabBarControllerDelegate getBarColorDefault];
-//		tabBarController.tabBar.tintColor = [UIColor whiteColor];
-//	}
-//}
+ - (void)tabColorChanged {
+ 	if([tabBarController.tabBar respondsToSelector:@selector(isTranslucent)]) {
+ 	tabBarController.tabBar.translucent = [PSTabBarControllerDelegate getBarTranslucentDefault];
+ 		tabBarController.tabBar.barTintColor = [PSTabBarControllerDelegate getBarColorDefault];
+ 		tabBarController.tabBar.tintColor = [UIColor whiteColor];
+ 	}
+ }
 
 - (void)nightModeChanged {
 	BOOL nightMode = [[NSUserDefaults standardUserDefaults] boolForKey:DefaultsNightModePreference];
