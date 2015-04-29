@@ -21,7 +21,7 @@
 {
 	static NSString *body = [NSString stringWithFormat:
 							 @"<div id=\"header1\">\n\
-								 <h2 class=\"headbar\">CrossWire Bible Society</h2>\n\
+								 <h2 class=\"headbar\">PocketSword</h2>\n\
 								 <div class=\"version\"> Version %@ (%@)</div>\n\
 								 <center><i><a href=\"https://bitbucket.org/niccarter/pocketsword/overview\">PocketSword on Bitbucket</a></i><br />\n\
 									<i><a href=\"http://www.crosswire.org/forums/mvnforum/listthreads?forum=16\">User Forums</a></i><br />\n\
