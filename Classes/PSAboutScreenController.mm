@@ -21,74 +21,17 @@
 {
 	static NSString *body = [NSString stringWithFormat:
 							 @"<div id=\"header\">\n\
-								 <div class=\"title\">PocketSword</div>\n\
+								 <div class=\"title\">MCGI Bible</div>\n\
 								 <div class=\"version\"> Version %@ (%@)</div>\n\
-								 <center><i><a href=\"https://bitbucket.org/niccarter/pocketsword/overview\">PocketSword on Bitbucket</a></i><br />\n\
-									<i><a href=\"http://www.crosswire.org/forums/mvnforum/listthreads?forum=16\">User Forums</a></i><br />\n\
-									<i>@<a href=\"http://twitter.com/PocketSword\">PocketSword</a> on Twitter</i></center>\n\
+								 <center><i><a href=\"https://github.com/MCGI/mcgi-bible-ios\">MCGI Bible on Github</a></i></center>\n\
 							 </div>\n\
 							 <div id=\"main\">\n\
 								<p><b>Developed by: </b><br />\n\
-									 Nic Carter<br />\n\
-									 and the rest of the CrossWire community!\n\
-								</p>\n\
-								 <p><b>With help from: </b><br />\n\
-					  David Bell, \
-					  Manfred Bergmann, \
-					  Christoffer Björkskog, \
-					  Jan Bubík, \
-					  Vincenzo Carrubba, \
-					  Cheree Lynley Designs, \
-					  Dominique Corbex, \
-					  Bruno Gätjens González, \
-					  Grace Community Church (HK), \
-					  Yiguang Hu, \
-					  John Huss, \
-					  Nakamaru Kunio, \
-					  Laurence Rezkalla, \
-					  Vitaliy, \
-					  Ian Wagner, \
-					  Henko van de Weerd \
-					  \n\
-					  <br />\n\
-					  &amp; all the PocketSword beta testers!\n\
-							  </p>\n\
-							  <p><b>Special thanks to: </b><br />\n\
-										David Crowder*Band <i>(<a href=\"http://www.davidcrowderband.com/\">http://www.davidcrowderband.com/</a>)</i><br />\n\
-										Pablo and Rusty's, Gordon <i>(<a href=\"http://www.pabloandrustys.com.au/\">http://www.pabloandrustys.com.au/</a>)</i>\n\
+									 MCGI Singapore<br />\n\
+									 and the rest of the open-source community!\n\
 								</p>\n\
 							</div>\n\
-								<p>If you would like to use these same Bible & Commentary modules on another platform, check out the following apps:<br />\n\
-										&bull; <i><a href=\"http://xiphos.org/\">Xiphos (Windows, Linux/Unix)</a></i><br />\n\
-										&bull; <i><a href=\"https://code.google.com/p/and-bible/\">AndBible (other mobile)</a></i><br />\n\
-										&bull; <i><a href=\"http://www.macsword.com/\">Eloquent/MacSword</a></i><br />\n\
-										&bull; <i><a href=\"http://www.bibletime.info/\">BibleTime (Linux/Unix and Windows)</a></i><br />\n\
-									</p>\n\
-								<p>If you would like to see PocketSword in your language and are willing to help translate it, please Email Us using the button in the top right corner &amp; we would love your help!</p>\
-					  \
-					  \n\
-					  \n\
-					  <p>PocketSword benefits from the following Open Source projects:<br />\n\
-					  &bull; <i><a href=\"http://www.crosswire.org/sword/index.jsp\">The SWORD Project</a></i><br />\n\
-					  &bull; <i><a href=\"http://code.google.com/p/cocoahttpserver/\">CocoaHTTPServer</a></i><br />\n\
-					  &bull; <i><a href=\"https://github.com/zbyhoo/EGOTableViewPullRefresh\">zbyhoo's fork of EGOTableViewPullRefresh</a></i><br />\n\
-					  &bull; <i><a href=\"http://code.google.com/p/ziparchive/\">ZipArchive</a></i><br />\n\
-					  </p>\
-					  <br />\n\
-					  <br />\n\
-					  <div class=\"crosswire\">\n\
-					  <h2 class=\"headbar\">CrossWire Bible Society</h2>\n\
-					  <p> &nbsp; &nbsp; &nbsp;The CrossWire Bible Society is an organization with the purpose to sponsor and provide a place for engineers and others to come and collaborate on free, open-source projects aimed at furthering the Kingdom of our God.  We are also a resource pool to other Bible societies and Christian organizations that can't afford-- or don't feel it's their place-- to maintain a quality programming staff in house.  We provide them with a number of tools that assist them with reaching their domain with Christ.  CrossWire is a non-income organization, which means that not only do we offer our services for free, but we also do not solicit donations to exist.  We exist because we, as a community come together and offer our services and time freely.</p>\n\
-\n\
-					  <p> &nbsp; &nbsp; &nbsp;The name was a pun of sorts, with the original idea that the Cross of Christ is our wire to God.  Over the years, the meaning has grown into one more appropriate to what a Bible society is.  The main purpose of a Bible Society is to distribute Scripture to as many people within a domain as possible.  Some examples are the American Bible Society, the German Bible Society, the Canadian Bible Society, the United Bible Societies-- under which most of the Bible societies of the world collaborate-- and many others.  You can view most of their stats of Scripture distribution to their region by visiting <a href=\"http://www.biblesociety.org/bs-find.htm\">http://www.biblesociety.org/bs-find.htm</a>, then selecting a region and the Bible Society that serves that region.  Instead of having a geographic domain, CrossWire's domain is software users-- predominantly the global Internet-- or anyone we can reach across the wire.  Our Scripture distribution compares with the largest of the Bible Societies listed.</p>\n\
-\n\
-					  <p> &nbsp; &nbsp; &nbsp;Some examples of recent collaboration include traveling to Wycliffe Bible Translators to present and counsel on strategies to open source their software, participation with the American Bible Society to realize and promote the Bible Technologies Conference (<a href=\"http://www.bibletechnologies.org\">http://www.bibletechnologies.org</a>), and subsequently, the OSIS initiative (of which the newsgroups and listservs for the working groups are hosted on our servers at <a href=\"news://bibletechnologieswg.org\">news://bibletechnologieswg.org</a>).<br /> </p>\n\
-					  </div>\n\
-					  <div class=\"crosswire\">\n\
-					  <h2 class=\"headbar\">Ezra SIL and Gentium Plus: </h2>\n\
-					  %@\n\
-					  </div>\n\
-					  <br />&nbsp;<br />",
+                             <br />&nbsp;<br />",
 							 [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleShortVersionString"],
 							 [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleVersion"],
 							 [NSString stringWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"OFL" ofType:@"txt"] encoding:NSUTF8StringEncoding error:nil]
@@ -319,9 +262,9 @@
 
 -(void)emailFeedback:(id)sender
 {
-    NSString *recipients = @"pocketsword@icloud.com";
+    NSString *recipients = @"portal@mcgi.org.sg";
 	
-	NSString *subject = [NSString stringWithFormat:@"PocketSword Feedback (v%@ - %@ %@ (%@))", [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleShortVersionString"], [[UIDevice currentDevice] systemName], [[UIDevice currentDevice] systemVersion], [self platformString]];
+	NSString *subject = [NSString stringWithFormat:@"MCGI Bible Feedback (v%@ - %@ %@ (%@))", [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleShortVersionString"], [[UIDevice currentDevice] systemName], [[UIDevice currentDevice] systemVersion], [self platformString]];
 	
 	if([MFMailComposeViewController canSendMail]) {
 		MFMailComposeViewController *mailComposeViewController = [[MFMailComposeViewController alloc] init];

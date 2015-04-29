@@ -80,6 +80,7 @@
 "PreferencesModuleMaintainerModeNote" = "Note that Module Maintainer Mode is for those users who create their own modules & require a method to manually install their own modules.  For all other users, it is suggested that you use the built-in module downloader to access official modules provided by CrossWire.";
 
 "AboutTitle" = "About";
+"LicensesTitle" = "Licenses";
 
 "TabBarTitleBible" = "Bible";
 "TabBarTitleCommentary" = "Commentary";
@@ -87,6 +88,7 @@
 "TabBarTitleModules" = "Modules";
 "TabBarTitlePreferences" = "Preferences";
 "TabBarTitleAbout" = "About";
+"TabBarTitleLicenses" = "Licenses";
 
 "ModulesTitle" = "Modules";
 "BookmarksTitle" = "Bookmarks";

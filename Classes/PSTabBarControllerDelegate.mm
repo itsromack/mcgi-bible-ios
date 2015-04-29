@@ -39,6 +39,7 @@
 #import "SwordManager.h"
 #import "SwordDictionary.h"
 #import "PSAboutScreenController.h"
+#import "PSLicensesScreenController.h"
 
 #define INFO_LANDSCAPE_HEIGHT 100.0
 #define INFO_PORTRAIT_HEIGHT 160.0
@@ -141,7 +142,7 @@
 		bookmarksTab.navigationBar.barStyle = UIBarStyleBlack;
 		//UITabBarItem *tbI = [[UITabBarItem alloc] initWithTabBarSystemItem:UITabBarSystemItemBookmarks tag:0];
         
-        UITabBarItem *tbI = [[UITabBarItem alloc] initWithTitle: @"Bookmark" image:[UIImage imageNamed:@"bookmark-7.png"] tag:0];
+        UITabBarItem *tbI = [[UITabBarItem alloc] initWithTitle: @"Bookmark" image:[UIImage imageNamed:@"bookmark.png"] tag:0];
         
 		bookmarksTab.tabBarItem = tbI;
 		[tbI release];
@@ -218,6 +219,23 @@
 		}
 		[aboutTBI release];
 		[aboutViewController release];
+        
+        //add the Licenses tab.
+        PSLicensesScreenController *licensesViewController = [[PSLicensesScreenController alloc] init];
+        UITabBarItem *licensesTBI = [[UITabBarItem alloc] initWithTitle:NSLocalizedString(@"TabBarTitleLicenses", @"Licenses") image:[UIImage imageNamed:@"Licenses.png"] tag:0];
+        if([PSResizing iPad]) {
+            UINavigationController *licensesIPadTab = [[UINavigationController alloc] initWithRootViewController:licensesViewController];
+            licensesIPadTab.navigationBar.barStyle = UIBarStyleBlack;
+            licensesIPadTab.tabBarItem = licensesTBI;
+            [tabs insertObject:licensesIPadTab atIndex:6];
+            [licensesIPadTab release];
+        } else {
+            licensesViewController.tabBarItem = licensesTBI;
+            [tabs insertObject:licensesViewController atIndex:6];
+        }
+        [licensesTBI release];
+        [licensesViewController release];
+
 		
 		[tabBarController setViewControllers:tabs animated:NO];
 		tabs = nil;
