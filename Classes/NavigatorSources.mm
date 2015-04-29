@@ -120,9 +120,10 @@
 	[super viewWillAppear:animated];
 	
 	if(![[[PSModuleController defaultModuleController] swordInstallManager] userDisclaimerConfirmed]) {
-		UIAlertView *alertView = [[UIAlertView alloc] initWithTitle: NSLocalizedString(@"Disclaimer", @"") message: NSLocalizedString(@"DisclaimerMsg", @"") delegate: self cancelButtonTitle: NSLocalizedString(@"No", @"No") otherButtonTitles: NSLocalizedString(@"Yes", @"Yes"), nil];
+		/*UIAlertView *alertView = [[UIAlertView alloc] initWithTitle: NSLocalizedString(@"Disclaimer", @"") message: NSLocalizedString(@"DisclaimerMsg", @"") delegate: self cancelButtonTitle: NSLocalizedString(@"No", @"No") otherButtonTitles: NSLocalizedString(@"Yes", @"Yes"), nil];
 		[alertView show];
-		[alertView release];
+		[alertView release];*/
+        [self acceptDownloadSourceDisclaimer];
 	}
 	if([NSThread isMainThread]) {
 		[self resetInstallSourcesListing];
@@ -223,7 +224,7 @@
 //
 - (void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex {
 	
-	if (buttonIndex == 1) {
+    if (buttonIndex == 1) {
 		[[[PSModuleController defaultModuleController] swordInstallManager] setUserDisclainerConfirmed: YES];
 		[self addManualInstallButton];
 		[self.tableView reloadData];
@@ -231,6 +232,14 @@
 		[[NSUserDefaults standardUserDefaults] synchronize];
 	}
 	
+}
+
+- (void) acceptDownloadSourceDisclaimer {
+    [[[PSModuleController defaultModuleController] swordInstallManager] setUserDisclainerConfirmed: YES];
+    [self addManualInstallButton];
+    [self.tableView reloadData];
+    [[NSUserDefaults standardUserDefaults] setBool: YES forKey: @"userDisclaimerAccepted"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation {
