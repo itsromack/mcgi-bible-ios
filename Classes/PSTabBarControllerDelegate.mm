@@ -63,7 +63,7 @@
 		[self nightModeChanged];
 		[PSModuleController defaultModuleController];//init
 		
-		NSMutableArray *tabs = [NSMutableArray arrayWithCapacity:6];
+		NSMutableArray *tabs = [NSMutableArray arrayWithCapacity:7];
 		// Order of the tabs:
 		// 00: Bible fin
 		// 01: Commentary
