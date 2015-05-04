@@ -254,11 +254,11 @@ using std::list;
 //Effectively, this is a list of the module types that are currently supported.
 + (NSArray *)moduleTypes {
     return [NSArray arrayWithObjects:
-            SWMOD_CATEGORY_BIBLES, 
-            SWMOD_CATEGORY_COMMENTARIES,
+            SWMOD_CATEGORY_BIBLES,
+           // SWMOD_CATEGORY_COMMENTARIES, remove on module type list
             SWMOD_CATEGORY_DICTIONARIES,
-			SWMOD_CATEGORY_DAILYDEVS,
-            //SWMOD_CATEGORY_GENBOOKS, 
+			//SWMOD_CATEGORY_DAILYDEVS, remove on module type list
+            //SWMOD_CATEGORY_GENBOOKS,
 			nil];
 }
 

@@ -73,7 +73,7 @@
 		// 05: Downloads
 		// 06: Preferences
 		// 07: About
-		/*
+		 //08: License
 		if([tabBarController.tabBar respondsToSelector:@selector(isTranslucent)]) {// iOS 7 only
 			UIColor *tintColor = [UIColor whiteColor];
  	//		UIColor *tintColor = [UIColor blackColor];
@@ -93,7 +93,7 @@
 			//[[UITabBar appearance] setBackgroundImage:[UIImage imageNamed:@"Pocket Blue Background TabBar.png"]];
 			[[UITabBar appearance] setBarTintColor:barTintColor];
 			//NSLog(@"%f", self.tabBarController.tabBar.frame.size.height);
-		}*/
+		}
 		/*
 		//add the Commentary Tab.
 		PSCommentaryViewController *cvc = [[PSCommentaryViewController alloc] init];
@@ -142,7 +142,7 @@
 		bookmarksTab.navigationBar.barStyle = UIBarStyleBlack;
 		//UITabBarItem *tbI = [[UITabBarItem alloc] initWithTabBarSystemItem:UITabBarSystemItemBookmarks tag:0];
         
-        UITabBarItem *tbI = [[UITabBarItem alloc] initWithTitle: @"Bookmark" image:[UIImage imageNamed:@"bookmark.png"] tag:0];
+        UITabBarItem *tbI = [[UITabBarItem alloc] initWithTitle: @"Bookmark" image:[UIImage imageNamed:@"bookmark.png"] tag:787];
         
 		bookmarksTab.tabBarItem = tbI;
 		[tbI release];
@@ -173,18 +173,19 @@
 		
 		//add the Downloads tab.
 		NavigatorSources *downloadsViewController = [[NavigatorSources alloc] initWithStyle:UITableViewStyleGrouped];
-		UITabBarItem *downloadsTabBarItem = [[UITabBarItem alloc] initWithTabBarSystemItem:UITabBarSystemItemDownloads tag:5];
-		if([PSResizing iPad]) {
+		UITabBarItem *downloadsTabBarItem = [[UITabBarItem alloc] initWithTabBarSystemItem:UITabBarSystemItemDownloads tag:522];
+		//if([PSResizing iPad]) {//comment out since view will not be on 
 			UINavigationController *downloadsIPadTab = [[UINavigationController alloc] initWithRootViewController:downloadsViewController];
 			downloadsIPadTab.navigationBar.barStyle = UIBarStyleBlack;
 			downloadsIPadTab.tabBarItem = downloadsTabBarItem;
 			[tabs insertObject:downloadsIPadTab atIndex:3];
 			[downloadsIPadTab release];
 			downloadsIPadTab = nil;
-		} else {
-			downloadsViewController.tabBarItem = downloadsTabBarItem;
-			[tabs insertObject:downloadsViewController atIndex:3];
-		}
+		//} else {
+            
+			//downloadsViewController.tabBarItem = downloadsTabBarItem;
+			//[tabs insertObject:downloadsViewController atIndex:3];
+		//}
 		[downloadsTabBarItem release];
 		[downloadsViewController release];
 		
@@ -206,7 +207,7 @@
 		
 		//add the About tab.
 		PSAboutScreenController *aboutViewController = [[PSAboutScreenController alloc] init];
-		UITabBarItem *aboutTBI = [[UITabBarItem alloc] initWithTitle:NSLocalizedString(@"TabBarTitleAbout", @"About") image:[UIImage imageNamed:@"About.png"] tag:0];
+		UITabBarItem *aboutTBI = [[UITabBarItem alloc] initWithTitle:NSLocalizedString(@"TabBarTitleAbout", @"About") image:[UIImage imageNamed:@"About.png"] tag:2323];
 		if([PSResizing iPad]) {
 			UINavigationController *aboutIPadTab = [[UINavigationController alloc] initWithRootViewController:aboutViewController];
 			aboutIPadTab.navigationBar.barStyle = UIBarStyleBlack;
@@ -222,7 +223,7 @@
         
         //add the Licenses tab.
         PSLicensesScreenController *licensesViewController = [[PSLicensesScreenController alloc] init];
-        UITabBarItem *licensesTBI = [[UITabBarItem alloc] initWithTitle:NSLocalizedString(@"TabBarTitleLicenses", @"Licenses") image:[UIImage imageNamed:@"Licenses.png"] tag:0];
+        UITabBarItem *licensesTBI = [[UITabBarItem alloc] initWithTitle:NSLocalizedString(@"TabBarTitleLicenses", @"Licenses") image:[UIImage imageNamed:@"Licenses.png"] tag:232];
         if([PSResizing iPad]) {
             UINavigationController *licensesIPadTab = [[UINavigationController alloc] initWithRootViewController:licensesViewController];
             licensesIPadTab.navigationBar.barStyle = UIBarStyleBlack;
