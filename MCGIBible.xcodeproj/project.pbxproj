@@ -3661,8 +3661,8 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_ENTITLEMENTS = MCGIBible.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: MEMBERS CHURCH OF GOD INTERNATIONAL SINGAPORE (6T5V32W525)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: MEMBERS CHURCH OF GOD INTERNATIONAL SINGAPORE (6T5V32W525)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SDKROOT)$(SYSTEM_LIBRARY_DIR)/PrivateFrameworks\"",
@@ -3690,7 +3690,7 @@
 					"-DEXCLUDEXZ",
 				);
 				PRODUCT_NAME = MCGIBible;
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "c72acaa5-8957-4940-90ef-23e863faff91";
 			};
 			name = Debug;
 		};
@@ -3700,8 +3700,8 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_ENTITLEMENTS = MCGIBible.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: MEMBERS CHURCH OF GOD INTERNATIONAL SINGAPORE (6T5V32W525)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: MEMBERS CHURCH OF GOD INTERNATIONAL SINGAPORE (6T5V32W525)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SDKROOT)$(SYSTEM_LIBRARY_DIR)/PrivateFrameworks\"",
@@ -3727,7 +3727,7 @@
 					"-DEXCLUDEXZ",
 				);
 				PRODUCT_NAME = MCGIBible;
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "c72acaa5-8957-4940-90ef-23e863faff91";
 			};
 			name = Release;
 		};
@@ -3809,8 +3809,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: MEMBERS CHURCH OF GOD INTERNATIONAL SINGAPORE (6T5V32W525)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: MEMBERS CHURCH OF GOD INTERNATIONAL SINGAPORE (6T5V32W525)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SDKROOT)$(SYSTEM_LIBRARY_DIR)/PrivateFrameworks\"",
@@ -3836,7 +3836,7 @@
 					"-DEXCLUDEXZ",
 				);
 				PRODUCT_NAME = MCGIBible;
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "c72acaa5-8957-4940-90ef-23e863faff91";
 			};
 			name = Distribution;
 		};

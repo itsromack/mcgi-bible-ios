@@ -186,7 +186,7 @@
 	if (![[[PSModuleController defaultModuleController] swordInstallManager] userDisclaimerConfirmed])
 		return;
 	SwordInstallSource *sIS = [[[[PSModuleController defaultModuleController] swordInstallManager] installSourceList] objectAtIndex:indexPath.row];
-	if(![sIS isSwordManagerLoaded]) {
+	 if(![sIS isSwordManagerLoaded]) {
 		// we need to display a busy indicator, cause it can take a LONG time to do file IO on the device...
 		[self performSelectorInBackground:@selector(showHUD) withObject:nil];
 		dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_LOW, 0), ^{
@@ -197,11 +197,11 @@
 				[MBProgressHUD hideHUDForView:self.view animated:YES];
 			});
 		});
-	}
+	 }
 	NavigatorModuleTypes *navigatorModuleTypes = [[NavigatorModuleTypes alloc] initWithStyle:UITableViewStyleGrouped];
 	[navigatorModuleTypes setDataArray:[sIS moduleListByType]];
 	navigatorModuleTypes.title = [sIS caption];
-	[navigatorModuleTypes reloadTable];
+	//[navigatorModuleTypes reloadTable];
 	
 	// need to set the current install source, for when we want to install a module.
 	[[PSModuleController defaultModuleController] setCurrentInstallSource:sIS];
