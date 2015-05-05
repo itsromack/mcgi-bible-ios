@@ -366,8 +366,6 @@
 		05F84EE1191F4AB3003350DE /* thmllatex.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 05F84EDC191F4AB3003350DE /* thmllatex.cpp */; };
 		05F84EE5191F4AC7003350DE /* ztext4.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 05F84EE4191F4AC7003350DE /* ztext4.cpp */; };
 		05F84EE7191F4EF0003350DE /* libicucore.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 05F84EE6191F4EF0003350DE /* libicucore.dylib */; settings = {ATTRIBUTES = (Weak, ); }; };
-		136D76571AEFA6DF004B2186 /* (null) in Resources */ = {isa = PBXBuildFile; };
-		13C0B4AC1AB1F5D2006F5226 /* (null) in Resources */ = {isa = PBXBuildFile; };
 		1D3623260D0F684500981E51 /* PocketSwordAppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 1D3623250D0F684500981E51 /* PocketSwordAppDelegate.mm */; };
 		1D60589B0D05DD56006BFB54 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; };
 		1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D30AB110D05D00D00671497 /* Foundation.framework */; };
@@ -1181,8 +1179,8 @@
 		28A0AB4B0D9B1048005BE974 /* PocketSword_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PocketSword_Prefix.pch; path = misc/PocketSword_Prefix.pch; sourceTree = "<group>"; };
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = Classes/main.m; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = misc/Info.plist; sourceTree = "<group>"; };
-		E0594BFC1AF0ECA000304E99 /* PSLicensesScreenController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PSLicensesScreenController.h; sourceTree = "<group>"; };
-		E0594BFD1AF0ECC300304E99 /* PSLicensesScreenController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = PSLicensesScreenController.mm; sourceTree = "<group>"; };
+		E0594BFC1AF0ECA000304E99 /* PSLicensesScreenController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = PSLicensesScreenController.h; path = Classes/PSLicensesScreenController.h; sourceTree = "<group>"; };
+		E0594BFD1AF0ECC300304E99 /* PSLicensesScreenController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = PSLicensesScreenController.mm; path = Classes/PSLicensesScreenController.mm; sourceTree = "<group>"; };
 		E0594BFF1AF0F47500304E99 /* Licenses.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Licenses.png; path = Resources/Licenses.png; sourceTree = "<group>"; };
 		E0877B761AF0B22B0067B5E7 /* bible.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = bible.png; path = Resources/bible.png; sourceTree = "<group>"; };
 		E92217540F0687340089A794 /* PSHistoryController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = PSHistoryController.mm; path = Classes/PSHistoryController.mm; sourceTree = "<group>"; };
@@ -3228,7 +3226,6 @@
 				051F22B9173758AD00DDFF13 /* OFL.txt in Resources */,
 				05BE89C6174D976900EBF42F /* 37x-Cross.png in Resources */,
 				05BE89C7174D976900EBF42F /* 37x-Cross@2x.png in Resources */,
-				136D76571AEFA6DF004B2186 /* (null) in Resources */,
 				05BE89C8174D976900EBF42F /* 37x-Tick.png in Resources */,
 				05BE89C9174D976900EBF42F /* 37x-Tick@2x.png in Resources */,
 				05EB26F2175C3018004A8EB7 /* disabled-RedLetter.png in Resources */,
@@ -3236,7 +3233,6 @@
 				05EB26F4175C3018004A8EB7 /* enabled-RedLetter.png in Resources */,
 				05EB26F5175C3018004A8EB7 /* enabled-RedLetter@2x.png in Resources */,
 				05EB26FA175C3233004A8EB7 /* disabled-VPL.png in Resources */,
-				13C0B4AC1AB1F5D2006F5226 /* (null) in Resources */,
 				05EB26FB175C3233004A8EB7 /* disabled-VPL@2x.png in Resources */,
 				05EB26FC175C3233004A8EB7 /* enabled-VPL.png in Resources */,
 				05EB26FD175C3233004A8EB7 /* enabled-VPL@2x.png in Resources */,
