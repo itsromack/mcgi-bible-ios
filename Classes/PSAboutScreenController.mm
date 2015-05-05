@@ -31,10 +31,15 @@
 									 and the rest of the open-source community!\n\
 								</p>\n\
 							</div>\n\
+                             <p><strong>Find out more from MCGI apps and services:</strong><br />\n\
+                             &bull; <i><a href=\"https://mcgi.church/apps/\">MCGI Tablet &amp; Mobile Apps</a></i><br />\n\
+                             &bull; <i><a href=\"http://www.mcgi.org/\">MCGI.org - Visit our official website</a></i><br />\n\
+                             &bull; <i><a href=\"http://www.mcgi.org/broadcasts/internet/\">Live broadcasts &amp; social media</a></i><br />\n\
+                             &bull; <i><a href=\"https://mcgi.church/services/\">Discover more apps and services</a></i><br />\n\
+                             </p>\n\
                              <br />&nbsp;<br />",
 							 [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleShortVersionString"],
-							 [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleVersion"],
-							 [NSString stringWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"OFL" ofType:@"txt"] encoding:NSUTF8StringEncoding error:nil]
+							 [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleVersion"]
 							 ];
 	
 	
@@ -77,9 +82,12 @@
 				text-align: center;\n\
 			}\n\
 			i {\n\
-				font-size: 9pt;\n\
+				font-size: 12pt;\n\
 				font-weight: lighter;\n\
 			}\n\
+            /*i a {\n\
+                text-decoration: none;\n\
+            }*/\n\
 			div.crosswire {\n\
 				font-size: 9pt;\n\
 				font-weight: lighter;\n\

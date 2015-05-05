@@ -20,19 +20,14 @@
 + (NSString*)generateLicensesHTML
 {
 	static NSString *body = [NSString stringWithFormat:
-							 @"<div id=\"header1\">\n\
+							 @"<div class=\"crosswire\">\n\
 								 <h2 class=\"headbar\">PocketSword</h2>\n\
-								 <div class=\"version\"> Version %@ (%@)</div>\n\
-								 <center><i><a href=\"https://bitbucket.org/niccarter/pocketsword/overview\">PocketSword on Bitbucket</a></i><br />\n\
-									<i><a href=\"http://www.crosswire.org/forums/mvnforum/listthreads?forum=16\">User Forums</a></i><br />\n\
-									<i>@<a href=\"http://twitter.com/PocketSword\">PocketSword</a> on Twitter</i></center>\n\
 							 </div>\n\
-							 <div id=\"main\">\n\
-								<p><b>Developed by: </b><br />\n\
+							 <div>\n\
+								<p>Developed by: <br />\n\
 									 Nic Carter<br />\n\
-									 and the rest of the CrossWire community!\n\
 								</p>\n\
-								 <p><b>With help from: </b><br />\n\
+								 <p>With help from: <br />\n\
 					  David Bell, \
 					  Manfred Bergmann, \
 					  Christoffer Björkskog, \
@@ -53,7 +48,7 @@
 					  <br />\n\
 					  &amp; all the PocketSword beta testers!\n\
 							  </p>\n\
-							  <p><b>Special thanks to: </b><br />\n\
+							  <p>Special thanks to: <br />\n\
 										David Crowder*Band <i>(<a href=\"http://www.davidcrowderband.com/\">http://www.davidcrowderband.com/</a>)</i><br />\n\
 										Pablo and Rusty's, Gordon <i>(<a href=\"http://www.pabloandrustys.com.au/\">http://www.pabloandrustys.com.au/</a>)</i>\n\
 								</p>\n\
@@ -64,7 +59,6 @@
 										&bull; <i><a href=\"http://www.macsword.com/\">Eloquent/MacSword</a></i><br />\n\
 										&bull; <i><a href=\"http://www.bibletime.info/\">BibleTime (Linux/Unix and Windows)</a></i><br />\n\
 									</p>\n\
-								<p>If you would like to see PocketSword in your language and are willing to help translate it, please Email Us using the button in the top right corner &amp; we would love your help!</p>\
 					  \
 					  \n\
 					  \n\
@@ -88,9 +82,8 @@
 					  <h2 class=\"headbar\">Ezra SIL and Gentium Plus: </h2>\n\
 					  %@\n\
 					  </div>\n\
+                             <i><a href=\"https://bitbucket.org/niccarter/pocketsword/overview\">PocketSword on Bitbucket</a></i><br />\n\
 					  <br />&nbsp;<br />",
-							 [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleShortVersionString"],
-							 [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleVersion"],
 							 [NSString stringWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"OFL" ofType:@"txt"] encoding:NSUTF8StringEncoding error:nil]
 							 ];
 	
@@ -123,11 +116,9 @@
 			}\n\
 			#main {\n\
 				padding: 10px;\n\
-				text-align: center;\n\
 			}\n\
 			div.version {\n\
 				font-size: 9pt;\n\
-				text-align: center;\n\
 			}\n\
 			div.title {\n\
 				font-size: 14pt;\n\
