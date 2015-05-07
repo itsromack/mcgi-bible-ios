@@ -3690,7 +3690,7 @@
 					"-DEXCLUDEXZ",
 				);
 				PRODUCT_NAME = MCGIBible;
-				PROVISIONING_PROFILE = "c72acaa5-8957-4940-90ef-23e863faff91";
+				PROVISIONING_PROFILE = "a5e4028f-3c7b-4b52-b5c3-68b106e40070";
 			};
 			name = Debug;
 		};
@@ -3727,7 +3727,7 @@
 					"-DEXCLUDEXZ",
 				);
 				PRODUCT_NAME = MCGIBible;
-				PROVISIONING_PROFILE = "c72acaa5-8957-4940-90ef-23e863faff91";
+				PROVISIONING_PROFILE = "a5e4028f-3c7b-4b52-b5c3-68b106e40070";
 			};
 			name = Release;
 		};
@@ -3836,7 +3836,7 @@
 					"-DEXCLUDEXZ",
 				);
 				PRODUCT_NAME = MCGIBible;
-				PROVISIONING_PROFILE = "c72acaa5-8957-4940-90ef-23e863faff91";
+				PROVISIONING_PROFILE = "a5e4028f-3c7b-4b52-b5c3-68b106e40070";
 			};
 			name = Distribution;
 		};

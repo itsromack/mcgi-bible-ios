@@ -429,11 +429,11 @@
 - (void)toggleModulesListAnimated:(BOOL)animated withModule:(SwordModule *)swordModule fromButton:(id)sender {
     BOOL iPad = [PSResizing iPad];
 	if(moduleSelectorViewController || [popoverController isPopoverVisible]) {
-		//if(iPad) {
-            [popoverController dismissPopoverAnimated:YES];
-		//} else {
+		 if(iPad) {
+             [popoverController dismissPopoverAnimated:YES];
+		 } else {
 			[tabBarController dismissModalViewControllerAnimated:animated];
-		//}
+		  }
 		moduleSelectorViewController = nil;
 	} else {
 		moduleSelectorViewController = [[[PSModuleSelectorController alloc] initWithNibName:nil bundle:nil] autorelease];
@@ -1356,12 +1356,12 @@
 			break;
 		case DownloadsTab:
 		{
-			for(UIViewController *uivc in tabBarController.viewControllers) {
-				if([uivc isKindOfClass:[NavigatorSources class]]) {
-					tabBarController.selectedViewController = uivc;
-					break;
-				}
-			}
+			//for(UIViewController *uivc in tabBarController.viewControllers) {
+			 	//if([uivc isKindOfClass:[NavigatorSources class]]) {
+                    tabBarController.selectedIndex= 3;
+			//		break;
+				//}
+			//}
 		}
 			break;
 		case PreferencesTab:
