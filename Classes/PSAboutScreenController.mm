@@ -26,18 +26,18 @@
 								 <center><i><a href=\"https://github.com/MCGI/mcgi-bible-ios\">MCGI Bible on Github</a></i></center>\n\
 							 </div>\n\
 							 <div id=\"main\">\n\
-								<p><b>Developed by: </b><br />\n\
-									 MCGI Singapore<br />\n\
-									 and the rest of the open-source community!\n\
+								<p><strong>Developed by: </strong><br />\n\
+									 MCGI Singapore and the rest of the open-source community.\n\
 								</p>\n\
-							</div>\n\
-                             <p><strong>Find out more from MCGI apps and services:</strong><br />\n\
-                             &bull; <i><a href=\"https://mcgi.church/apps/\">MCGI Tablet &amp; Mobile Apps</a></i><br />\n\
-                             &bull; <i><a href=\"http://www.mcgi.org/\">MCGI.org - Visit our official website</a></i><br />\n\
-                             &bull; <i><a href=\"http://www.mcgi.org/broadcasts/internet/\">Live broadcasts &amp; social media</a></i><br />\n\
-                             &bull; <i><a href=\"https://mcgi.church/services/\">Discover more apps and services</a></i><br />\n\
-                             </p>\n\
-                             <br />&nbsp;<br />",
+                             <p>For any feedback or inquiries, please email us at inquiries@mcgi.org.sg or tap the Email Us option above.</p>\
+                             <p class=\"section\"><strong>Explore MCGI apps and services:</strong>\
+                             <ul><li><a href=\"https://mcgi.church/apps/\">Tablet &amp; Mobile Apps</a></li>\n\
+                             <li><a href=\"http://www.mcgi.org/broadcasts/internet/\">Live broadcasts &amp; social media</a></li>\n\
+                             <li><a href=\"http://www.mcgi.org/\">MCGI.org - The official website</a></li>\n\
+                             <li><a href=\"https://mcgi.church/explore/\">Find out more</a></li></ul>\n\
+                             </p></div>\n\
+                             \n\
+                             <br /><br />",
 							 [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleShortVersionString"],
 							 [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleVersion"]
 							 ];
@@ -62,17 +62,21 @@
 				font-size: 11pt;\n\
 				font-family: %@;\n\
 				line-height: 130%%;\n\
+                margin: 0;\n\
 			}\n\
 			#header {\n\
 				font-weight: bold;\n\
 				border-bottom: solid 1px gray;\n\
-				padding: 5px;\n\
+				padding: 5px 5px 0 5px;\n\
 				background-color: #D5EEF9;\n\
 			}\n\
 			#main {\n\
-				padding: 10px;\n\
-				text-align: center;\n\
+				padding: 8px;\n\
+				text-align: left;\n\
 			}\n\
+            .section {\n\
+                padding-top: 8px;\
+            }\n\
 			div.version {\n\
 				font-size: 9pt;\n\
 				text-align: center;\n\
@@ -81,13 +85,12 @@
 				font-size: 14pt;\n\
 				text-align: center;\n\
 			}\n\
-			i {\n\
-				font-size: 12pt;\n\
-				font-weight: lighter;\n\
+			li {\n\
+				padding-bottom: 8px;\n\
 			}\n\
-            /*i a {\n\
+            i a {\n\
                 text-decoration: none;\n\
-            }*/\n\
+            }\n\
 			div.crosswire {\n\
 				font-size: 9pt;\n\
 				font-weight: lighter;\n\
@@ -270,7 +273,7 @@
 
 -(void)emailFeedback:(id)sender
 {
-    NSString *recipients = @"portal@mcgi.org.sg";
+    NSString *recipients = @"inquiries@mcgi.org.sg";
 	
 	NSString *subject = [NSString stringWithFormat:@"MCGI Bible Feedback (v%@ - %@ %@ (%@))", [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleShortVersionString"], [[UIDevice currentDevice] systemName], [[UIDevice currentDevice] systemVersion], [self platformString]];
 	

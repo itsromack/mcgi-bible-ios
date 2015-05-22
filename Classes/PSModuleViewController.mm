@@ -595,7 +595,7 @@
 			//DLog(@"    %@", tappedVerse);
 			NSInteger tappedVerseInt = [tappedVerse integerValue];
 			NSString *sheetTitle = [NSString stringWithFormat:NSLocalizedString(@"RefSelectorVerseTitle", @""), tappedVerseInt];
-			UIActionSheet *sheet = [[UIActionSheet alloc] initWithTitle:sheetTitle delegate:self cancelButtonTitle:NSLocalizedString(@"Cancel", @"") destructiveButtonTitle:nil otherButtonTitles:NSLocalizedString(@"VerseContextualMenuAddBookmark", @""), NSLocalizedString(@"VerseContextualMenuCommentary", @""), nil];
+			UIActionSheet *sheet = [[UIActionSheet alloc] initWithTitle:sheetTitle delegate:self cancelButtonTitle:NSLocalizedString(@"Cancel", @"") destructiveButtonTitle:nil otherButtonTitles:NSLocalizedString(@"VerseContextualMenuAddBookmark", @""), nil]; // NSLocalizedString(@"VerseContextualMenuCommentary", @""), nil];
 			[sheet showFromTabBar:self.tabBarController.tabBar];
 			// TODO: for iPad, use showFromRect:inView:animated: instead, after determining the rect of the verse number.
 			[sheet release];
