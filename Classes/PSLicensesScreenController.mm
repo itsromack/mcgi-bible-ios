@@ -22,8 +22,7 @@
 	static NSString *body = [NSString stringWithFormat:
 							 @"<div class=\"crosswire\">\n\
 								 <h2 class=\"headbar\">PocketSword</h2>\n\
-							 </div>\n\
-							 <div>\n\
+                             <p>MCGI Bible was based on the PocketSword project.</p>\n\
 								<p>Developed by: <br />\n\
 									 Nic Carter<br />\n\
 								</p>\n\
@@ -52,15 +51,6 @@
 										David Crowder*Band <i>(<a href=\"http://www.davidcrowderband.com/\">http://www.davidcrowderband.com/</a>)</i><br />\n\
 										Pablo and Rusty's, Gordon <i>(<a href=\"http://www.pabloandrustys.com.au/\">http://www.pabloandrustys.com.au/</a>)</i>\n\
 								</p>\n\
-							</div>\n\
-								<p>If you would like to use these same Bible & Commentary modules on another platform, check out the following apps:<br />\n\
-										&bull; <i><a href=\"http://xiphos.org/\">Xiphos (Windows, Linux/Unix)</a></i><br />\n\
-										&bull; <i><a href=\"https://code.google.com/p/and-bible/\">AndBible (other mobile)</a></i><br />\n\
-										&bull; <i><a href=\"http://www.macsword.com/\">Eloquent/MacSword</a></i><br />\n\
-										&bull; <i><a href=\"http://www.bibletime.info/\">BibleTime (Linux/Unix and Windows)</a></i><br />\n\
-									</p>\n\
-					  \
-					  \n\
 					  \n\
 					  <p>PocketSword benefits from the following Open Source projects:<br />\n\
 					  &bull; <i><a href=\"http://www.crosswire.org/sword/index.jsp\">The SWORD Project</a></i><br />\n\
@@ -68,7 +58,7 @@
 					  &bull; <i><a href=\"https://github.com/zbyhoo/EGOTableViewPullRefresh\">zbyhoo's fork of EGOTableViewPullRefresh</a></i><br />\n\
 					  &bull; <i><a href=\"http://code.google.com/p/ziparchive/\">ZipArchive</a></i><br />\n\
 					  </p>\
-					  <br />\n\
+                      </div>\n\
 					  <br />\n\
 					  <div class=\"crosswire\">\n\
 					  <h2 class=\"headbar\">CrossWire Bible Society</h2>\n\
