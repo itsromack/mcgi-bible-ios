@@ -26,7 +26,7 @@
 
 #include <curl/curl.h>
 #ifdef _APPLE_IOS_
-#include <curl/types.h>
+ 
 #endif
 #include <curl/easy.h>
 

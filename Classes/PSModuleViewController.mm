@@ -71,7 +71,10 @@
 	switch(tabType) {
 		case BibleTab:
 		{
-			 UITabBarItem *tbi = [[UITabBarItem alloc] initWithTitle:NSLocalizedString(@"TabBarTitleBible", @"Bible") image:[UIImage imageNamed:@"bible.png"] tag:10];
+            UITabBarItem *tbi = [[UITabBarItem alloc] initWithTitle:NSLocalizedString(@"TabBarTitleBible", @"Bible") image:[UIImage imageNamed:@"bible.png"] tag:10];
+            
+            
+            
         
         
 			self.tabBarItem = tbi;

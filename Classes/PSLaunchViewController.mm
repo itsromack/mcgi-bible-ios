@@ -206,6 +206,8 @@
 		}
 	}
 	
+    
+    //********ADD ADDITIONAL BIBLES HERE...*****
 	// Test if we need to reinstall the built-in modules?
 	BOOL kjvModule = [[moduleManager swordManager] isModuleInstalled:@"KJV"];
 	BOOL kjvModuleRemoved = [defaults boolForKey:DefaultsKJVRemoved];

@@ -63,7 +63,7 @@
 		[self nightModeChanged];
 		[PSModuleController defaultModuleController];//init
 		
-		NSMutableArray *tabs = [NSMutableArray arrayWithCapacity:7];
+		NSMutableArray *tabs = [NSMutableArray arrayWithCapacity:6];
 		// Order of the tabs:
 		// 00: Bible fin
 		// 01: Commentary
@@ -130,7 +130,8 @@
 		dictionaryTab.navigationBar.barStyle = UIBarStyleBlack;
 		UITabBarItem *dTBI = [[UITabBarItem alloc] initWithTitle:NSLocalizedString(@"TabBarTitleDictionary", @"Dictionary") image:[UIImage imageNamed:@"dictionary.png"] tag:99];
 		dictionaryTab.tabBarItem = dTBI;
-		[dTBI release];
+		
+        
 		[tabs insertObject:dictionaryTab atIndex:1];
 		[dictionaryViewController release];
 		[dictionaryTab release];
@@ -143,9 +144,9 @@
 		//UITabBarItem *tbI = [[UITabBarItem alloc] initWithTabBarSystemItem:UITabBarSystemItemBookmarks tag:0];
         
         UITabBarItem *tbI = [[UITabBarItem alloc] initWithTitle: @"Bookmark" image:[UIImage imageNamed:@"bookmark.png"] tag:787];
-        
+       
 		bookmarksTab.tabBarItem = tbI;
-		[tbI release];
+//[tbI release];
 		[tabs insertObject:bookmarksTab atIndex:2];
 		[bookmarksViewController release];
 		[bookmarksTab release];
@@ -172,6 +173,8 @@
          */
 		
 		//add the Downloads tab.
+        
+        /*HIDE DOWNLOAD TABS TEMPORARILY
 		NavigatorSources *downloadsViewController = [[NavigatorSources alloc] initWithStyle:UITableViewStyleGrouped];
 		UITabBarItem *downloadsTabBarItem = [[UITabBarItem alloc] initWithTabBarSystemItem:UITabBarSystemItemDownloads tag:522];
 		//if([PSResizing iPad]) {//comment out since view will not be on 
@@ -188,7 +191,7 @@
 		//}
 		[downloadsTabBarItem release];
 		[downloadsViewController release];
-		
+		*/
 		//add the Preferences tab.
 		PSPreferencesController *preferencesViewController = [[PSPreferencesController alloc] initWithStyle:UITableViewStyleGrouped];
 		UITabBarItem *preferencesTabBarItem = [[UITabBarItem alloc] initWithTitle:NSLocalizedString(@"TabBarTitlePreferences", @"Preferences") image:[UIImage imageNamed:@"gear-24.png"] tag:9];
@@ -196,11 +199,11 @@
 			UINavigationController *preferencesIPadTab = [[UINavigationController alloc] initWithRootViewController:preferencesViewController];
 			preferencesIPadTab.navigationBar.barStyle = UIBarStyleBlack;
 			preferencesIPadTab.tabBarItem = preferencesTabBarItem;
-			[tabs insertObject:preferencesIPadTab atIndex:4];
+			[tabs insertObject:preferencesIPadTab atIndex:3];
 			[preferencesIPadTab release];
 		} else {
 			preferencesViewController.tabBarItem = preferencesTabBarItem;
-			[tabs insertObject:preferencesViewController atIndex:4];
+			[tabs insertObject:preferencesViewController atIndex:3];
 		}
 		[preferencesTabBarItem release];
 		[preferencesViewController release];
@@ -212,11 +215,11 @@
 			UINavigationController *aboutIPadTab = [[UINavigationController alloc] initWithRootViewController:aboutViewController];
 			aboutIPadTab.navigationBar.barStyle = UIBarStyleBlack;
 			aboutIPadTab.tabBarItem = aboutTBI;
-			[tabs insertObject:aboutIPadTab atIndex:5];
+			[tabs insertObject:aboutIPadTab atIndex:4];
 			[aboutIPadTab release];
 		} else {
 			aboutViewController.tabBarItem = aboutTBI;
-			[tabs insertObject:aboutViewController atIndex:5];
+			[tabs insertObject:aboutViewController atIndex:4];
 		}
 		[aboutTBI release];
 		[aboutViewController release];
@@ -228,11 +231,11 @@
             UINavigationController *licensesIPadTab = [[UINavigationController alloc] initWithRootViewController:licensesViewController];
             licensesIPadTab.navigationBar.barStyle = UIBarStyleBlack;
             licensesIPadTab.tabBarItem = licensesTBI;
-            [tabs insertObject:licensesIPadTab atIndex:6];
+            [tabs insertObject:licensesIPadTab atIndex:5];
             [licensesIPadTab release];
         } else {
             licensesViewController.tabBarItem = licensesTBI;
-            [tabs insertObject:licensesViewController atIndex:6];
+            [tabs insertObject:licensesViewController atIndex:5];
         }
         [licensesTBI release];
         [licensesViewController release];

@@ -62,8 +62,6 @@
 		05275AE410884F72004FB0E0 /* treekeyidx.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 05275A1A10884F71004FB0E0 /* treekeyidx.cpp */; };
 		05275AE510884F72004FB0E0 /* versekey.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 05275A1B10884F71004FB0E0 /* versekey.cpp */; };
 		05275AE610884F72004FB0E0 /* versetreekey.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 05275A1C10884F71004FB0E0 /* versetreekey.cpp */; };
-		05275AE710884F72004FB0E0 /* curlftpt.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 05275A1E10884F71004FB0E0 /* curlftpt.cpp */; };
-		05275AE810884F72004FB0E0 /* curlhttpt.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 05275A1F10884F71004FB0E0 /* curlhttpt.cpp */; };
 		05275AE910884F72004FB0E0 /* encfiltmgr.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 05275A2010884F71004FB0E0 /* encfiltmgr.cpp */; };
 		05275AEA10884F72004FB0E0 /* filemgr.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 05275A2110884F71004FB0E0 /* filemgr.cpp */; };
 		05275AEB10884F72004FB0E0 /* ftplibftpt.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 05275A2210884F71004FB0E0 /* ftplibftpt.cpp */; };
@@ -273,7 +271,6 @@
 		05A8A1CA11717AB4005B6411 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 05A8A1C911717AB4005B6411 /* CoreGraphics.framework */; };
 		05AB946C116D88B80043DB57 /* PSChapterSelectorController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 05AB946B116D88B80043DB57 /* PSChapterSelectorController.mm */; };
 		05AB9512116D9C190043DB57 /* PSVerseSelectorController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 05AB9511116D9C190043DB57 /* PSVerseSelectorController.mm */; };
-		05B30E191070DDD000727E91 /* libcurl-7.19.6-release.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 05B30E181070DDD000727E91 /* libcurl-7.19.6-release.a */; };
 		05B5295D107C529000826AFE /* PSModuleType.mm in Sources */ = {isa = PBXBuildFile; fileRef = 05B5295C107C529000826AFE /* PSModuleType.mm */; };
 		05B52A29107DB0D100826AFE /* NavigatorSources.mm in Sources */ = {isa = PBXBuildFile; fileRef = 05B52A28107DB0D100826AFE /* NavigatorSources.mm */; };
 		05B52BDC107EEB5B00826AFE /* NavigatorModuleTypes.mm in Sources */ = {isa = PBXBuildFile; fileRef = 05B52BDB107EEB5B00826AFE /* NavigatorModuleTypes.mm */; };
@@ -356,6 +353,23 @@
 		05F84EE1191F4AB3003350DE /* thmllatex.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 05F84EDC191F4AB3003350DE /* thmllatex.cpp */; };
 		05F84EE5191F4AC7003350DE /* ztext4.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 05F84EE4191F4AC7003350DE /* ztext4.cpp */; };
 		05F84EE7191F4EF0003350DE /* libicucore.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 05F84EE6191F4EF0003350DE /* libicucore.dylib */; settings = {ATTRIBUTES = (Weak, ); }; };
+		133B57641B67E87200D4A1A8 /* ChiNCVt.zip in Resources */ = {isa = PBXBuildFile; fileRef = 133B57531B67E87200D4A1A8 /* ChiNCVt.zip */; };
+		133B57651B67E87200D4A1A8 /* ChiNCVs.zip in Resources */ = {isa = PBXBuildFile; fileRef = 133B57541B67E87200D4A1A8 /* ChiNCVs.zip */; };
+		133B57661B67E87200D4A1A8 /* ASV.zip in Resources */ = {isa = PBXBuildFile; fileRef = 133B57551B67E87200D4A1A8 /* ASV.zip */; };
+		133B57671B67E87200D4A1A8 /* ESV.zip in Resources */ = {isa = PBXBuildFile; fileRef = 133B57561B67E87200D4A1A8 /* ESV.zip */; };
+		133B57681B67E87200D4A1A8 /* Geneva1599.zip in Resources */ = {isa = PBXBuildFile; fileRef = 133B57571B67E87200D4A1A8 /* Geneva1599.zip */; };
+		133B57691B67E87200D4A1A8 /* AKJV.zip in Resources */ = {isa = PBXBuildFile; fileRef = 133B57581B67E87200D4A1A8 /* AKJV.zip */; };
+		133B576A1B67E87200D4A1A8 /* SpaRV1909.zip in Resources */ = {isa = PBXBuildFile; fileRef = 133B57591B67E87200D4A1A8 /* SpaRV1909.zip */; };
+		133B576B1B67E87200D4A1A8 /* SpaVNT.zip in Resources */ = {isa = PBXBuildFile; fileRef = 133B575A1B67E87200D4A1A8 /* SpaVNT.zip */; };
+		133B576C1B67E87200D4A1A8 /* SpaRVG.zip in Resources */ = {isa = PBXBuildFile; fileRef = 133B575B1B67E87200D4A1A8 /* SpaRVG.zip */; };
+		133B576D1B67E87200D4A1A8 /* SpaTDP.zip in Resources */ = {isa = PBXBuildFile; fileRef = 133B575C1B67E87200D4A1A8 /* SpaTDP.zip */; };
+		133B576E1B67E87200D4A1A8 /* SpaRV.zip in Resources */ = {isa = PBXBuildFile; fileRef = 133B575D1B67E87200D4A1A8 /* SpaRV.zip */; };
+		133B576F1B67E87200D4A1A8 /* PorLivre.zip in Resources */ = {isa = PBXBuildFile; fileRef = 133B575E1B67E87200D4A1A8 /* PorLivre.zip */; };
+		133B57701B67E87200D4A1A8 /* PorCap.zip in Resources */ = {isa = PBXBuildFile; fileRef = 133B575F1B67E87200D4A1A8 /* PorCap.zip */; };
+		133B57711B67E87200D4A1A8 /* PorCapNT.zip in Resources */ = {isa = PBXBuildFile; fileRef = 133B57601B67E87200D4A1A8 /* PorCapNT.zip */; };
+		133B57721B67E87200D4A1A8 /* PorAR.zip in Resources */ = {isa = PBXBuildFile; fileRef = 133B57611B67E87200D4A1A8 /* PorAR.zip */; };
+		133B57731B67E87200D4A1A8 /* SpaSEV.zip in Resources */ = {isa = PBXBuildFile; fileRef = 133B57621B67E87200D4A1A8 /* SpaSEV.zip */; };
+		133B57741B67E87200D4A1A8 /* TagAngBiblia.zip in Resources */ = {isa = PBXBuildFile; fileRef = 133B57631B67E87200D4A1A8 /* TagAngBiblia.zip */; };
 		1D3623260D0F684500981E51 /* PocketSwordAppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 1D3623250D0F684500981E51 /* PocketSwordAppDelegate.mm */; };
 		1D60589B0D05DD56006BFB54 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; };
 		1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D30AB110D05D00D00671497 /* Foundation.framework */; };
@@ -552,8 +566,6 @@
 		0527596710884F64004FB0E0 /* canon_synodal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = canon_synodal.h; sourceTree = "<group>"; };
 		0527596810884F64004FB0E0 /* cipherfil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = cipherfil.h; sourceTree = "<group>"; };
 		0527596910884F64004FB0E0 /* config.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = config.h; sourceTree = "<group>"; };
-		0527596A10884F64004FB0E0 /* curlftpt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = curlftpt.h; sourceTree = "<group>"; };
-		0527596B10884F64004FB0E0 /* curlhttpt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = curlhttpt.h; sourceTree = "<group>"; };
 		0527596C10884F64004FB0E0 /* defs.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = defs.h; sourceTree = "<group>"; };
 		0527596E10884F64004FB0E0 /* encfiltmgr.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = encfiltmgr.h; sourceTree = "<group>"; };
 		0527596F10884F64004FB0E0 /* entriesblk.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = entriesblk.h; sourceTree = "<group>"; };
@@ -707,8 +719,6 @@
 		05275A1A10884F71004FB0E0 /* treekeyidx.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = treekeyidx.cpp; sourceTree = "<group>"; };
 		05275A1B10884F71004FB0E0 /* versekey.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = versekey.cpp; sourceTree = "<group>"; };
 		05275A1C10884F71004FB0E0 /* versetreekey.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = versetreekey.cpp; sourceTree = "<group>"; };
-		05275A1E10884F71004FB0E0 /* curlftpt.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = curlftpt.cpp; sourceTree = "<group>"; };
-		05275A1F10884F71004FB0E0 /* curlhttpt.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = curlhttpt.cpp; sourceTree = "<group>"; };
 		05275A2010884F71004FB0E0 /* encfiltmgr.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = encfiltmgr.cpp; sourceTree = "<group>"; };
 		05275A2110884F71004FB0E0 /* filemgr.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = filemgr.cpp; sourceTree = "<group>"; };
 		05275A2210884F71004FB0E0 /* ftplibftpt.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ftplibftpt.cpp; sourceTree = "<group>"; };
@@ -877,16 +887,6 @@
 		053CAD861809428D00BCDBE6 /* xzcomprs.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = xzcomprs.cpp; sourceTree = "<group>"; };
 		053CAD8A180942B200BCDBE6 /* osisreferencelinks.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = osisreferencelinks.cpp; sourceTree = "<group>"; };
 		053CAD8B180942B200BCDBE6 /* scsuutf8.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = scsuutf8.cpp; sourceTree = "<group>"; };
-		0542F6CC10BE770C0088A721 /* curl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = curl.h; sourceTree = "<group>"; };
-		0542F6CD10BE770C0088A721 /* curlbuild.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = curlbuild.h; sourceTree = "<group>"; };
-		0542F6CE10BE770C0088A721 /* curlrules.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = curlrules.h; sourceTree = "<group>"; };
-		0542F6CF10BE770C0088A721 /* curlver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = curlver.h; sourceTree = "<group>"; };
-		0542F6D010BE770C0088A721 /* easy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = easy.h; sourceTree = "<group>"; };
-		0542F6D110BE770C0088A721 /* mprintf.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mprintf.h; sourceTree = "<group>"; };
-		0542F6D210BE770C0088A721 /* multi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = multi.h; sourceTree = "<group>"; };
-		0542F6D310BE770C0088A721 /* stdcheaders.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = stdcheaders.h; sourceTree = "<group>"; };
-		0542F6D410BE770C0088A721 /* typecheck-gcc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "typecheck-gcc.h"; sourceTree = "<group>"; };
-		0542F6D510BE770C0088A721 /* types.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = types.h; sourceTree = "<group>"; };
 		0543338D112D407800187956 /* PSPreferencesModuleSelectorTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PSPreferencesModuleSelectorTableViewController.h; sourceTree = "<group>"; };
 		0543338E112D407800187956 /* PSPreferencesModuleSelectorTableViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = PSPreferencesModuleSelectorTableViewController.mm; sourceTree = "<group>"; };
 		054509C519A5DAA900E0A702 /* libbz2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libbz2.dylib; path = usr/lib/libbz2.dylib; sourceTree = SDKROOT; };
@@ -1009,7 +1009,6 @@
 		05AB946B116D88B80043DB57 /* PSChapterSelectorController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = PSChapterSelectorController.mm; path = Classes/PSChapterSelectorController.mm; sourceTree = "<group>"; };
 		05AB9510116D9C190043DB57 /* PSVerseSelectorController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PSVerseSelectorController.h; path = Classes/PSVerseSelectorController.h; sourceTree = "<group>"; };
 		05AB9511116D9C190043DB57 /* PSVerseSelectorController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = PSVerseSelectorController.mm; path = Classes/PSVerseSelectorController.mm; sourceTree = "<group>"; };
-		05B30E181070DDD000727E91 /* libcurl-7.19.6-release.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libcurl-7.19.6-release.a"; path = "externals/libcurl/libcurl-7.19.6-release.a"; sourceTree = "<group>"; };
 		05B3D61610BB7A92000F8A48 /* MMM.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = MMM.png; path = Resources/MMM.png; sourceTree = "<group>"; };
 		05B5295B107C529000826AFE /* PSModuleType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PSModuleType.h; sourceTree = "<group>"; };
 		05B5295C107C529000826AFE /* PSModuleType.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = PSModuleType.mm; sourceTree = "<group>"; };
@@ -1154,6 +1153,23 @@
 		05F84EDC191F4AB3003350DE /* thmllatex.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = thmllatex.cpp; sourceTree = "<group>"; };
 		05F84EE4191F4AC7003350DE /* ztext4.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ztext4.cpp; sourceTree = "<group>"; };
 		05F84EE6191F4EF0003350DE /* libicucore.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libicucore.dylib; path = usr/lib/libicucore.dylib; sourceTree = SDKROOT; };
+		133B57531B67E87200D4A1A8 /* ChiNCVt.zip */ = {isa = PBXFileReference; lastKnownFileType = archive.zip; name = ChiNCVt.zip; path = Resources/ChiNCVt.zip; sourceTree = "<group>"; };
+		133B57541B67E87200D4A1A8 /* ChiNCVs.zip */ = {isa = PBXFileReference; lastKnownFileType = archive.zip; name = ChiNCVs.zip; path = Resources/ChiNCVs.zip; sourceTree = "<group>"; };
+		133B57551B67E87200D4A1A8 /* ASV.zip */ = {isa = PBXFileReference; lastKnownFileType = archive.zip; name = ASV.zip; path = Resources/ASV.zip; sourceTree = "<group>"; };
+		133B57561B67E87200D4A1A8 /* ESV.zip */ = {isa = PBXFileReference; lastKnownFileType = archive.zip; name = ESV.zip; path = Resources/ESV.zip; sourceTree = "<group>"; };
+		133B57571B67E87200D4A1A8 /* Geneva1599.zip */ = {isa = PBXFileReference; lastKnownFileType = archive.zip; name = Geneva1599.zip; path = Resources/Geneva1599.zip; sourceTree = "<group>"; };
+		133B57581B67E87200D4A1A8 /* AKJV.zip */ = {isa = PBXFileReference; lastKnownFileType = archive.zip; name = AKJV.zip; path = Resources/AKJV.zip; sourceTree = "<group>"; };
+		133B57591B67E87200D4A1A8 /* SpaRV1909.zip */ = {isa = PBXFileReference; lastKnownFileType = archive.zip; name = SpaRV1909.zip; path = Resources/SpaRV1909.zip; sourceTree = "<group>"; };
+		133B575A1B67E87200D4A1A8 /* SpaVNT.zip */ = {isa = PBXFileReference; lastKnownFileType = archive.zip; name = SpaVNT.zip; path = Resources/SpaVNT.zip; sourceTree = "<group>"; };
+		133B575B1B67E87200D4A1A8 /* SpaRVG.zip */ = {isa = PBXFileReference; lastKnownFileType = archive.zip; name = SpaRVG.zip; path = Resources/SpaRVG.zip; sourceTree = "<group>"; };
+		133B575C1B67E87200D4A1A8 /* SpaTDP.zip */ = {isa = PBXFileReference; lastKnownFileType = archive.zip; name = SpaTDP.zip; path = Resources/SpaTDP.zip; sourceTree = "<group>"; };
+		133B575D1B67E87200D4A1A8 /* SpaRV.zip */ = {isa = PBXFileReference; lastKnownFileType = archive.zip; name = SpaRV.zip; path = Resources/SpaRV.zip; sourceTree = "<group>"; };
+		133B575E1B67E87200D4A1A8 /* PorLivre.zip */ = {isa = PBXFileReference; lastKnownFileType = archive.zip; name = PorLivre.zip; path = Resources/PorLivre.zip; sourceTree = "<group>"; };
+		133B575F1B67E87200D4A1A8 /* PorCap.zip */ = {isa = PBXFileReference; lastKnownFileType = archive.zip; name = PorCap.zip; path = Resources/PorCap.zip; sourceTree = "<group>"; };
+		133B57601B67E87200D4A1A8 /* PorCapNT.zip */ = {isa = PBXFileReference; lastKnownFileType = archive.zip; name = PorCapNT.zip; path = Resources/PorCapNT.zip; sourceTree = "<group>"; };
+		133B57611B67E87200D4A1A8 /* PorAR.zip */ = {isa = PBXFileReference; lastKnownFileType = archive.zip; name = PorAR.zip; path = Resources/PorAR.zip; sourceTree = "<group>"; };
+		133B57621B67E87200D4A1A8 /* SpaSEV.zip */ = {isa = PBXFileReference; lastKnownFileType = archive.zip; name = SpaSEV.zip; path = Resources/SpaSEV.zip; sourceTree = "<group>"; };
+		133B57631B67E87200D4A1A8 /* TagAngBiblia.zip */ = {isa = PBXFileReference; lastKnownFileType = archive.zip; name = TagAngBiblia.zip; path = Resources/TagAngBiblia.zip; sourceTree = "<group>"; };
 		1D30AB110D05D00D00671497 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		1D3623240D0F684500981E51 /* PocketSwordAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PocketSwordAppDelegate.h; path = Classes/PocketSwordAppDelegate.h; sourceTree = "<group>"; };
 		1D3623250D0F684500981E51 /* PocketSwordAppDelegate.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = PocketSwordAppDelegate.mm; path = Classes/PocketSwordAppDelegate.mm; sourceTree = "<group>"; };
@@ -1432,7 +1448,6 @@
 				056CD38616BB6D6200AA0674 /* libz.dylib in Frameworks */,
 				1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */,
 				1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */,
-				05B30E191070DDD000727E91 /* libcurl-7.19.6-release.a in Frameworks */,
 				051CF5AE1086EEDC00154E44 /* SystemConfiguration.framework in Frameworks */,
 				05D6ABA61097E8CC00A5026E /* CFNetwork.framework in Frameworks */,
 				05F0DB8A11671E4800C2E87D /* QuartzCore.framework in Frameworks */,
@@ -1608,8 +1623,6 @@
 				058E2D2D10F56EFC006E4447 /* canon_vulg.h */,
 				0527596810884F64004FB0E0 /* cipherfil.h */,
 				0527596910884F64004FB0E0 /* config.h */,
-				0527596A10884F64004FB0E0 /* curlftpt.h */,
-				0527596B10884F64004FB0E0 /* curlhttpt.h */,
 				0527596C10884F64004FB0E0 /* defs.h */,
 				0527596E10884F64004FB0E0 /* encfiltmgr.h */,
 				0527596F10884F64004FB0E0 /* entriesblk.h */,
@@ -1835,8 +1848,6 @@
 			isa = PBXGroup;
 			children = (
 				057CBD4717697CFC005BC6BB /* remotetrans.cpp */,
-				05275A1E10884F71004FB0E0 /* curlftpt.cpp */,
-				05275A1F10884F71004FB0E0 /* curlhttpt.cpp */,
 				05275A2010884F71004FB0E0 /* encfiltmgr.cpp */,
 				05275A2110884F71004FB0E0 /* filemgr.cpp */,
 				05275A2210884F71004FB0E0 /* ftplibftpt.cpp */,
@@ -2255,6 +2266,23 @@
 		052851B91226611C00A99ECD /* zips */ = {
 			isa = PBXGroup;
 			children = (
+				133B57531B67E87200D4A1A8 /* ChiNCVt.zip */,
+				133B57541B67E87200D4A1A8 /* ChiNCVs.zip */,
+				133B57551B67E87200D4A1A8 /* ASV.zip */,
+				133B57561B67E87200D4A1A8 /* ESV.zip */,
+				133B57571B67E87200D4A1A8 /* Geneva1599.zip */,
+				133B57581B67E87200D4A1A8 /* AKJV.zip */,
+				133B57591B67E87200D4A1A8 /* SpaRV1909.zip */,
+				133B575A1B67E87200D4A1A8 /* SpaVNT.zip */,
+				133B575B1B67E87200D4A1A8 /* SpaRVG.zip */,
+				133B575C1B67E87200D4A1A8 /* SpaTDP.zip */,
+				133B575D1B67E87200D4A1A8 /* SpaRV.zip */,
+				133B575E1B67E87200D4A1A8 /* PorLivre.zip */,
+				133B575F1B67E87200D4A1A8 /* PorCap.zip */,
+				133B57601B67E87200D4A1A8 /* PorCapNT.zip */,
+				133B57611B67E87200D4A1A8 /* PorAR.zip */,
+				133B57621B67E87200D4A1A8 /* SpaSEV.zip */,
+				133B57631B67E87200D4A1A8 /* TagAngBiblia.zip */,
 				0546B59A113537E9009D5189 /* Robinson.zip */,
 				0546B59B113537E9009D5189 /* strongsrealgreek.zip */,
 				0546B59C113537E9009D5189 /* strongsrealhebrew.zip */,
@@ -2279,7 +2307,6 @@
 			isa = PBXGroup;
 			children = (
 				055C8A52173C9F49009FF47D /* MBProgressHUD */,
-				0542F6CB10BE770C0088A721 /* curl */,
 				0542F6CA10BE76ED0088A721 /* sword */,
 				05D6AB631097E76400A5026E /* CocoaHTTPServer */,
 				E94012860EFDD2D000DA9B7F /* clucene */,
@@ -2295,24 +2322,6 @@
 				0527595E10884F64004FB0E0 /* include */,
 			);
 			name = sword;
-			sourceTree = "<group>";
-		};
-		0542F6CB10BE770C0088A721 /* curl */ = {
-			isa = PBXGroup;
-			children = (
-				0542F6CC10BE770C0088A721 /* curl.h */,
-				0542F6CD10BE770C0088A721 /* curlbuild.h */,
-				0542F6CE10BE770C0088A721 /* curlrules.h */,
-				0542F6CF10BE770C0088A721 /* curlver.h */,
-				0542F6D010BE770C0088A721 /* easy.h */,
-				0542F6D110BE770C0088A721 /* mprintf.h */,
-				0542F6D210BE770C0088A721 /* multi.h */,
-				0542F6D310BE770C0088A721 /* stdcheaders.h */,
-				0542F6D410BE770C0088A721 /* typecheck-gcc.h */,
-				0542F6D510BE770C0088A721 /* types.h */,
-			);
-			name = curl;
-			path = externals/libcurl/include/curl;
 			sourceTree = "<group>";
 		};
 		0542F70F10BE7C0B0088A721 /* doc */ = {
@@ -2688,7 +2697,6 @@
 				056CD38516BB6D6200AA0674 /* libz.dylib */,
 				1DF5F4DF0D08C38300B7A737 /* UIKit.framework */,
 				1D30AB110D05D00D00671497 /* Foundation.framework */,
-				05B30E181070DDD000727E91 /* libcurl-7.19.6-release.a */,
 				051CF5AD1086EEDC00154E44 /* SystemConfiguration.framework */,
 				05D6ABA51097E8CC00A5026E /* CFNetwork.framework */,
 				05F0DB8911671E4800C2E87D /* QuartzCore.framework */,
@@ -3118,15 +3126,21 @@
 				0546B59D113537E9009D5189 /* Robinson.zip in Resources */,
 				0546B59E113537E9009D5189 /* strongsrealgreek.zip in Resources */,
 				0546B59F113537E9009D5189 /* strongsrealhebrew.zip in Resources */,
+				133B57711B67E87200D4A1A8 /* PorCapNT.zip in Resources */,
 				052B52F21101D76000FFDF01 /* locales.d.zip in Resources */,
 				05034D2810FD63E300884C98 /* SearchWebView.js in Resources */,
+				133B57671B67E87200D4A1A8 /* ESV.zip in Resources */,
+				133B57651B67E87200D4A1A8 /* ChiNCVs.zip in Resources */,
+				133B57661B67E87200D4A1A8 /* ASV.zip in Resources */,
 				05E37CEC10B3306300C2F1F5 /* KJV.zip in Resources */,
 				05E37CED10B3306300C2F1F5 /* MHCC.zip in Resources */,
 				E9BD1D540ED34003006A60E9 /* LICENSE.txt in Resources */,
+				133B57731B67E87200D4A1A8 /* SpaSEV.zip in Resources */,
 				E9A6CF9D0FF5508400399E78 /* Localizable.strings in Resources */,
 				E96C139C0FFFC6390019B69E /* Daily-Devotional.png in Resources */,
 				05E6A75817FADF790063B18C /* splash-iPad-portrait.png in Resources */,
 				05D6AB851097E76400A5026E /* ReadMe.txt in Resources */,
+				133B576E1B67E87200D4A1A8 /* SpaRV.zip in Resources */,
 				05E6A75717FADF790063B18C /* splash-iPad-landscape.png in Resources */,
 				05CD458310A013DD00853E48 /* gear-24.png in Resources */,
 				05509FC910A7B6B200363295 /* commentary.png in Resources */,
@@ -3136,7 +3150,11 @@
 				0513AE8510C0DC3900E414D9 /* forward-white.png in Resources */,
 				05034D0510FC569000884C98 /* dictionary.png in Resources */,
 				E0594C001AF0F47500304E99 /* Licenses.png in Resources */,
+				133B57691B67E87200D4A1A8 /* AKJV.zip in Resources */,
+				133B576C1B67E87200D4A1A8 /* SpaRVG.zip in Resources */,
 				05034D0710FC570F00884C98 /* history.png in Resources */,
+				133B576A1B67E87200D4A1A8 /* SpaRV1909.zip in Resources */,
+				133B57741B67E87200D4A1A8 /* TagAngBiblia.zip in Resources */,
 				E0D45B9F1B0F1C0D00BD9591 /* Icon-72.png in Resources */,
 				052B52851101A32900FFDF01 /* Settings.bundle in Resources */,
 				05BCB3FE1147711B00984097 /* popup-top-bar.png in Resources */,
@@ -3148,6 +3166,7 @@
 				0528517F1225CF3600A99ECD /* back-white@2x.png in Resources */,
 				0528518F122658F100A99ECD /* forward-white@2x.png in Resources */,
 				0528519212265EB000A99ECD /* popup-down-button@2x.png in Resources */,
+				133B576B1B67E87200D4A1A8 /* SpaVNT.zip in Resources */,
 				052851B5122660A900A99ECD /* devo-open@2x.png in Resources */,
 				E0D45BA61B0F1C0D00BD9591 /* Icon@2x.png in Resources */,
 				052851BE1226619F00A99ECD /* popup-top-bar@2x.png in Resources */,
@@ -3187,10 +3206,13 @@
 				0505FECD12C9A9D900A3C65B /* enabled-Strongs.png in Resources */,
 				0505FECE12C9A9D900A3C65B /* enabled-Xrefs.png in Resources */,
 				056BC70E12F0E3F00029F3A2 /* bookmark.png in Resources */,
+				133B57641B67E87200D4A1A8 /* ChiNCVt.zip in Resources */,
+				133B576D1B67E87200D4A1A8 /* SpaTDP.zip in Resources */,
 				056BC70F12F0E3F00029F3A2 /* bookmark@2x.png in Resources */,
 				056BC73C12F0E8E00029F3A2 /* folder.png in Resources */,
 				056BC73D12F0E8E00029F3A2 /* folder@2x.png in Resources */,
 				05DA77A513CD8E51000A4B97 /* blueArrow.png in Resources */,
+				133B57721B67E87200D4A1A8 /* PorAR.zip in Resources */,
 				05DA77A713CD8E51000A4B97 /* blueArrow@2x.png in Resources */,
 				052EC90013DD45CF001B66DC /* Default-Landscape~ipad.png in Resources */,
 				052EC90213DD45CF001B66DC /* Default-Portrait~ipad.png in Resources */,
@@ -3200,17 +3222,20 @@
 				05F4D226160189940072620A /* Default-568h@2x.png in Resources */,
 				051F22B61737549600DDFF13 /* GentiumPlus-R.ttf in Resources */,
 				051F22B71737549600DDFF13 /* SILEOT.ttf in Resources */,
+				133B576F1B67E87200D4A1A8 /* PorLivre.zip in Resources */,
 				051F22B9173758AD00DDFF13 /* OFL.txt in Resources */,
 				05BE89C6174D976900EBF42F /* 37x-Cross.png in Resources */,
 				E0D45BA11B0F1C0D00BD9591 /* Icon-1024.png in Resources */,
 				05BE89C7174D976900EBF42F /* 37x-Cross@2x.png in Resources */,
 				05BE89C8174D976900EBF42F /* 37x-Tick.png in Resources */,
 				05BE89C9174D976900EBF42F /* 37x-Tick@2x.png in Resources */,
+				133B57681B67E87200D4A1A8 /* Geneva1599.zip in Resources */,
 				05EB26F2175C3018004A8EB7 /* disabled-RedLetter.png in Resources */,
 				05EB26F3175C3018004A8EB7 /* disabled-RedLetter@2x.png in Resources */,
 				05EB26F4175C3018004A8EB7 /* enabled-RedLetter.png in Resources */,
 				05EB26F5175C3018004A8EB7 /* enabled-RedLetter@2x.png in Resources */,
 				05EB26FA175C3233004A8EB7 /* disabled-VPL.png in Resources */,
+				133B57701B67E87200D4A1A8 /* PorCap.zip in Resources */,
 				05EB26FB175C3233004A8EB7 /* disabled-VPL@2x.png in Resources */,
 				05EB26FC175C3233004A8EB7 /* enabled-VPL.png in Resources */,
 				05EB26FD175C3233004A8EB7 /* enabled-VPL@2x.png in Resources */,
@@ -3380,8 +3405,6 @@
 				05275AE410884F72004FB0E0 /* treekeyidx.cpp in Sources */,
 				05275AE510884F72004FB0E0 /* versekey.cpp in Sources */,
 				05275AE610884F72004FB0E0 /* versetreekey.cpp in Sources */,
-				05275AE710884F72004FB0E0 /* curlftpt.cpp in Sources */,
-				05275AE810884F72004FB0E0 /* curlhttpt.cpp in Sources */,
 				05275AE910884F72004FB0E0 /* encfiltmgr.cpp in Sources */,
 				05275AEA10884F72004FB0E0 /* filemgr.cpp in Sources */,
 				05275AEB10884F72004FB0E0 /* ftplibftpt.cpp in Sources */,
@@ -3636,11 +3659,13 @@
 		1D6058940D05DD3E006BFB54 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_CXX_LIBRARY = "compiler-default";
 				CODE_SIGN_ENTITLEMENTS = MCGIBible.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: MEMBERS CHURCH OF GOD INTERNATIONAL SINGAPORE (6T5V32W525)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: MEMBERS CHURCH OF GOD INTERNATIONAL SINGAPORE (6T5V32W525)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SDKROOT)$(SYSTEM_LIBRARY_DIR)/PrivateFrameworks\"",
@@ -3651,13 +3676,17 @@
 					"externals/clucene/**",
 					externals/sword/include,
 					externals/libcurl/include,
+					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
 				);
 				INFOPLIST_FILE = misc/Info.plist;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(SRCROOT)\"",
+					"$(SRCROOT)",
 					"\"$(SRCROOT)/externals/libcurl\"",
+					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/externals/libcurl",
 				);
+				ONLY_ACTIVE_ARCH = YES;
 				OTHER_CFLAGS = (
 					"-D_APPLE_IOS_",
 					"-DCURLAVAILABLE",
@@ -3667,19 +3696,25 @@
 					"-DDEBUG",
 					"-DEXCLUDEXZ",
 				);
+				OTHER_LDFLAGS = (
+					"-licucore",
+					"$(OTHER_LDFLAGS)",
+				);
 				PRODUCT_NAME = MCGIBible;
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "07695ef0-cd40-4fa9-ae46-2418e5f0d268";
 			};
 			name = Debug;
 		};
 		1D6058950D05DD3E006BFB54 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_CXX_LIBRARY = "compiler-default";
 				CODE_SIGN_ENTITLEMENTS = MCGIBible.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: MEMBERS CHURCH OF GOD INTERNATIONAL SINGAPORE (6T5V32W525)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: MEMBERS CHURCH OF GOD INTERNATIONAL SINGAPORE (6T5V32W525)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SDKROOT)$(SYSTEM_LIBRARY_DIR)/PrivateFrameworks\"",
@@ -3689,13 +3724,17 @@
 					"externals/clucene/**",
 					externals/sword/include,
 					externals/libcurl/include,
+					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
 				);
 				INFOPLIST_FILE = misc/Info.plist;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(SRCROOT)\"",
+					"$(SRCROOT)",
 					"\"$(SRCROOT)/externals/libcurl\"",
+					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/externals/libcurl",
 				);
+				ONLY_ACTIVE_ARCH = NO;
 				OTHER_CFLAGS = (
 					"-D_APPLE_IOS_",
 					"-DCURLAVAILABLE",
@@ -3704,8 +3743,12 @@
 					"-DUSELUCENE",
 					"-DEXCLUDEXZ",
 				);
+				OTHER_LDFLAGS = (
+					"-licucore",
+					"$(OTHER_LDFLAGS)",
+				);
 				PRODUCT_NAME = "MCGI Bible";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "07695ef0-cd40-4fa9-ae46-2418e5f0d268";
 			};
 			name = Release;
 		};
@@ -3785,10 +3828,12 @@
 		E982FA660ED9D6100028DFEC /* Distribution */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CLANG_CXX_LIBRARY = "compiler-default";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: MEMBERS CHURCH OF GOD INTERNATIONAL SINGAPORE (6T5V32W525)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: MEMBERS CHURCH OF GOD INTERNATIONAL SINGAPORE (6T5V32W525)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SDKROOT)$(SYSTEM_LIBRARY_DIR)/PrivateFrameworks\"",
@@ -3798,13 +3843,17 @@
 					"externals/clucene/**",
 					externals/sword/include,
 					externals/libcurl/include,
+					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
 				);
 				INFOPLIST_FILE = misc/Info.plist;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(SRCROOT)\"",
+					"$(SRCROOT)",
 					"\"$(SRCROOT)/externals/libcurl\"",
+					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/externals/libcurl",
 				);
+				ONLY_ACTIVE_ARCH = NO;
 				OTHER_CFLAGS = (
 					"-D_APPLE_IOS_",
 					"-DCURLAVAILABLE",
@@ -3813,8 +3862,12 @@
 					"-DUSELUCENE",
 					"-DEXCLUDEXZ",
 				);
+				OTHER_LDFLAGS = (
+					"-licucore",
+					"$(OTHER_LDFLAGS)",
+				);
 				PRODUCT_NAME = "MCGI Bible";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "07695ef0-cd40-4fa9-ae46-2418e5f0d268";
 			};
 			name = Distribution;
 		};
