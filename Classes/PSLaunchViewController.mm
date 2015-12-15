@@ -106,20 +106,45 @@
 	[defaults removeObjectForKey: DefaultsModuleCipherKeysKey];
 	[defaults removeObjectForKey: LOCALES_VERSION];
 	[defaults removeObjectForKey: DefaultsKJVRemoved];
+    
+    [defaults removeObjectForKey: @"DefaultsangdatingbibliaRemoved"];
+    [defaults removeObjectForKey: @"DefaultsSpaSEVRemoved"];
+    [defaults removeObjectForKey: @"DefaultsPorARRemoved"];
+ 
+   
+    [defaults removeObjectForKey: @"DefaultsPorCapRemoved"];
+   
+    [defaults removeObjectForKey: @"DefaultsSpaRVRemoved"];
+   
+    [defaults removeObjectForKey: @"DefaultsSpaRVGRemoved"];
+   
+ 
+    
+    [defaults removeObjectForKey: @"DefaultsSpaRV1909Removed"];
+    [defaults removeObjectForKey: @"DefaultsAKJVRemoved"];
+    [defaults removeObjectForKey: @"DefaultsGeneva1599Removed"];
+    [defaults removeObjectForKey: @"DefaultsESVRemoved"];
+    [defaults removeObjectForKey: @"DefaultsASVRemoved"];
+    [defaults removeObjectForKey: @"DefaultsChiNCVsRemoved"];
+    [defaults removeObjectForKey: @"DefaultsChiNCVtRemoved"];
+    
+    
 	[defaults removeObjectForKey: DefaultsMHCCRemoved];
 	[defaults removeObjectForKey: DefaultsStrongsRealGreekRemoved];
 	[defaults removeObjectForKey: DefaultsStrongsRealHebrewRemoved];
 	[defaults removeObjectForKey: DefaultsRobinsonRemoved];
 	[defaults synchronize];
-	NSArray *dicts = [[[PSModuleController defaultModuleController] swordManager] modulesForType: SWMOD_CATEGORY_DICTIONARIES];
+    
+    NSArray *dicts = [[[PSModuleController defaultModuleController] swordManager] modulesForType: SWMOD_CATEGORY_DICTIONARIES];
 	for(SwordDictionary *dict in dicts) {
 		[dict removeCache];
 	}
-	NSArray *moduleList = [[[PSModuleController defaultModuleController] swordManager] listModules];
+	
+    NSArray *moduleList = [[[PSModuleController defaultModuleController] swordManager] listModules];
 	for(SwordModule *mod in moduleList) {
 		[mod resetPreferences];
 	}
-	[moduleManager setPrimaryBible: nil];
+    [moduleManager setPrimaryBible: nil];
 	[moduleManager setPrimaryCommentary: nil];
 	[moduleManager setPrimaryDictionary: nil];
 	[[NSNotificationCenter defaultCenter] postNotificationName:NotificationRedisplayPrimaryBible object:nil];
@@ -144,6 +169,33 @@
 	BOOL strongsAndMorph = [defaults boolForKey:@"loadedBundledStrongsAndMorph"];
 	BOOL strongsRealGreek = [defaults boolForKey:STRONGS_REAL_GREEK_VERSION];
 	BOOL removeModulePrefs = [defaults boolForKey:@"removedModulePreferences"];
+    
+    
+    
+    //additional bibles
+    BOOL angdatingbiblia =[defaults boolForKey:@"angdatingbiblia"];
+    
+    BOOL SpaSEV =[defaults boolForKey:@"SpaSEV"];
+    BOOL PorAR =[defaults boolForKey:@"PorAR"];
+   // BOOL PorCapNT=[defaults boolForKey:@"PorCapNT"];
+    BOOL PorCap=[defaults boolForKey:@"PorCap"];
+   
+    BOOL SpaRV=[defaults boolForKey:@"SpaRV"];
+ 
+    BOOL SpaRVG=[defaults boolForKey:@"SpaVG"];
+ 
+    
+    BOOL SpaRV1909=[defaults boolForKey:@"SpaRV1909"];
+    BOOL AKJV=[defaults boolForKey:@"AKJV"];
+    BOOL Geneva1599=[defaults boolForKey:@"Geneva1599"];
+    BOOL ESV=[defaults boolForKey:@"ESV"];
+    BOOL ASV=[defaults boolForKey:@"ASV"];
+    BOOL ChiNCVs=[defaults boolForKey:@"ChiNCVs"];
+    BOOL ChiNCVt=[defaults boolForKey:@"ChiNCVt"];
+ 
+    
+    
+    
 	
 	if ([[NSFileManager defaultManager] fileExistsAtPath: DEFAULT_BUILTIN_MODULE_PATH]) {
 		//getting rid of the built-in module path, as it seems to cause broken
@@ -167,6 +219,200 @@
 		strongsAndMorph = NO;
 		strongsRealGreek = NO;
 	}
+    
+    //spanhish
+    if(!SpaSEV)
+    {
+        [defaults synchronize];
+        SwordModule *Module = [[moduleManager swordManager] moduleWithName:@"SpaSEV"];
+        if(Module) {
+            // if it's already installed, remove the search index because it will now be out of date
+            [
+             Module deleteSearchIndex];
+        }
+        [moduleManager installModulesFromZip: [[NSBundle mainBundle] pathForResource:@"SpaSEV" ofType:@"zip"] ofType: bible removeZip:NO internalModule:YES];
+        
+        [defaults setBool: YES forKey:@"SpaSEV"];
+        
+    }
+    
+    //Tagalog
+    if(!angdatingbiblia)
+    {
+        [defaults synchronize];
+        SwordModule *angdatingbibliaModule = [[moduleManager swordManager] moduleWithName:@"angdatingbiblia"];
+        if(angdatingbibliaModule) {
+            // if it's already installed, remove the search index because it will now be out of date
+            [angdatingbibliaModule deleteSearchIndex];
+        }
+        [moduleManager installModulesFromZip: [[NSBundle mainBundle] pathForResource:@"angdatingbiblia" ofType:@"zip"] ofType: bible removeZip:NO internalModule:YES];
+        
+        [defaults setBool: YES forKey:@"angdatingbiblia"];
+        
+    }
+   
+    
+ 
+    
+    if(!PorAR)
+    {
+        [defaults synchronize];
+        SwordModule *Module = [[moduleManager swordManager] moduleWithName:@"PorAR"];
+        if(Module) {
+            // if it's already installed, remove the search index because it will now be out of date
+            [Module deleteSearchIndex];
+        }
+        [moduleManager installModulesFromZip: [[NSBundle mainBundle] pathForResource:@"PorAR" ofType:@"zip"] ofType: bible removeZip:NO internalModule:YES];
+        
+        [defaults setBool: YES forKey:@"PorAR"];
+        
+    }
+    
+    if(!PorCap)
+    {
+        [defaults synchronize];
+        SwordModule *Module = [[moduleManager swordManager] moduleWithName:@"PorCap"];
+        if(Module) {
+            // if it's already installed, remove the search index because it will now be out of date
+            [Module deleteSearchIndex];
+        }
+        [moduleManager installModulesFromZip: [[NSBundle mainBundle] pathForResource:@"PorCap" ofType:@"zip"] ofType: bible removeZip:NO internalModule:YES];
+        
+        [defaults setBool: YES forKey:@"PorCap"];
+        
+    }
+    
+ 
+    
+    if(!SpaRV)
+    {
+        [defaults synchronize];
+        SwordModule *Module = [[moduleManager swordManager] moduleWithName:@"SpaRV"];
+        if(Module) {
+            // if it's already installed, remove the search index because it will now be out of date
+            [Module deleteSearchIndex];
+        }
+        [moduleManager installModulesFromZip: [[NSBundle mainBundle] pathForResource:@"SpaRV" ofType:@"zip"] ofType: bible removeZip:NO internalModule:YES];
+        
+        [defaults setBool: YES forKey:@"SpaRV"];
+        
+    }
+    
+ 
+    
+    if(!SpaRVG)
+    {
+        [defaults synchronize];
+        SwordModule *Module = [[moduleManager swordManager] moduleWithName:@"SpaRVG"];
+        if(Module) {
+            // if it's already installed, remove the search index because it will now be out of date
+            [Module deleteSearchIndex];
+        }
+        [moduleManager installModulesFromZip: [[NSBundle mainBundle] pathForResource:@"SpaRVG" ofType:@"zip"] ofType: bible removeZip:NO internalModule:YES];
+        
+        [defaults setBool: YES forKey:@"SpaRVG"];
+        
+    }
+    
+
+    
+    
+    if(!SpaRV1909)
+    {
+        [defaults synchronize];
+        SwordModule *Module = [[moduleManager swordManager] moduleWithName:@"SpaRV1909"];
+        if(Module) {
+            // if it's already installed, remove the search index because it will now be out of date
+            [Module deleteSearchIndex];
+        }
+        [moduleManager installModulesFromZip: [[NSBundle mainBundle] pathForResource:@"SpaRV1909" ofType:@"zip"] ofType: bible removeZip:NO internalModule:YES];
+        
+        [defaults setBool: YES forKey:@"SpaRV1909"];
+        
+    }
+    
+    if(!AKJV)
+    {
+        [defaults synchronize];
+        SwordModule *Module = [[moduleManager swordManager] moduleWithName:@"AKJV"];
+        if(Module) {
+            // if it's already installed, remove the search index because it will now be out of date
+            [Module deleteSearchIndex];
+        }
+        [moduleManager installModulesFromZip: [[NSBundle mainBundle] pathForResource:@"AKJV" ofType:@"zip"] ofType: bible removeZip:NO internalModule:YES];
+        
+        [defaults setBool: YES forKey:@"AKJV"];
+        
+    }
+    if(!Geneva1599)
+    {
+        [defaults synchronize];
+        SwordModule *Module = [[moduleManager swordManager] moduleWithName:@"Geneva1599"];
+        if(Module) {
+            // if it's already installed, remove the search index because it will now be out of date
+            [Module deleteSearchIndex];
+        }
+        [moduleManager installModulesFromZip: [[NSBundle mainBundle] pathForResource:@"Geneva1599" ofType:@"zip"] ofType: bible removeZip:NO internalModule:YES];
+        
+        [defaults setBool: YES forKey:@"Geneva1599"];
+        
+    }
+    
+    if(!ESV)
+    {
+        [defaults synchronize];
+        SwordModule *Module = [[moduleManager swordManager] moduleWithName:@"ESV"];
+        if(Module) {
+            // if it's already installed, remove the search index because it will now be out of date
+            [Module deleteSearchIndex];
+        }
+        [moduleManager installModulesFromZip: [[NSBundle mainBundle] pathForResource:@"ESV" ofType:@"zip"] ofType: bible removeZip:NO internalModule:YES];
+        
+        [defaults setBool: YES forKey:@"ESV"];
+        
+    }
+    
+    if(!ASV)
+    {
+        [defaults synchronize];
+        SwordModule *Module = [[moduleManager swordManager] moduleWithName:@"ASV"];
+        if(Module) {
+            // if it's already installed, remove the search index because it will now be out of date
+            [Module deleteSearchIndex];
+        }
+        [moduleManager installModulesFromZip: [[NSBundle mainBundle] pathForResource:@"ASV" ofType:@"zip"] ofType: bible removeZip:NO internalModule:YES];
+        
+        [defaults setBool: YES forKey:@"ASV"];
+        
+    }
+    
+    if(!ChiNCVt)
+    {
+        [defaults synchronize];
+        SwordModule *Module = [[moduleManager swordManager] moduleWithName:@"ChiNCVt"];
+        if(Module) {
+            // if it's already installed, remove the search index because it will now be out of date
+            [Module deleteSearchIndex];
+        }
+        [moduleManager installModulesFromZip: [[NSBundle mainBundle] pathForResource:@"ChiNCVt" ofType:@"zip"] ofType: bible removeZip:NO internalModule:YES];
+        
+        [defaults setBool: YES forKey:@"ChiNCVt"];
+        
+    }
+    
+    if(!ChiNCVs)
+    {
+        [defaults synchronize];
+        SwordModule *Module = [[moduleManager swordManager] moduleWithName:@"ChiNCVs"];
+        if(Module) {
+            // if it's already installed, remove the search index because it will now be out of date
+            [Module deleteSearchIndex];
+        }
+        [moduleManager installModulesFromZip: [[NSBundle mainBundle] pathForResource:@"ChiNCVs" ofType:@"zip"] ofType: bible removeZip:NO internalModule:YES];
+        
+        [defaults setBool: YES forKey:@"ChiNCVs"];
+        
+    }
 	
 	if(!kjv) {
 		[defaults synchronize];
@@ -206,9 +452,58 @@
 		}
 	}
 	
+    
+    //********ADD ADDITIONAL BIBLES HERE...*****
 	// Test if we need to reinstall the built-in modules?
-	BOOL kjvModule = [[moduleManager swordManager] isModuleInstalled:@"KJV"];
-	BOOL kjvModuleRemoved = [defaults boolForKey:DefaultsKJVRemoved];
+	BOOL angdatingbibliaModule = [[moduleManager swordManager] isModuleInstalled:@"angdatingbiblia"];
+	BOOL angdatingbibliaModuleRemoved = [defaults boolForKey:@"DefaultsangdatingbibliaRemoved"];
+
+    
+    BOOL PorARModule = [[moduleManager swordManager] isModuleInstalled:@"PorAR"];
+    BOOL PorARModuleRemoved = [defaults boolForKey:@"DefaultsPorARRemoved"];
+    
+    BOOL SpaSEVModule = [[moduleManager swordManager] isModuleInstalled:@"SpaSEV"];
+    BOOL SpaSEVModuleRemoved = [defaults boolForKey:@"DefaultsSpaSEVRemoved"];
+    
+    BOOL PorCapModule = [[moduleManager swordManager] isModuleInstalled:@"PorCap"];
+    BOOL PorCapModuleRemoved = [defaults boolForKey:@"DefaultsPorCapRemoved"];
+    
+ 
+    
+    BOOL SpaRVModule = [[moduleManager swordManager] isModuleInstalled:@"SpaRV"];
+    BOOL SpaRVModuleRemoved = [defaults boolForKey:@"DefaultsSpaRVRemoved"];
+    
+ 
+    
+    BOOL SpaRVGModule = [[moduleManager swordManager] isModuleInstalled:@"SpaRVG"];
+    BOOL SpaRVGModuleRemoved = [defaults boolForKey:@"DefaultsSpaRVGRemoved"];
+    
+
+    
+    
+    BOOL SpaRV1909Module = [[moduleManager swordManager] isModuleInstalled:@"SpaRV1909"];
+    BOOL SpaRV1909ModuleRemoved = [defaults boolForKey:@"DefaultsSpaRV1909Removed"];
+    
+    BOOL AKJVModule = [[moduleManager swordManager] isModuleInstalled:@"AKJV"];
+    BOOL AKJVModuleRemoved = [defaults boolForKey:@"DefaultsAKJVRemoved"];
+    
+    BOOL Geneva1599Module = [[moduleManager swordManager] isModuleInstalled:@"Geneva1599"];
+    BOOL Geneva1599ModuleRemoved = [defaults boolForKey:@"DefaultsGeneva1599Removed"];
+    
+    BOOL ESVModule = [[moduleManager swordManager] isModuleInstalled:@"ESV"];
+    BOOL ESVModuleRemoved = [defaults boolForKey:@"DefaultsESVRemoved"];
+    
+    BOOL ASVModule = [[moduleManager swordManager] isModuleInstalled:@"ASV"];
+    BOOL ASVModuleRemoved = [defaults boolForKey:@"DefaultsASVRemoved"];
+    
+    BOOL ChiNCVsModule = [[moduleManager swordManager] isModuleInstalled:@"ChiNCVs"];
+    BOOL ChiNCVsModuleRemoved = [defaults boolForKey:@"DefaultsChiNCVsRemoved"];
+    
+    BOOL ChiNCVtModule = [[moduleManager swordManager] isModuleInstalled:@"ChiNCVt"];
+    BOOL ChiNCVtModuleRemoved = [defaults boolForKey:@"DefaultsChiNCVtRemoved"];
+    
+    BOOL kjvModule = [[moduleManager swordManager] isModuleInstalled:@"KJV"];
+    BOOL kjvModuleRemoved = [defaults boolForKey:DefaultsKJVRemoved];
 	
 	BOOL mhccModule = [[moduleManager swordManager] isModuleInstalled:@"MHCC"];
 	BOOL mhccModuleRemoved = [defaults boolForKey:DefaultsMHCCRemoved];
@@ -221,6 +516,96 @@
 	
 	BOOL strongsrealgreekModule = [[moduleManager swordManager] isModuleInstalled:@"StrongsRealGreek"];
 	BOOL strongsrealgreekModuleRemoved = [defaults boolForKey:DefaultsStrongsRealGreekRemoved];
+    
+    
+    if(!angdatingbibliaModule  && !angdatingbibliaModuleRemoved) {
+        //reinstall the kjv module!
+        DLog(@"reinstalling angdatingbibliaModuleRemoved");
+        [moduleManager installModulesFromZip: [[NSBundle mainBundle] pathForResource:@"angdatingbiblia" ofType:@"zip"] ofType: bible removeZip:NO internalModule:YES];
+    }
+    
+    if(!PorARModule  && !PorARModuleRemoved) {
+        //reinstall the kjv module!
+        DLog(@"reinstalling PorAR");
+        [moduleManager installModulesFromZip: [[NSBundle mainBundle] pathForResource:@"PorAR" ofType:@"zip"] ofType: bible removeZip:NO internalModule:YES];
+    }
+    
+    if(!SpaSEVModule  && !SpaSEVModuleRemoved) {
+        //reinstall the kjv module!
+        DLog(@"reinstalling spasev");
+        [moduleManager installModulesFromZip: [[NSBundle mainBundle] pathForResource:@"SpaSEV" ofType:@"zip"] ofType: bible removeZip:NO internalModule:YES];
+    }
+    
+    if(!PorARModule  && !PorARModuleRemoved) {
+        //reinstall the kjv module!
+        DLog(@"reinstalling PorAR");
+        [moduleManager installModulesFromZip: [[NSBundle mainBundle] pathForResource:@"PorAR" ofType:@"zip"] ofType: bible removeZip:NO internalModule:YES];
+    }
+ 
+    if(!PorCapModule  && !PorCapModuleRemoved) {
+        //reinstall the kjv module!
+        DLog(@"reinstalling PorAR");
+        [moduleManager installModulesFromZip: [[NSBundle mainBundle] pathForResource:@"PorCap" ofType:@"zip"] ofType: bible removeZip:NO internalModule:YES];
+    }
+    
+ 
+    
+    if(!SpaRVModule  && !SpaRVModuleRemoved) {
+        //reinstall the kjv module!
+        DLog(@"reinstalling PorAR");
+        [moduleManager installModulesFromZip: [[NSBundle mainBundle] pathForResource:@"SpaRV" ofType:@"zip"] ofType: bible removeZip:NO internalModule:YES];
+    }
+    
+ 
+    
+    if(!SpaRVGModule  && !SpaRVGModuleRemoved) {
+        //reinstall the kjv module!
+        DLog(@"reinstalling PorAR");
+        [moduleManager installModulesFromZip: [[NSBundle mainBundle] pathForResource:@"SpaRVG" ofType:@"zip"] ofType: bible removeZip:NO internalModule:YES];
+    }
+    
+
+    
+    
+    if(!SpaRV1909Module  && !SpaRV1909ModuleRemoved) {
+        //reinstall the kjv module!
+        DLog(@"reinstalling PorAR");
+        [moduleManager installModulesFromZip: [[NSBundle mainBundle] pathForResource:@"SpaRV1909" ofType:@"zip"] ofType: bible removeZip:NO internalModule:YES];
+    }
+    
+    if(!AKJVModule  && !AKJVModuleRemoved) {
+        //reinstall the kjv module!
+        DLog(@"reinstalling PorAR");
+        [moduleManager installModulesFromZip: [[NSBundle mainBundle] pathForResource:@"AKJV" ofType:@"zip"] ofType: bible removeZip:NO internalModule:YES];
+    }
+    
+    if(!Geneva1599Module  && !Geneva1599ModuleRemoved) {
+        //reinstall the kjv module!
+        DLog(@"reinstalling PorAR");
+        [moduleManager installModulesFromZip: [[NSBundle mainBundle] pathForResource:@"Geneva1599" ofType:@"zip"] ofType: bible removeZip:NO internalModule:YES];
+    }
+    if(!ESVModule  && !ESVModuleRemoved) {
+        //reinstall the kjv module!
+        DLog(@"reinstalling PorAR");
+        [moduleManager installModulesFromZip: [[NSBundle mainBundle] pathForResource:@"ESV" ofType:@"zip"] ofType: bible removeZip:NO internalModule:YES];
+    }
+    if(!ASVModule  && !ASVModuleRemoved) {
+        //reinstall the kjv module!
+        DLog(@"reinstalling PorAR");
+        [moduleManager installModulesFromZip: [[NSBundle mainBundle] pathForResource:@"ASV" ofType:@"zip"] ofType: bible removeZip:NO internalModule:YES];
+    }
+    
+    if(!ChiNCVsModule  && !ChiNCVsModuleRemoved) {
+        //reinstall the kjv module!
+        DLog(@"reinstalling PorAR");
+        [moduleManager installModulesFromZip: [[NSBundle mainBundle] pathForResource:@"ChiNCVs" ofType:@"zip"] ofType: bible removeZip:NO internalModule:YES];
+    }
+    
+    if(!ChiNCVtModule  && !ChiNCVtModuleRemoved) {
+        //reinstall the kjv module!
+        DLog(@"reinstalling PorAR");
+        [moduleManager installModulesFromZip: [[NSBundle mainBundle] pathForResource:@"ChiNCVt" ofType:@"zip"] ofType: bible removeZip:NO internalModule:YES];
+    }
 
 	if(!kjvModule && !kjvModuleRemoved) {
 		//reinstall the kjv module!

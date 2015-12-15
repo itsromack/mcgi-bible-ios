@@ -33,6 +33,7 @@
 	UIBarButtonItem *refreshBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemRefresh target:self action:@selector(refreshDownloadSource:)];
 	[refreshBarButtonItem setEnabled:(downloading ? NO : enabled)];
 	self.navigationItem.rightBarButtonItem = refreshBarButtonItem;
+    self.navigationItem.rightBarButtonItem.tintColor = [UIColor whiteColor];
 	[refreshBarButtonItem release];
 }
 

@@ -75,6 +75,11 @@
 /*
  * Verify that some macros are actually defined.
  */
+#ifdef __LP64__
+#define CURL_SIZEOF_LONG 8
+#else
+#define CURL_SIZEOF_LONG 4
+#endif
 
 #ifndef CURL_SIZEOF_LONG
 #  error "CURL_SIZEOF_LONG definition is missing!"

@@ -25,6 +25,7 @@
 - (void)addChildren:(NSArray*)kids;
 - (NSArray*)folders;
 - (NSString *)getHighlightRGBColourStringForBookAndChapterRef:(NSString*)bookAndChapterRef withVerse:(NSString *)verse;
+-(NSString*)getHighlightRGBColourStringForBookAndChapterRefFromDb:(NSString *)bookChapterVerseRef;
 - (NSMutableArray *)getBookmarksForBookAndChapterRef:(NSString*)bookAndChapterRef;
 
 @end

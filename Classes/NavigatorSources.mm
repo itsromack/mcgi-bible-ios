@@ -41,6 +41,7 @@
 	if([[[PSModuleController defaultModuleController] swordInstallManager] userDisclaimerConfirmed]) {
 		UIBarButtonItem *iButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemOrganize target:self action:@selector(editButtonPressed:)];
 		self.navigationItem.rightBarButtonItem = iButton;
+        self.navigationItem.rightBarButtonItem.tintColor = [UIColor whiteColor];
 		[iButton release];
 	}
 }

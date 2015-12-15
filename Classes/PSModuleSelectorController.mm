@@ -69,9 +69,9 @@
 		UIBarButtonItem	*modulesCloseButton = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"CloseButtonTitle", @"") style:UIBarButtonItemStyleBordered target:self action:@selector(dismissModuleSelector)];
 		self.navigationItem.leftBarButtonItem = modulesCloseButton;
 		[modulesCloseButton release];
-		UIBarButtonItem *modulesAddButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(addModuleButtonPressed)];
-		self.navigationItem.rightBarButtonItem = modulesAddButton;
-		[modulesAddButton release];
+	//	UIBarButtonItem *modulesAddButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(addModuleButtonPressed)];
+		//self.navigationItem.rightBarButtonItem = modulesAddButton;
+		//[modulesAddButton release];
 	}
 	
 	if([[NSUserDefaults standardUserDefaults] boolForKey:DefaultsNightModePreference]) {

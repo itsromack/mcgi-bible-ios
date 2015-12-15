@@ -5,7 +5,6 @@
 //  Created by Nic Carter on 3/11/09.
 //  Copyright 2009 The CrossWire Bible Society. All rights reserved.
 //
-
 #import "PSModuleViewController.h"
 #import "PSModuleController.h"
 #import "PSTabBarControllerDelegate.h"
@@ -17,7 +16,9 @@
 #import "PSCommentaryViewController.h"
 #import "SwordManager.h"
 #import "PSHistoryController.h"
-
+#import "HighlightedVerseObject.h"
+#import "PocketSwordAppDelegate.h"
+#import "FMDatabase.h"
 @implementation PSModuleViewController
 
 @synthesize refToShow, jsToShow, tappedVerse, isFullScreen, moduleButton, titleSegmentedControl, webView, versePositionArray;
@@ -71,7 +72,10 @@
 	switch(tabType) {
 		case BibleTab:
 		{
-			 UITabBarItem *tbi = [[UITabBarItem alloc] initWithTitle:NSLocalizedString(@"TabBarTitleBible", @"Bible") image:[UIImage imageNamed:@"bible.png"] tag:10];
+            UITabBarItem *tbi = [[UITabBarItem alloc] initWithTitle:NSLocalizedString(@"TabBarTitleBible", @"Bible") image:[UIImage imageNamed:@"bible.png"] tag:10];
+            
+            
+            
         
         
 			self.tabBarItem = tbi;
@@ -100,7 +104,7 @@
 	NSArray *segments = [NSArray arrayWithObjects:backImg, @"Gen 23:23", forwardImg, nil];
 	UISegmentedControl *segControl = [[UISegmentedControl alloc] initWithItems:segments];
     segControl.segmentedControlStyle = UISegmentedControlStyleBordered;
-    segControl.tintColor=[UIColor grayColor];
+    segControl.tintColor=[UIColor whiteColor];
 	segControl.momentary = YES;
 	
 	static CGFloat arrowWidth = 50.0;
@@ -115,6 +119,10 @@
 	
 	isFullScreen = NO;
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(redoBookmarkHighlights) name:NotificationBookmarksChanged object:nil];
+    
+    
+	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(highlightVerse) name:NotificationHighlightChanged object:nil];
+    
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(nightModeChanged) name:NotificationNightModeChanged object:nil];
 	finishedLoading = NO;
 }
@@ -161,7 +169,7 @@
 	currentShownVerse = verseNumber;
 	//index 0 == verse 1, so we need to add one and then subtract 1, so the resulting verse is the number.
 	//our method of updating the title bar & remembering our position.
-	NSString *verseString = [NSString stringWithFormat:@"%d", verseNumber];
+	NSString *verseString = [NSString stringWithFormat:@"%ld", (long)verseNumber];
 	if(tabType == BibleTab) {
 		[[NSUserDefaults standardUserDefaults] setObject: [NSString stringWithFormat:@"%d", (int)newOffsetY] forKey: @"bibleScrollPosition"];
 		[[NSUserDefaults standardUserDefaults] setObject: verseString forKey: DefaultsBibleVersePosition];
@@ -325,12 +333,12 @@
 	UIBarButtonItem *searchButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"history.png"] style:UIBarButtonItemStyleBordered target:vc action:@selector(toggleMultiList:)];
 	searchButton.accessibilityLabel = NSLocalizedString(@"VoiceOverHistoryAndSearchButton", @"");
 	self.navigationItem.leftBarButtonItem = searchButton;
-    self.navigationItem.leftBarButtonItem.tintColor=[UIColor grayColor];
+    self.navigationItem.leftBarButtonItem.tintColor= [UIColor whiteColor];
 	[searchButton release];
 	
 	UIBarButtonItem *switchModuleButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"None" style:UIBarButtonItemStyleBordered target:vc action:@selector(toggleModulesListFromButton:)];
 	self.navigationItem.rightBarButtonItem = switchModuleButtonItem;
-    self.navigationItem.rightBarButtonItem.tintColor=[UIColor grayColor];
+    self.navigationItem.rightBarButtonItem.tintColor=[UIColor whiteColor];
 	self.moduleButton = switchModuleButtonItem;
 	[switchModuleButtonItem release];
 	[self setModuleNameViaNotification];
@@ -363,22 +371,35 @@
 }
 
 - (void)setupWebViewRefreshViews {
-	CGFloat topLength = 0;
+ 	CGFloat topLength = 0;
 	CGFloat bottomLength = 0;
 	if([self respondsToSelector:@selector(topLayoutGuide)] && !self.isFullScreen) {
 		topLength = [[self topLayoutGuide] length];
 		bottomLength = [[self bottomLayoutGuide] length];
 	}
 	[webView setupRefreshViews:topLength bottom:bottomLength];
+ 
+ 
 }
 
 - (void)setVerseToShow:(NSInteger)verseNumber {
 	verseToShow = verseNumber;
 }
 
+
+
+
+-(void)scrollViewDidScroll:(UIScrollView *)scrollView
+{
+    if (scrollView.contentOffset.y > 0  ||  scrollView.contentOffset.y < 0 )
+        scrollView.contentOffset = CGPointMake(scrollView.contentOffset.x, 0);
+}
+
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
+    
 	//finishedLoading = NO;
+   [webView.scrollView setShowsVerticalScrollIndicator:NO];
 	if(refToShow) {
 		NSString *webText;
 		if(tabType == BibleTab) {
@@ -387,8 +408,10 @@
 			webText = [[PSModuleController defaultModuleController] getCommentaryChapter:refToShow withExtraJS:[NSString stringWithFormat:@"%@\nstartDetLocPoll();\n", jsToShow]];
 		}
 		[webView loadHTMLString: webText baseURL: [NSURL fileURLWithPath:[[NSBundle mainBundle] resourcePath]]];
-		self.refToShow = nil;
+		
+        self.refToShow = nil;
 		self.jsToShow = nil;
+        
 	} else if(jsToShow) {
 		NSString *jsString = [NSString stringWithFormat:@"%@; startDetLocPoll();", jsToShow];
 		[webView stringByEvaluatingJavaScriptFromString:jsString];
@@ -400,11 +423,13 @@
 	} else {
 		[webView stringByEvaluatingJavaScriptFromString:@"startDetLocPoll();"];
 	}
+    
 	if(!self.isFullScreen) {
 		if(finishedLoading) {
 			[self setupWebViewRefreshViews];
 		}
 	}
+    
 	if(finishedLoading) {
 		CGFloat topLength = 0.0f;
 		if([self respondsToSelector:@selector(topLayoutGuide)] && !self.isFullScreen) {
@@ -510,19 +535,67 @@
 	// Release any cached data, images, etc that aren't in use.
 }
 
+-(void)highlightVerse
+{
+    [self removeBookmarkHighlights];
+    NSString *path = [[NSBundle mainBundle] pathForResource:@"HighlightBookmarks" ofType:@"js"];
+    
+    NSString *jsCode = [NSString stringWithContentsOfFile:path encoding:NSUTF8StringEncoding error:nil];
+    
+    [webView stringByEvaluatingJavaScriptFromString:jsCode];
+    
+   
+    HighlightedVerseObject *verseObj =[PocketSwordAppDelegate sharedAppDelegate].highlitedVerse;
+  
+    /*
+    NSString *databasePath = [[PocketSwordAppDelegate sharedAppDelegate] getDbPath];
+    
+    FMDatabase *database = [FMDatabase databaseWithPath:databasePath];
+    [database open];
+    
+    FMResultSet *results = [database executeQuery:@"select * from user"];
+    while([results next]) {
+        NSString *name = [results stringForColumn:@"name"];
+        NSInteger age  = [results intForColumn:@"age"];
+        NSLog(@"User: %@ - %d",name, age);
+    }
+    [database close];*/
+    
+    if(verseObj.rgbHexString) {
+        
+        NSString *verse = [[verseObj.ref componentsSeparatedByString:@":"] objectAtIndex: 1];
+        
+        NSString *jsFunction = [NSString stringWithFormat:@"PS_HighlightVerseWithHexColour('%@','%@')", verse, [PSBookmarkFolder rgbStringFromHexString:verseObj.rgbHexString]];
+   
+        
+        [webView stringByEvaluatingJavaScriptFromString:jsFunction];
+        
+        [[NSNotificationCenter defaultCenter] postNotificationName:NotificationRedisplayPrimaryBible object:nil];
+       
+    }
+}
+
 - (void)highlightBookmarks {
 	NSArray *shownBookmarks = [PSBookmarks getBookmarksForCurrentRef];
 	if(shownBookmarks && [shownBookmarks count] > 0) {
-		NSString *path = [[NSBundle mainBundle] pathForResource:@"HighlightBookmarks" ofType:@"js"];
-		NSString *jsCode = [NSString stringWithContentsOfFile:path encoding:NSUTF8StringEncoding error:nil];
+		
+        NSString *path = [[NSBundle mainBundle] pathForResource:@"HighlightBookmarks" ofType:@"js"];
+		
+        NSString *jsCode = [NSString stringWithContentsOfFile:path encoding:NSUTF8StringEncoding error:nil];
+        
 		[webView stringByEvaluatingJavaScriptFromString:jsCode];
-		for(PSBookmark *bookmark in shownBookmarks) {
-			if(bookmark.rgbHexString) {
+		
+        for(PSBookmark *bookmark in shownBookmarks) {
+			
+            if(bookmark.rgbHexString) {
 				NSString *verse = [[bookmark.ref componentsSeparatedByString:@":"] objectAtIndex: 1];
-				NSString *jsFunction = [NSString stringWithFormat:@"PS_HighlightVerseWithHexColour('%@','%@')", verse, [PSBookmarkFolder rgbStringFromHexString:bookmark.rgbHexString]];
+				
+                NSString *jsFunction = [NSString stringWithFormat:@"PS_HighlightVerseWithHexColour('%@','%@')", verse, [PSBookmarkFolder rgbStringFromHexString:bookmark.rgbHexString]];
 				//DLog(@"%@", jsFunction);
-				[webView stringByEvaluatingJavaScriptFromString:jsFunction];
-			}
+			
+                [webView stringByEvaluatingJavaScriptFromString:jsFunction];
+			
+            }
 		}
 	}
 }
@@ -590,15 +663,19 @@
 			[self setTabTitle:[PSModuleController createRefString:ref]];
 		} else if([(NSString *)[components objectAtIndex:1] isEqualToString:@"versemenu"] && (tabType == BibleTab)) {
 			// ONLY for BibleTab, not CommentaryTab...
-			//bring up the contextual menu for a verse.
+			// bring up the contextual menu for a verse.
 			self.tappedVerse = [components objectAtIndex:2];
 			//DLog(@"    %@", tappedVerse);
 			NSInteger tappedVerseInt = [tappedVerse integerValue];
 			NSString *sheetTitle = [NSString stringWithFormat:NSLocalizedString(@"RefSelectorVerseTitle", @""), tappedVerseInt];
-			UIActionSheet *sheet = [[UIActionSheet alloc] initWithTitle:sheetTitle delegate:self cancelButtonTitle:NSLocalizedString(@"Cancel", @"") destructiveButtonTitle:nil otherButtonTitles:NSLocalizedString(@"VerseContextualMenuAddBookmark", @""), nil]; // NSLocalizedString(@"VerseContextualMenuCommentary", @""), nil];
+			UIActionSheet *sheet = [[UIActionSheet alloc] initWithTitle:sheetTitle delegate:self cancelButtonTitle:NSLocalizedString(@"Cancel", @"") destructiveButtonTitle:nil otherButtonTitles:NSLocalizedString(@"VerseContextualMenuCopy",@""), NSLocalizedString(@"VerseContextualMenuAddBookmark",@""), NSLocalizedString(@"VerseContextualMenuHighlight",@""),
+                NSLocalizedString(@"VerseContextualMenuAddNote",@""),
+                nil]; // NSLocalizedString(@"VerseContextualMenuCommentary", @""), nil];
 			[sheet showFromTabBar:self.tabBarController.tabBar];
+            
 			// TODO: for iPad, use showFromRect:inView:animated: instead, after determining the rect of the verse number.
-			[sheet release];
+            
+            [sheet release];
 		}
 		load = NO;
 	} else if([(NSString *)[components objectAtIndex:0] isEqualToString:@"arraydump"]) {
@@ -737,11 +814,9 @@
 			[[NSNotificationCenter defaultCenter] postNotificationName:NotificationShowInfoPane object:entry];
 			load = NO;
 		}
-	}
-	
+	}	
 	[pool release];
 	return load; // Return YES to make sure regular navigation works as expected.
-	
 }
 
 + (void)setVoiceOverForRefSegmentedControlSubviews:(NSArray *)subviews {
@@ -760,5 +835,4 @@
 		}
 	}
 }
-
 @end

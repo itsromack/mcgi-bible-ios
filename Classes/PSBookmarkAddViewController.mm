@@ -81,10 +81,12 @@
 	
 	UIBarButtonItem *saveButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemSave target:self action:@selector(saveButtonPressed)];
 	self.navigationItem.rightBarButtonItem = saveButton;
+    self.navigationItem.rightBarButtonItem.tintColor = [UIColor whiteColor];
 	[saveButton release];
 	if(!self.bookmarkBeingEdited) {
 		UIBarButtonItem *cancelButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(cancelButtonPressed)];
 		self.navigationItem.leftBarButtonItem = cancelButton;
+        self.navigationItem.leftBarButtonItem.tintColor = [UIColor whiteColor];
 		[cancelButton release];
 		self.navigationItem.title = NSLocalizedString(@"VerseContextualMenuAddBookmark", @"Add Bookmark");	
 	} else {
@@ -125,6 +127,7 @@
 		}
 		PSBookmark *newBookmark = [[PSBookmark alloc] initWithName:description dateAdded:bookmarkBeingEdited.dateAdded dateLastAccessed:[NSDate date] bibleReference:bookmarkBeingEdited.ref];
 		[PSBookmarks deleteBookmark:bookmarkBeingEdited.name fromFolderString:self.originalFolder];
+       
 		[PSBookmarks addBookmarkObject:newBookmark withFolderString:self.folder];
 		[newBookmark release];
 		
@@ -143,8 +146,11 @@
 		}
 		[PSBookmarks addBookmarkWithRef:ref name:description folderString:folder];
 		if([[PSModuleController createRefString:[PSModuleController getCurrentBibleRef]] isEqualToString:bookAndChapterRef]) {
-			[[NSNotificationCenter defaultCenter] postNotificationName:NotificationBookmarksChanged object:nil];
+		
+            [[NSNotificationCenter defaultCenter] postNotificationName:NotificationBookmarksChanged object:nil];
 		}
+        
+        
 		[self dismissModalViewControllerAnimated:YES];
 	}
 }

@@ -19,28 +19,38 @@
 
 + (NSString*)generateAboutHTML
 {
-	static NSString *body = [NSString stringWithFormat:
-							 @"<div id=\"header\">\n\
+	static NSString *body = @"<div id=\"header\"></br>\n\
 								 <div class=\"title\">MCGI Bible</div>\n\
-								 <div class=\"version\"> Version %@ (%@)</div>\n\
-								 <center><i><a href=\"https://github.com/MCGI/mcgi-bible-ios\">MCGI Bible on Github</a></i></center>\n\
-							 </div>\n\
+                            <p></p>\n\
+                            <p></p>\n\
+                                </div>\n\
 							 <div id=\"main\">\n\
 								<p><strong>Developed by: </strong><br />\n\
 									 MCGI Singapore and the rest of the open-source community.\n\
 								</p>\n\
-                             <p>For any feedback or inquiries, please email us at inquiries@mcgi.org.sg or tap the Email Us option above.</p>\
+    <p>For any feedback or inquiries, please email us at <a href=\"mailto:inquiries@mcgi.org.sg\"> inquiries@mcgi.org.sg</a></p>\n\
                              <p class=\"section\"><strong>Explore MCGI apps and services:</strong>\
                              <ul><li><a href=\"https://mcgi.church/apps/\">Tablet &amp; Mobile Apps</a></li>\n\
                              <li><a href=\"http://www.mcgi.org/broadcasts/internet/\">Live broadcasts &amp; social media</a></li>\n\
                              <li><a href=\"http://www.mcgi.org/\">MCGI.org - The official website</a></li>\n\
                              <li><a href=\"https://mcgi.church/explore/\">Find out more</a></li></ul>\n\
                              </p></div>\n\
-                             \n\
-                             <br /><br />",
-							 [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleShortVersionString"],
-							 [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleVersion"]
-							 ];
+  	 <center><i><a href=\"https://github.com/MCGI/mcgi-bible-ios\">MCGI Bible on Github</a></i></center>\n\
+<br /><strong>&nbsp;&nbsp;&nbsp;Licenses</strong>\n\
+    <div class=\"crosswire\">\n\
+    <h2 class=\"headbar\">PocketSword</h2>\n\
+    <p>MCGI Bible was based on the PocketSword project.</p>\n\
+    \n\
+    <p>PocketSword benefits from the following Open Source projects:<br />\n\
+      <ul><li><a href=\"http://www.crosswire.org/sword/index.jsp\">The SWORD Project</a></li>\n\
+      <li><a href=\"http://code.google.com/p/cocoahttpserver/\">CocoaHTTPServer</a></li>\n\
+     <li><a href=\"https://github.com/zbyhoo/EGOTableViewPullRefresh\">zbyhoo's fork of EGOTableViewPullRefresh</a></li>\n\
+    <li><a href=\"http://code.google.com/p/ziparchive/\">ZipArchive</a><l/i></ul><br />\n\
+    </p>\
+    </div>\n\
+    <br />\n\
+    <i><center><a href=\"https://bitbucket.org/niccarter/pocketsword/overview\">PocketSword on Bitbucket</a></center></i><br />\n\
+    <br />&nbsp;<br />";
 	
 	
 	return [NSString stringWithFormat: @"<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n\
@@ -65,10 +75,10 @@
                 margin: 0;\n\
 			}\n\
 			#header {\n\
-				font-weight: bold;\n\
+                color: black;\n\
 				border-bottom: solid 1px gray;\n\
 				padding: 5px 5px 0 5px;\n\
-				background-color: #D5EEF9;\n\
+                font-weight:bold;\n\
 			}\n\
 			#main {\n\
 				padding: 8px;\n\
@@ -91,10 +101,6 @@
             i a {\n\
                 text-decoration: none;\n\
             }\n\
-			div.crosswire {\n\
-				font-size: 9pt;\n\
-				font-weight: lighter;\n\
-			}\n\
 			h2.headbar {\n\
 				background-color : #660000;\n\
 				color : #dddddd;\n\
@@ -102,9 +108,17 @@
 				font-size:1em;\n\
 				padding-left:1em;\n\
 			}\n\
+            div.crosswire {\n\
+            color: black;\n\
+            background-color: white;\n\
+            font-size: 11pt;\n\
+            font-family: %@;\n\
+            line-height: 130%%;\n\
+            margin:10px;\n\
+            }\n\
 			</style>\n\
 			</head>\n\
-			<body><div>%@</div></body></html>", PSDefaultFontName,
+			<body><div>%@</div></body></html>", PSDefaultFontName, PSDefaultFontName,
 			body];
 }
 
@@ -134,10 +148,11 @@
 
 - (void)viewDidLoad {
 	self.navigationItem.title = NSLocalizedString(@"AboutTitle", @"About");
-	self.navigationController.navigationBar.barStyle = UIBarStyleBlack;
+	//self.navigationController.navigationBar.barStyle = UIBarStyleBlack;
 	
 	UIBarButtonItem *emailUsBarButtonItem = [[UIBarButtonItem alloc] initWithTitle: NSLocalizedString(@"EmailUsButton", @"Email Us") style:UIBarButtonItemStyleBordered target:self action:@selector(emailFeedback:)];
 	self.navigationItem.rightBarButtonItem = emailUsBarButtonItem;
+    self.navigationItem.rightBarButtonItem.tintColor = [UIColor whiteColor];
 	[emailUsBarButtonItem release];
 
 	[aboutWebView loadHTMLString:[PSAboutScreenController generateAboutHTML] baseURL:nil];

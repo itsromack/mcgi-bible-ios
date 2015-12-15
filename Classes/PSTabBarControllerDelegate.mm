@@ -18,7 +18,6 @@
 */
 
 #import <QuartzCore/QuartzCore.h>
-
 #import "PSTabBarControllerDelegate.h"
 #import "SearchWebView.h"
 #import "PSHistoryController.h"
@@ -40,7 +39,8 @@
 #import "SwordDictionary.h"
 #import "PSAboutScreenController.h"
 #import "PSLicensesScreenController.h"
-
+#import "NotesTableViewController.h"
+#import "PSBookmarkFolder.h"
 #define INFO_LANDSCAPE_HEIGHT 100.0
 #define INFO_PORTRAIT_HEIGHT 160.0
 #define INFO_IPAD_LANDSCAPE_HEIGHT 200.0
@@ -56,14 +56,14 @@
 		
 		UITabBarController *tbc = [[UITabBarController alloc] init];
 		tbc.delegate = self;
-		self.tabBarController = tbc;
- 		[self tabColorChanged];
+        self.tabBarController = tbc;
+ 	 	//[self tabColorChanged];
 		[tbc release];
 		
 		[self nightModeChanged];
 		[PSModuleController defaultModuleController];//init
 		
-		NSMutableArray *tabs = [NSMutableArray arrayWithCapacity:7];
+		NSMutableArray *tabs = [NSMutableArray arrayWithCapacity:6];
 		// Order of the tabs:
 		// 00: Bible fin
 		// 01: Commentary
@@ -79,21 +79,27 @@
  	//		UIColor *tintColor = [UIColor blackColor];
             //UIColor *barTintColor = [UIColor  whiteColor];
 		 //	UIColor *barTintColor = [UIColor blackColor];
-			UIColor *barTintColor = [UIColor blackColor];
+			//UIColor *barTintColor = [UIColor blackColor];//0,118,174
+            
+            UIColor *barTintColor =  [PSBookmarkFolder colorFromHexString:@"#0084ca"]; // [UIColor colorWithRed:0 green:(118/255) blue:(174/255) alpha:1];
            // UIColor *barTintColor = [UIColor whiteColor];
 			
-			[[UINavigationBar appearance] setTintColor:tintColor];
+			[[UINavigationBar appearance] setTintColor:barTintColor];
 			//[[UINavigationBar appearance] setBackgroundImage:[UIImage imageNamed:@"Pocket Blue Background.png"] forBarMetrics:UIBarMetricsDefault];
 			[[UINavigationBar appearance] setBarStyle:UIBarStyleDefault];
 			[[UINavigationBar appearance] setBarTintColor:barTintColor];
-			[[UIToolbar appearance] setTintColor:tintColor];
+		//	[[UIToolbar appearance] setTintColor:tintColor];
 			//[[UIToolbar appearance] setBackgroundImage:[UIImage imageNamed:@"Pocket Blue Background.png"] forToolbarPosition:UIBarPositionAny barMetrics:UIBarMetricsDefault];
-			[[UIToolbar appearance] setBarTintColor:barTintColor];
-			[[UITabBar appearance] setTintColor:tintColor];
+		//	[[UIToolbar appearance] setBarTintColor:barTintColor];
+		//	[[UITabBar appearance] setTintColor:tintColor];
 			//[[UITabBar appearance] setBackgroundImage:[UIImage imageNamed:@"Pocket Blue Background TabBar.png"]];
-			[[UITabBar appearance] setBarTintColor:barTintColor];
+			//[[UITabBar appearance] setBarTintColor:barTintColor];
 			//NSLog(@"%f", self.tabBarController.tabBar.frame.size.height);
-		}
+            
+            //tabBarController.tabBar.barTintColor = [PSBookmarkFolder colorFromHexString:@"#00629b"];
+
+            tabBarController.tabBarController.tabBar.tintColor =  [UIColor whiteColor];
+        }
 		/*
 		//add the Commentary Tab.
 		PSCommentaryViewController *cvc = [[PSCommentaryViewController alloc] init];
@@ -117,23 +123,45 @@
 		[bvc setDelegate:self];
 		bvc.commentaryView = commentaryTabController;
 		UINavigationController *bTab = [[UINavigationController alloc] initWithRootViewController:bvc];
-		 bTab.navigationBar.barStyle = UIBarStyleBlack;
+	//	 bTab.navigationBar.barStyle = UIBarStyleBlack;
 		[tabs insertObject:bTab atIndex:0];
 		self.bibleTabController = bvc;
 		[bTab release];
 		[bvc release];
 		
 		//add the Dictionary Tab.
-		PSDictionaryViewController *dictionaryViewController = [[PSDictionaryViewController alloc] initWithStyle:UITableViewStyleGrouped];
+		/*PSDictionaryViewController *dictionaryViewController = [[PSDictionaryViewController alloc] initWithStyle:UITableViewStyleGrouped];
 		dictionaryViewController.delegate = self;
 		UINavigationController *dictionaryTab = [[UINavigationController alloc] initWithRootViewController:dictionaryViewController];
 		dictionaryTab.navigationBar.barStyle = UIBarStyleBlack;
 		UITabBarItem *dTBI = [[UITabBarItem alloc] initWithTitle:NSLocalizedString(@"TabBarTitleDictionary", @"Dictionary") image:[UIImage imageNamed:@"dictionary.png"] tag:99];
-		dictionaryTab.tabBarItem = dTBI;
-		[dTBI release];
+		dictionaryTab.tabBarItem = dTBI;*/
+		
+        /*
 		[tabs insertObject:dictionaryTab atIndex:1];
 		[dictionaryViewController release];
 		[dictionaryTab release];
+         */
+        
+        NotesTableViewController *notesViewController = [[NotesTableViewController alloc]initWithStyle:UITableViewStylePlain];
+        
+        UINavigationController *notesTab = [[UINavigationController alloc] initWithRootViewController:notesViewController];
+        notesTab.navigationBar.barStyle = UIBarStyleBlack;
+        //NSLocalizedString(@"TabBarTitleDictionary", @"Dictionary")
+        
+      
+        
+        UITabBarItem *dTBI = [[UITabBarItem alloc] initWithTitle:@"Notes" image:[UIImage imageNamed:@"dictionary.png"] tag:99];
+        
+       
+        
+      
+        notesTab.tabBarItem = dTBI;
+        
+        [tabs insertObject:notesTab atIndex:1];
+        [notesViewController release];
+        [notesTab release];
+        
 		
 		//add the bookmarks tab.
 		[PSBookmarks importBookmarksFromV2];
@@ -143,10 +171,11 @@
 		//UITabBarItem *tbI = [[UITabBarItem alloc] initWithTabBarSystemItem:UITabBarSystemItemBookmarks tag:0];
         
         UITabBarItem *tbI = [[UITabBarItem alloc] initWithTitle: @"Bookmark" image:[UIImage imageNamed:@"bookmark.png"] tag:787];
-        
+      
+       
 		bookmarksTab.tabBarItem = tbI;
-		[tbI release];
-		[tabs insertObject:bookmarksTab atIndex:2];
+        //[tbI release];
+        [tabs insertObject:bookmarksTab atIndex:2];
 		[bookmarksViewController release];
 		[bookmarksTab release];
 		
@@ -172,6 +201,8 @@
          */
 		
 		//add the Downloads tab.
+        
+        /*HIDE DOWNLOAD TABS TEMPORARILY
 		NavigatorSources *downloadsViewController = [[NavigatorSources alloc] initWithStyle:UITableViewStyleGrouped];
 		UITabBarItem *downloadsTabBarItem = [[UITabBarItem alloc] initWithTabBarSystemItem:UITabBarSystemItemDownloads tag:522];
 		//if([PSResizing iPad]) {//comment out since view will not be on 
@@ -188,54 +219,64 @@
 		//}
 		[downloadsTabBarItem release];
 		[downloadsViewController release];
-		
+		*/
 		//add the Preferences tab.
 		PSPreferencesController *preferencesViewController = [[PSPreferencesController alloc] initWithStyle:UITableViewStyleGrouped];
 		UITabBarItem *preferencesTabBarItem = [[UITabBarItem alloc] initWithTitle:NSLocalizedString(@"TabBarTitlePreferences", @"Preferences") image:[UIImage imageNamed:@"gear-24.png"] tag:9];
-		if([PSResizing iPad]) {
+        
+      
+		//if([PSResizing iPad]) {
 			UINavigationController *preferencesIPadTab = [[UINavigationController alloc] initWithRootViewController:preferencesViewController];
 			preferencesIPadTab.navigationBar.barStyle = UIBarStyleBlack;
 			preferencesIPadTab.tabBarItem = preferencesTabBarItem;
-			[tabs insertObject:preferencesIPadTab atIndex:4];
+			[tabs insertObject:preferencesIPadTab atIndex:3];
 			[preferencesIPadTab release];
-		} else {
-			preferencesViewController.tabBarItem = preferencesTabBarItem;
-			[tabs insertObject:preferencesViewController atIndex:4];
-		}
+		//} else {
+		//	preferencesViewController.tabBarItem = preferencesTabBarItem;
+		//	[tabs insertObject:preferencesViewController atIndex:3];
+		//}
 		[preferencesTabBarItem release];
 		[preferencesViewController release];
 		
 		//add the About tab.
 		PSAboutScreenController *aboutViewController = [[PSAboutScreenController alloc] init];
 		UITabBarItem *aboutTBI = [[UITabBarItem alloc] initWithTitle:NSLocalizedString(@"TabBarTitleAbout", @"About") image:[UIImage imageNamed:@"About.png"] tag:2323];
+       
+        
 		if([PSResizing iPad]) {
 			UINavigationController *aboutIPadTab = [[UINavigationController alloc] initWithRootViewController:aboutViewController];
 			aboutIPadTab.navigationBar.barStyle = UIBarStyleBlack;
 			aboutIPadTab.tabBarItem = aboutTBI;
-			[tabs insertObject:aboutIPadTab atIndex:5];
+			[tabs insertObject:aboutIPadTab atIndex:4];
 			[aboutIPadTab release];
 		} else {
-			aboutViewController.tabBarItem = aboutTBI;
-			[tabs insertObject:aboutViewController atIndex:5];
+			//aboutViewController.tabBarItem = aboutTBI;
+			//[tabs insertObject:aboutViewController atIndex:4];
+            
+            UINavigationController *aboutIPadTab = [[UINavigationController alloc] initWithRootViewController:aboutViewController];
+            aboutIPadTab.navigationBar.barStyle = UIBarStyleBlack;
+            aboutIPadTab.tabBarItem = aboutTBI;
+            [tabs insertObject:aboutIPadTab atIndex:4];
+            [aboutIPadTab release];
 		}
 		[aboutTBI release];
 		[aboutViewController release];
         
         //add the Licenses tab.
-        PSLicensesScreenController *licensesViewController = [[PSLicensesScreenController alloc] init];
+      /*  PSLicensesScreenController *licensesViewController = [[PSLicensesScreenController alloc] init];
         UITabBarItem *licensesTBI = [[UITabBarItem alloc] initWithTitle:NSLocalizedString(@"TabBarTitleLicenses", @"Licenses") image:[UIImage imageNamed:@"Licenses.png"] tag:232];
         if([PSResizing iPad]) {
             UINavigationController *licensesIPadTab = [[UINavigationController alloc] initWithRootViewController:licensesViewController];
             licensesIPadTab.navigationBar.barStyle = UIBarStyleBlack;
             licensesIPadTab.tabBarItem = licensesTBI;
-            [tabs insertObject:licensesIPadTab atIndex:6];
+            [tabs insertObject:licensesIPadTab atIndex:5];
             [licensesIPadTab release];
         } else {
             licensesViewController.tabBarItem = licensesTBI;
-            [tabs insertObject:licensesViewController atIndex:6];
+            [tabs insertObject:licensesViewController atIndex:5];
         }
         [licensesTBI release];
-        [licensesViewController release];
+        [licensesViewController release];*/
 
 		
 		[tabBarController setViewControllers:tabs animated:NO];
@@ -646,15 +687,19 @@
 }
 
 - (void)redisplayCommentaryChapter {
-	//[commentaryTitle setTitle: NSLocalizedString(@"None", @"None")];
-	commentaryTabController.refToShow = nil;
+	
+    //[commentaryTitle setTitle: NSLocalizedString(@"None", @"None")];
+    commentaryTabController.refToShow = nil;
 	commentaryTabController.jsToShow = nil;
-	[self redisplayChapter:CommentaryViewPoll restore:RestoreVersePosition];
+	
+    [self redisplayChapter:CommentaryViewPoll restore:RestoreVersePosition];
 }
 
 - (void)redisplayChapter:(PollingType)pollingType restore:(RestorePositionType)position {
-	NSString *ref = [PSModuleController getCurrentBibleRef];
-	[self displayChapter:ref withPollingType:pollingType restoreType:position];
+    
+NSString *ref = [PSModuleController getCurrentBibleRef];
+[self displayChapter:ref withPollingType:pollingType restoreType:position];
+
 }
 
 - (void)displayChapter:(NSString *)ref withPollingType:(PollingType)polling restoreType:(RestorePositionType)position {
@@ -662,7 +707,8 @@
 
 	NSMutableString *bibleJavascript = [NSMutableString stringWithString:@""];
 	NSMutableString *commentaryJavascript = [NSMutableString stringWithString:@""];
-	NSString *versePosition = [[NSUserDefaults standardUserDefaults] stringForKey: DefaultsBibleVersePosition];
+    
+    NSString *versePosition = [[NSUserDefaults standardUserDefaults] stringForKey: DefaultsBibleVersePosition];
 	switch(position) {
 		case RestoreScrollPosition:
 		{
@@ -1390,7 +1436,7 @@
 
 + (UIColor *)getBarColorDefault {
 	
-	NSString *colorHexString = [[NSUserDefaults standardUserDefaults] stringForKey: DefaultsBarColor];
+	NSString *colorHexString =  @"#191919";//[[NSUserDefaults standardUserDefaults] stringForKey: DefaultsBarColor];
 	if (!colorHexString) {
 		colorHexString = [PSBookmarkFolder hexStringFromColor:[UIColor colorWithRed:0.0f green:0.0f blue:0.0f alpha:1.0f]];
 		[[NSUserDefaults standardUserDefaults] setObject: colorHexString forKey: DefaultsBarColor];

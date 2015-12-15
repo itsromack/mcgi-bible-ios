@@ -64,7 +64,7 @@
 #define FULLSCREEN_NOTE_ROW	3
 #define MMM_ROW				4
 #define MMM_NOTE_ROW		5
-#define DEVICE__ROWS		6//total rows in section
+#define DEVICE__ROWS		4//total rows in section
 
 
 
@@ -74,7 +74,8 @@
 	[super viewDidLoad];
 	
 	//self.view.backgroundColor = [UIColor blackColor];
-	self.navigationItem.title = NSLocalizedString(@"PreferencesTitle", @"Preferences");
+ //   self.navigationController.navigationBar.backgroundColor=[UIColor blackColor];
+    self.navigationItem.title = NSLocalizedString(@"PreferencesTitle", @"Preferences");
 	self.navigationController.navigationBar.barStyle = UIBarStyleBlack;
 	fontSizeLabel = [[UILabel alloc] initWithFrame:CGRectMake(140.0, 2.0, 20.0, 42.0)];
 	fontSizeLabel.font = [UIFont systemFontOfSize:[UIFont systemFontSize]];
@@ -185,8 +186,8 @@
 			switch (indexPath.row) {
 				case FULLSCREEN_NOTE_ROW :
 					return 75;
-				case MMM_NOTE_ROW :
-					return 110;
+				//case MMM_NOTE_ROW :
+				//	return 110;
 				default :
 					return 45;
 			}
@@ -653,7 +654,7 @@
 					cell.textLabel.font = [UIFont systemFontOfSize:12.0];
 				}
 					break;
-				case MMM_ROW :
+			/*	case MMM_ROW :
 				{
 					UISwitch *manualInstallSwitch = [ [ UISwitch alloc ] initWithFrame: CGRectMake(xx+200, 10, 0, 0) ];
 					//manualInstallSwitch.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin;
@@ -678,7 +679,7 @@
 					cell.textLabel.font = [UIFont systemFontOfSize:12.0];
 					cell.textLabel.textColor = [UIColor darkGrayColor];
 				}
-					break;
+					break;*/
 			}
 			break;
 	}

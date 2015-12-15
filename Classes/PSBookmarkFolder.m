@@ -8,7 +8,8 @@
 
 #import "PSBookmarkFolder.h"
 #import "PSBookmark.h"
-
+#import "FMDatabase.h"
+#import "PocketSwordAppDelegate.h"
 
 @implementation PSBookmarkFolder
 
@@ -49,7 +50,12 @@
 	[[NSScanner scannerWithString:bString] scanHexFloat:&b];
 	//NSLog(@"%@ - %f", bString, b);
 	
-	return [UIColor colorWithRed:(r/255.0f) green:(g/255.0f) blue:(b/255.0f) alpha:0.8f];
+    float alpha;
+    if ([hexString isEqualToString:@"#006298"]) {
+        alpha = 1.0f;
+    }else
+        alpha = 0.8f;
+	return [UIColor colorWithRed:(r/255.0f) green:(g/255.0f) blue:(b/255.0f) alpha:alpha];
 }
 
 + (NSString*)rgbStringFromHexString:(NSString*)hexString {
@@ -124,6 +130,28 @@
 		}
 	}
 	return ret;
+}
+
+-(NSString*)getHighlightRGBColourStringForBookAndChapterRefFromDb:(NSString *)bookChapterVerseRef
+{
+    
+     NSString *databasePath = [[PocketSwordAppDelegate sharedAppDelegate] getDbPath];
+     
+     FMDatabase *database = [FMDatabase databaseWithPath:databasePath];
+     [database open];
+    NSString *hexString=[[[NSString alloc]init]autorelease];
+    hexString=@"";
+    NSString *query = [NSString stringWithFormat:@"select * from HighlitedVerses where reference = '%@'",bookChapterVerseRef];
+    
+     FMResultSet *results = [database executeQuery:query];
+     while([results next]) {
+          hexString= [results stringForColumn:@"rgbstring"];
+        
+     NSLog(@"book found: %@",hexString);
+     }
+     [database close];
+    return hexString;
+    
 }
 
 - (NSString *)getHighlightRGBColourStringForBookAndChapterRef:(NSString*)bookAndChapterRef withVerse:(NSString *)verse {

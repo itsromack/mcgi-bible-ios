@@ -7,14 +7,20 @@
 //
 
 #import "PSModuleViewController.h"
-
+#import "PSBookmarkFolderColourSelectorViewController.h"
+#import "PSBookmark.h"
 @class PSCommentaryViewController;
 
-@interface PSBibleViewController : PSModuleViewController {
+@interface PSBibleViewController : PSModuleViewController<PSBookmarkFolderColourSelectorDelegate> {
 
 	PSCommentaryViewController	*commentaryView;
+ 
+    UITextField *descriptionTextField;
+    NSString *folder;
+    NSString *originalFolder;
+    PSBookmark *bookmarkBeingEdited;
 }
-
+@property (nonatomic, assign) NSString *rgbHexString;
 @property (assign)			PSCommentaryViewController	*commentaryView;
 
 @end

@@ -69,7 +69,6 @@ static PSBookmarks *psDefaultBookmarks;// = nil;
 	[array release];
 	[PSBookmarks saveBookmarksToFile];
 }
-
 + (PSBookmarkFolder*)getBookmarkFolderForFolderString:(NSString*)folderString {
 	PSBookmarks *bookmarks = [PSBookmarks defaultBookmarks];
 	if(!folderString || [folderString isEqualToString:@""] || [folderString isEqualToString:NSLocalizedString(@"BookmarksTitle", @"")]) {
@@ -95,8 +94,13 @@ static PSBookmarks *psDefaultBookmarks;// = nil;
 	return parentFolder;
 }
 
++ (NSString*)getHighlightRGBColourStringForBookChapterVerseRef:(NSString*)bookChapterVerseRef
+{
+   return [[PSBookmarks defaultBookmarks]  getHighlightRGBColourStringForBookAndChapterRefFromDb:bookChapterVerseRef];
+}
+
 + (NSString *)getHighlightRGBColourStringForBookAndChapterRef:(NSString*)bookAndChapterRef withVerse:(NSInteger)verse {
-	return [[PSBookmarks defaultBookmarks] getHighlightRGBColourStringForBookAndChapterRef:bookAndChapterRef withVerse:[NSString stringWithFormat:@"%d", verse]];
+	return [[PSBookmarks defaultBookmarks] getHighlightRGBColourStringForBookAndChapterRef:bookAndChapterRef withVerse:[NSString stringWithFormat:@"%ld", (long)verse]];
 }
 
 + (NSMutableArray *)getBookmarksForCurrentRef {
@@ -246,7 +250,7 @@ static PSBookmarks *psDefaultBookmarks;// = nil;
 	return ret;
 }
 
-+ (BOOL)saveBookmarksToFile {
++ (BOOL)saveBookmarksToFile { //save bookmark
 	PSBookmarks *bookmarks = [PSBookmarks defaultBookmarks];
 	BOOL ret = NO;
 	//DLog(@"\nBookmarks: saveBookmarksToFile");
@@ -265,10 +269,11 @@ static PSBookmarks *psDefaultBookmarks;// = nil;
 		ret = [data writeToFile:bookmarksPath atomically:NO];
 	}
 	
-	DLog(@"\n-- Bookmarks: finished saveBookmarksToFile");
+    NSLog(@"bookmark save: %@",bookmarksPath);
+    
+	DLog(@"\n--Bookmarks: finished saveBookmarksToFile");
 	return ret;
 }
-
 + (void)importBookmarksFromV2 {
 	NSArray *oldBookmarks = [[NSUserDefaults standardUserDefaults] arrayForKey: @"bookmarks2"];
 	

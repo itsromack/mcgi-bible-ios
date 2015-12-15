@@ -24,6 +24,7 @@
 + (NSMutableArray *)getBookmarksForBookAndChapterRef:(NSString*)bookAndChapterRef;
 + (NSMutableArray *)getBookmarksForCurrentRef;
 + (NSString *)getHighlightRGBColourStringForBookAndChapterRef:(NSString*)bookAndChapterRef withVerse:(NSInteger)verse;
++ (NSString*)getHighlightRGBColourStringForBookChapterVerseRef:(NSString*)bookChapterVerseRef;
 
 + (NSDate *)lastModified;
 

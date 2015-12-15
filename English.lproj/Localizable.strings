@@ -217,6 +217,9 @@
 
 "VerseContextualMenuAddBookmark" = "Add Bookmark";
 "VerseContextualMenuCommentary" = "View in Commentary";
+"VerseContextualMenuCopy" = "Copy"; //need various translations
+"VerseContextualMenuHighlight" = "Highlight"; //need various translations
+"VerseContextualMenuAddNote" = "Add Note"; // need various translation
 
 // new v1.3.3 strings:
 "VoiceOverPreviousChapterButton" = "Previous Chapter";

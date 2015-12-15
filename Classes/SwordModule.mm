@@ -19,7 +19,8 @@
 #import "PSModuleController.h"
 #import "PSLanguageCode.h"
 #import "PSBookmarks.h"
-
+#import "PocketSwordAppDelegate.h"
+#import "HighlightedVerseObject.h"
 @interface SwordModule (/* Private, class continuation */)
 /** private property */
 @property(readwrite, retain) NSMutableDictionary *configEntries;
@@ -1105,7 +1106,6 @@
 		oneI = currentTagRange.location;
 		currentTagRange = [self findNextBlockElement:returnChapter range:NSMakeRange(newStart, ([returnChapter length] - newStart))];
 	}
-	
 	return returnChapter;
 }
 
@@ -1261,11 +1261,24 @@
 					}
 				}
 				
-				NSString *highlightColour = [PSBookmarks getHighlightRGBColourStringForBookAndChapterRef:[PSModuleController createRefString:chapter] withVerse:i];
-				if(highlightColour) {
+        NSString *highlightColour = [PSBookmarks getHighlightRGBColourStringForBookAndChapterRef:[PSModuleController createRefString:chapter] withVerse:i];
+                
+               //get chapter and verse
+                
+                if(highlightColour) {
 					entryToAppend = [self highlightVerse:entryToAppend withClass:highlightColour];
 				}
-				
+                
+                NSString *bookChapterVerse = [NSString stringWithFormat:@"%@:%d",chapter,i];
+                
+                NSString *fromHighligtCOlourMenu = @"";
+                
+                fromHighligtCOlourMenu = [PSBookmarks getHighlightRGBColourStringForBookChapterVerseRef:bookChapterVerse];
+                
+                if (![fromHighligtCOlourMenu isEqualToString:@""]) {
+                    	entryToAppend = [self highlightVerse:entryToAppend withClass:fromHighligtCOlourMenu];
+                }
+                 
 				[verses appendString:entryToAppend];
 			}
 		}

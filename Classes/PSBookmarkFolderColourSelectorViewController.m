@@ -42,7 +42,7 @@
 							[UIColor colorWithRed:1.0 green:0.0 blue:1.0 alpha:0.8], // pink
 							[UIColor colorWithRed:1.0 green:0.5 blue:0.0 alpha:0.8], // orange
 							[UIColor colorWithRed:0.5 green:0.0 blue:0.5 alpha:0.8], // magenta?/purple
-							[UIColor colorWithRed:0.6 green:0.4 blue:0.2 alpha:0.8], // brown
+							 
 							nil];
 		self.selectableColours = colours;
 		[colours release];

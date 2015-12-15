@@ -134,6 +134,9 @@
 }
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+    
+    return;
+    
 	CGFloat newOffY = scrollView.contentOffset.y + topLength;
 	if(newOffY < 0) {
 		newOffY = 0.0f;
@@ -150,7 +153,7 @@
 		PULL_THRESHOLD = PULL_THRESHOLD_IPAD - topLength;
 	}
 	
-	if (scrollView.isDragging) {
+ 	if (scrollView.isDragging) {
 		if (refreshHeaderView.state == EGOOPullRefreshPulling && scrollView.contentOffset.y > PULL_THRESHOLD && scrollView.contentOffset.y < 0.0f && !_reloading && !refreshHeaderView.hidden) {
 			[refreshHeaderView setState:EGOOPullRefreshNormal];
 		} else if (refreshHeaderView.state == EGOOPullRefreshNormal && scrollView.contentOffset.y < PULL_THRESHOLD && !_reloading && !refreshHeaderView.hidden) {
@@ -171,10 +174,16 @@
 //		// trigger switching to fullscreen.
 //		//[psDelegate switchToFullscreen];
 //	}
+    
+    
 }
 
 - (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate {
-	CGFloat PULL_THRESHOLD = PULL_THRESHOLD_IPHONE;
+	
+    return;
+    
+    
+    CGFloat PULL_THRESHOLD = PULL_THRESHOLD_IPHONE;
 	if([PSResizing iPad]) {
 		PULL_THRESHOLD = PULL_THRESHOLD_IPAD;
 	}

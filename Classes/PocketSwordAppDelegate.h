@@ -19,6 +19,7 @@
 
 #import "PSResizing.h"
 #import "PSLaunchViewController.h"
+#import "HighlightedVerseObject.h"
 
 @class PSTabBarControllerDelegate;
 @class SnoopWindow;
@@ -35,10 +36,10 @@
 @property (nonatomic, retain) NSURL *urlToOpen;
 @property (nonatomic, retain) NSDictionary *launchedWithOptions;
 @property (retain) PSTabBarControllerDelegate *tabBarControllerDelegate;
-
+@property (nonatomic,retain)HighlightedVerseObject *highlitedVerse;
 + (PocketSwordAppDelegate *)sharedAppDelegate;
 - (void)storeDidChange:(NSNotification *)notification;
-
+- (NSString*)getDbPath;
 @end
 
 @interface UITabBarController (PocketSword)

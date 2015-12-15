@@ -424,7 +424,8 @@ FieldCacheImpl::FileEntry::FileEntry (const TCHAR* field, int32_t type) {
 
 		  bool isint=true;
 		  for ( size_t i=0;i<termTextLen;i++ ){
-			  if ( _tcschr(_T("0123456789 +-"),termtext[i]) == NULL ){
+			 
+              if ( _tcschr(_T("0123456789 +-"),termtext[i]) == NULL ){
 				isint = false;
 				break;
 			  }
@@ -438,7 +439,8 @@ FieldCacheImpl::FileEntry::FileEntry (const TCHAR* field, int32_t type) {
 			  if ( termtext[termTextLen-1] == 'f' )
 				  searchLen--;
 			  for ( int32_t i=0;i<searchLen;i++ ){
-				  if ( _tcschr(_T("0123456789 Ee.+-"),termtext[i]) == NULL ){
+				 
+                  if ( _tcschr(_T("0123456789 Ee.+-"),termtext[i]) == NULL ){
 					isfloat = false;
 					break;
 				  }

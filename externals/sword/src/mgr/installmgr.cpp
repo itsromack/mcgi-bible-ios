@@ -42,7 +42,7 @@ extern "C" {
 #include <map>
 
 #ifdef CURLAVAILABLE
-#include <curlftpt.h>
+
 #include <curlhttpt.h>
 #else
 #include <ftplibftpt.h>
@@ -83,7 +83,7 @@ const int InstallMgr::MODSTAT_CIPHERKEYPRESENT = 0x020;
 // see these classes for examples of how to make your own
 RemoteTransport *InstallMgr::createFTPTransport(const char *host, StatusReporter *statusReporter) {
 #ifdef CURLAVAILABLE
-	return new CURLFTPTransport(host, statusReporter);
+	//return new CURLFTPTransport(host, statusReporter);
 #else
 	return new FTPLibFTPTransport(host, statusReporter);
 #endif
@@ -92,7 +92,7 @@ RemoteTransport *InstallMgr::createFTPTransport(const char *host, StatusReporter
 
 RemoteTransport *InstallMgr::createHTTPTransport(const char *host, StatusReporter *statusReporter) {
 #ifdef CURLAVAILABLE
-	return new CURLHTTPTransport(host, statusReporter);
+	//return new CURLHTTPTransport(host, statusReporter);
 #else
 	return 0;
 #endif

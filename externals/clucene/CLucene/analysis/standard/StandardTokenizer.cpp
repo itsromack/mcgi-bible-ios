@@ -372,7 +372,7 @@ CL_NS_DEF2(analysis,standard)
         /* If it's not an acronym, we don't want the trailing dot. */
         SHAVE_RIGHTMOST(str);
         /* If there are no dots remaining, this is a generic ALPHANUM. */
-        if (_tcschr(strBuf, '.') == NULL) {
+        if (wcschr(strBuf, '.') == NULL) {
           forcedType = CL_NS2(analysis,standard)::ALPHANUM;
         }
       }

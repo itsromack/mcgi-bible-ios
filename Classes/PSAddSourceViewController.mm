@@ -277,7 +277,7 @@
 		[alertView release];
 		return;
 	}
-
+    
 	[[NSNotificationCenter defaultCenter] postNotificationName:NotificationDisplayNetworkIndicator object:nil];
 	NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@://%@%@/mods.d.tar.gz", [serverType lowercaseString], server, path]];
 	NSURLRequest *request = [NSURLRequest requestWithURL:url];

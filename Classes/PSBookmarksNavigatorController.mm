@@ -69,6 +69,7 @@
     [super viewDidLoad];
 	UIBarButtonItem *editButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemEdit target:self action:@selector(editButtonPressed)];
     self.navigationItem.rightBarButtonItem = editButton;
+       self.navigationItem.rightBarButtonItem.tintColor = [UIColor whiteColor];
 	[editButton release];
 	if(bookmarkFolder) {
 		self.navigationItem.title = bookmarkFolder.name;
@@ -336,7 +337,8 @@
 			[self insertEditFolderButtonPressed:nil];
 		} else {
 			// save the current folder structure & add a bookmark at this position
-			[[NSNotificationCenter defaultCenter] postNotificationName:NotificationAddBookmarkInFolder object:self.parentFolders];
+			
+            [[NSNotificationCenter defaultCenter] postNotificationName:NotificationAddBookmarkInFolder object:self.parentFolders];
 		}
 	} else {
 		PSBookmarkObject *rowObject = (isAddingBookmark) ? [[bookmarkFolder folders] objectAtIndex:indexPath.row] : [bookmarkFolder.children objectAtIndex:indexPath.row];
@@ -351,8 +353,10 @@
 					pfs = [NSString stringWithFormat:@"%@%@%@", self.parentFolders, PSFolderSeparatorString, rowObject.name];
 				}
 				PSBookmarksNavigatorController *bnc = [[PSBookmarksNavigatorController alloc] initWithBookmarkFolder:(PSBookmarkFolder*)rowObject parentFolders:pfs isAddingBookmark:self.isAddingBookmark];
-				[self.navigationController pushViewController:bnc animated:YES];
-				[bnc release];
+                
+            [self.navigationController pushViewController:bnc animated:YES];
+            [bnc release];
+                
 			}
 		} else {
 			if(bookmarksEditing) {
@@ -361,8 +365,10 @@
 				[self.navigationController pushViewController:abc animated:YES];
 				[abc release];
 			} else {
-				// tapping on a bookmark will open the bookmark.
-				((PSBookmark*)rowObject).dateLastAccessed = [NSDate date];
+                
+				//tapping on a bookmark will open the bookmark.
+				
+                ((PSBookmark*)rowObject).dateLastAccessed = [NSDate date];
 				[PSBookmarks saveBookmarksToFile];
 				[[NSNotificationCenter defaultCenter] postNotificationName:NotificationShowBibleTab object:nil];
 				if ([[[[PSModuleController defaultModuleController] swordManager] moduleNames] count] != 0) {
@@ -379,6 +385,7 @@
 						[[NSUserDefaults standardUserDefaults] synchronize];
 						[[NSNotificationCenter defaultCenter] postNotificationName:NotificationRedisplayPrimaryBible object:nil];
 					}
+                    
 					[PSHistoryController addHistoryItem:BibleTab];
 				}
 			}

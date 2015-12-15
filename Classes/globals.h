@@ -44,6 +44,8 @@ typedef enum {
 	BookRange
 } PSSearchRange;
 
+#define DBPath                                      @"database.sqlite"
+
 #define DefaultsModuleCipherKeysKey					@"DefaultsModuleCipherKeysKey"
 #define DefaultsLastRef								@"lastRef"
 #define DefaultsLastBible							@"lastBible"
@@ -162,6 +164,8 @@ typedef enum {
 #define NotificationPrimaryDictionaryChanged	@"NotificationPrimaryDictionaryChanged"
 #define NotificationBookmarksChanged			@"NotificationBookmarksChanged"
 #define NotificationHistoryChanged				@"NotificationHistoryChanged"
+
+#define NotificationHighlightChanged @"NotificationHighlightChange"
 
 #define NotificationToggleMultiList				@"NotificationToggleMultiList"
 #define NotificationToggleModuleList			@"NotificationToggleModuleList"

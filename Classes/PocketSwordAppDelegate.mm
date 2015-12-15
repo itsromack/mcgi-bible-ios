@@ -16,8 +16,7 @@
 	with this program; if not, write to the Free Software Foundation, Inc.,
 	51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 */
-
-#import "PocketSwordAppDelegate.h"
+ #import "PocketSwordAppDelegate.h"
 #import "PSLanguageCode.h"
 #import "PSModuleController.h"
 #import "ZipArchive.h"
@@ -29,7 +28,8 @@
 #import "PSBibleViewController.h"
 #import "PSCommentaryViewController.h"
 //#import "TestFlight.h"
-
+#import "FMDB.h"
+#import "FMDatabase.h"
 @implementation PocketSwordAppDelegate
 
 @synthesize window, urlToOpen, launchedWithOptions, tabBarControllerDelegate;
@@ -82,18 +82,25 @@
         }
     }
 }
-
+-(NSString*)getDbPath
+{
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *docsPath = [paths objectAtIndex:0];
+    NSString *path = [docsPath stringByAppendingPathComponent:DBPath];
+    
+    return path;
+}
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
 	
 //	DLog(@"\nlaunched app, now to start our stuff...");
 	
-	Class cls = NSClassFromString(@"NSUbiquitousKeyValueStore");
+	/*Class cls = NSClassFromString(@"NSUbiquitousKeyValueStore");
 	if(cls && NSUbiquitousKeyValueStoreDidChangeExternallyNotification) {
 		// register to observe notifications from the store
 		[[NSNotificationCenter defaultCenter] addObserver: self
 												 selector: @selector(storeDidChange:)
 													 name: NSUbiquitousKeyValueStoreDidChangeExternallyNotification
-												   object: [cls defaultStore]];
+												   object: [cls defaultStore]];*/
 		
 		// get changes that might have happened while this
 		// instance of your app wasn't running
@@ -104,8 +111,27 @@
 		// Also, only use TestFlight under iOS 5 or later (aka, when we have NSUbiquitousKeyValueStore)
 		//[TestFlight takeOff:@"fb65937c44f57253d22bd32bdc2c4402_NDA2NTIwMTEtMTItMjUgMjM6MDU6MDcuMTc0MDQ2"];//1.1
 		//[TestFlight takeOff:@"6139398f-b442-43b1-baa8-200a071c0426"];//1.2
-	}
+	//}
 
+    
+    //init Database
+  
+    
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+    NSError *error;
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *documentsDirectory = [paths objectAtIndex:0];
+    
+    NSString *txtPath = [documentsDirectory stringByAppendingPathComponent:DBPath];
+    
+    if ([fileManager fileExistsAtPath:txtPath] == NO) {
+        NSString *resourcePath = [[NSBundle mainBundle] pathForResource:@"database" ofType:@"sqlite"];
+        [fileManager copyItemAtPath:resourcePath toPath:txtPath error:&error];
+    }
+    
+    
+    
+    
 	self.launchedWithOptions = launchOptions;
 	    
 	PSLaunchViewController *lVC = [[PSLaunchViewController alloc] init];
