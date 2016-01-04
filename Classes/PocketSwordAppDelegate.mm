@@ -162,9 +162,14 @@
 	self.tabBarControllerDelegate = tbcd;
 	[tbcd release];
 	((SnoopWindow*)self.window).bibleViewController = tabBarControllerDelegate.bibleTabController;
+    
+    
+    
 	//((SnoopWindow*)self.window).commentaryViewController = tabBarControllerDelegate.commentaryTabController;
 	
-//	DLog(@"finishedInitializing, now to display the tab bar controller");
+ 	DLog(@"finishedInitializing, now to display the tab bar controller");
+  
+    
 	if([self.window respondsToSelector:@selector(rootViewController)]) {
 		self.window.rootViewController = tabBarControllerDelegate.tabBarController;
 	} else {
@@ -300,6 +305,7 @@
 			// they requested a specific module and it is available
 			[[PSModuleController defaultModuleController] loadPrimaryBible:module];
 			//[[NSUserDefaults standardUserDefaults] setObject: module forKey: DefaultsLastBible];
+          
 		}
 		
 		[tabBarControllerDelegate setShownTabTo:BibleTab];

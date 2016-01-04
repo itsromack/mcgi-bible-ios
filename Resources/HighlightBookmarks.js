@@ -5,10 +5,9 @@ function PS_HighlightVerseWithHexColour(verse,colour) {
 	 //elementToHighlight.style.opacity = 0.8;
 }
 
-function PS_CopySelectedVerse(verse){
-    var element = document.getElementById("vvv"+verse);
-    
-    return element.text();
+function PS_CopySelectedVerse(verse) {
+   return document.getElementById("vvv"+verse).innerHTML;
+
 }
 
 function PS_RemoveHighlights(verseMax,fontColour) {

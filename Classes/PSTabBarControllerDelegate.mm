@@ -62,6 +62,8 @@
 		
 		[self nightModeChanged];
 		[PSModuleController defaultModuleController];//init
+        
+        
 		
 		NSMutableArray *tabs = [NSMutableArray arrayWithCapacity:6];
 		// Order of the tabs:
@@ -321,6 +323,14 @@
 
 		[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(redisplayBibleChapterAfterBookmarksChange) name:NotificationBookmarksChanged object:nil];
  		[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(tabColorChanged) name:NotificationBarColorChanged object:nil];
+        
+        
+        
+        NSLog(@"Default bible: %@",[[[PSModuleController defaultModuleController] primaryBible] name]);
+        
+        SetBoolPrefForMod(YES, DefaultsVPLPreference, [[[PSModuleController defaultModuleController] primaryBible] name]);
+        
+        [[NSNotificationCenter defaultCenter] postNotificationName:NotificationRedisplayPrimaryBible object:nil];
 		
 	}
 	return self;

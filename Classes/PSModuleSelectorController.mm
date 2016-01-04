@@ -304,8 +304,19 @@
     BOOL iPad = [PSResizing iPad];
 	switch (listType) {
 		case BibleTab:
+            
+ 
+            
+                
+             
+       
+            
 			[moduleController loadPrimaryBible: newModule];
+            
+                SetBoolPrefForMod(YES, DefaultsVPLPreference, [[[PSModuleController defaultModuleController] primaryBible] name]);
+            
 			[[NSNotificationCenter defaultCenter] postNotificationName:NotificationRedisplayPrimaryBible object:nil];
+            
 			[PSHistoryController addHistoryItem:BibleTab];
 			if([[moduleController primaryBible] isLocked])
 				locked = YES;

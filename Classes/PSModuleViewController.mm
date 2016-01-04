@@ -82,6 +82,7 @@
 			[tbi release];
 			[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(setModuleNameViaNotification) name:NotificationNewPrimaryBible object:nil];
 			[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(prevChapter) name:NotificationBibleSwipeRight object:nil];
+            
 		}
 			break;
 		case CommentaryTab:
@@ -575,12 +576,6 @@
         [webView stringByEvaluatingJavaScriptFromString:jsFunction];
         
         
-        NSString *jsFunction2 = [NSString stringWithFormat:@"document.getElementById('vv%@').innerHTML", verse];
-        
-        NSString *verseText = [webView stringByEvaluatingJavaScriptFromString:jsFunction2];
-        
-        NSLog(@"Selected verse: %@", verseText);
-        
         
         [[NSNotificationCenter defaultCenter] postNotificationName:NotificationRedisplayPrimaryBible object:nil];
        
@@ -618,14 +613,19 @@
         
         NSString *verse = [[verseObj.ref componentsSeparatedByString:@":"] objectAtIndex: 1];
         
-       // NSString *jsFunction2 = [NSString stringWithFormat:@"document.getElementById('vvv%@').innerHTML", verse];
+        NSString *jsFunction2 = [NSString stringWithFormat:@"document.getElementById('vvv%@').innerHTML;", verse];
         
-        NSString *jsFunction2 = [NSString stringWithFormat:@"document.getElementById('vvv%@').innerHTML", verse];
         
         
         NSString *verseText = [webView stringByEvaluatingJavaScriptFromString:jsFunction2];
         
+        verseText = [verseText stringByReplacingOccurrencesOfString:@"<i class=\"transChangeAdded\">" withString:@""];
+        
+        verseText = [verseText stringByReplacingOccurrencesOfString:@"</i>" withString:@""];
+        
         NSString *verse2 = [NSString stringWithFormat:@"%@ %@", verseObj.ref, verseText];
+        
+        
         
         NSLog(@"Selected verse: %@", verse2);
    
@@ -634,9 +634,9 @@
      
         NSArray *dataToShare = @[verse2];
         
-        //UIActivityViewController *actVC = [[UIActivityViewController alloc]initWithActivityItems:dataToShare applicationActivities:nil];
+         UIActivityViewController *actVC = [[UIActivityViewController alloc]initWithActivityItems:dataToShare applicationActivities:nil];
        
-      //  [self presentViewController:actVC animated:YES completion:nil];
+        [self presentViewController:actVC animated:YES completion:nil];
         
     }
 }

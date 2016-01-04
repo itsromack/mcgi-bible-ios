@@ -147,6 +147,7 @@
     [moduleManager setPrimaryBible: nil];
 	[moduleManager setPrimaryCommentary: nil];
 	[moduleManager setPrimaryDictionary: nil];
+    
 	[[NSNotificationCenter defaultCenter] postNotificationName:NotificationRedisplayPrimaryBible object:nil];
 }
 
@@ -240,12 +241,12 @@
     if(!angdatingbiblia)
     {
         [defaults synchronize];
-        SwordModule *angdatingbibliaModule = [[moduleManager swordManager] moduleWithName:@"angdatingbiblia"];
+        SwordModule *angdatingbibliaModule = [[moduleManager swordManager] moduleWithName:@"ADB"];
         if(angdatingbibliaModule) {
             // if it's already installed, remove the search index because it will now be out of date
             [angdatingbibliaModule deleteSearchIndex];
         }
-        [moduleManager installModulesFromZip: [[NSBundle mainBundle] pathForResource:@"angdatingbiblia" ofType:@"zip"] ofType: bible removeZip:NO internalModule:YES];
+        [moduleManager installModulesFromZip: [[NSBundle mainBundle] pathForResource:@"ADB" ofType:@"zip"] ofType: bible removeZip:NO internalModule:YES];
         
         [defaults setBool: YES forKey:@"angdatingbiblia"];
         
@@ -521,7 +522,7 @@
     if(!angdatingbibliaModule  && !angdatingbibliaModuleRemoved) {
         //reinstall the kjv module!
         DLog(@"reinstalling angdatingbibliaModuleRemoved");
-        [moduleManager installModulesFromZip: [[NSBundle mainBundle] pathForResource:@"angdatingbiblia" ofType:@"zip"] ofType: bible removeZip:NO internalModule:YES];
+        [moduleManager installModulesFromZip: [[NSBundle mainBundle] pathForResource:@"ADB" ofType:@"zip"] ofType: bible removeZip:NO internalModule:YES];
     }
     
     if(!PorARModule  && !PorARModuleRemoved) {
@@ -750,6 +751,7 @@
 	}
 
 	[[NSFileManager defaultManager] removeItemAtPath: DEFAULT_MMM_PATH error:NULL];//delete our normal tmp folder...
+   
 
 	[(NSObject*)delegate performSelectorOnMainThread:@selector(finishedInitializingPocketSword:) withObject:self waitUntilDone:NO];
 	

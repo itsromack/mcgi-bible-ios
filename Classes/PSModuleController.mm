@@ -106,6 +106,7 @@ static PSModuleController *instance;
 			ALog(@"Couldn't create mods.d");
 		}
         // use default path
+     
         instance = [[PSModuleController alloc] init];
     }
     
@@ -270,6 +271,8 @@ static NSString *firstRefAvailable = @"Genesis 1";
 			}
 		}
 		*/
+        
+        
 		
 		[self setPreferences];
 		[self reloadLastBible];
@@ -305,6 +308,10 @@ static NSString *firstRefAvailable = @"Genesis 1";
 
 - (void)setPreferences/*:(NSMutableDictionary *)prefs*/ {
 	if(swordManager) {
+        
+        
+ 
+        
 		BOOL redLetter = [[NSUserDefaults standardUserDefaults] boolForKey:DefaultsRedLetterPreference];
 		BOOL strongs = [[NSUserDefaults standardUserDefaults] boolForKey:DefaultsStrongsPreference];
 		BOOL morphs = [[NSUserDefaults standardUserDefaults] boolForKey:DefaultsMorphPreference];
@@ -484,6 +491,9 @@ static NSString *firstRefAvailable = @"Genesis 1";
 		ch = [[[NSString stringWithCString: ([primaryBible swModule])->getKeyText() encoding: NSUTF8StringEncoding] componentsSeparatedByString: @":"] objectAtIndex: 0];
 		//loc = ([primaryBible swModule])->getKeyText();
 		bibleName = [primaryBible name];
+        
+     
+        
 	}
 	
 	if (primaryCommentary) {
@@ -507,6 +517,8 @@ static NSString *firstRefAvailable = @"Genesis 1";
 	[swordManager reInit];
 	[self setPreferences];
 	installationProgress = 0;
+    
+
 	
 	if (restoreBible) {
 		primaryBible = [swordManager moduleWithName: bibleName];

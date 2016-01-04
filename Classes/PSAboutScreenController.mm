@@ -26,7 +26,7 @@
                                 </div>\n\
 							 <div id=\"main\">\n\
 								<p><strong>Developed by: </strong><br />\n\
-									 MCGI Singapore and the rest of the open-source community.\n\
+									 MCGI Singapore.\n\
 								</p>\n\
     <p>For any feedback or inquiries, please email us at <a href=\"mailto:inquiries@mcgi.org.sg\"> inquiries@mcgi.org.sg</a></p>\n\
                              <p class=\"section\"><strong>Explore MCGI apps and services:</strong>\
@@ -35,11 +35,10 @@
                              <li><a href=\"http://www.mcgi.org/\">MCGI.org - The official website</a></li>\n\
                              <li><a href=\"https://mcgi.church/explore/\">Find out more</a></li></ul>\n\
                              </p></div>\n\
-  	 <center><i><a href=\"https://github.com/MCGI/mcgi-bible-ios\">MCGI Bible on Github</a></i></center>\n\
 <br /><strong>&nbsp;&nbsp;&nbsp;Licenses</strong>\n\
     <div class=\"crosswire\">\n\
     <h3>PocketSword</h3>\n\
-    <p>MCGI Bible was based on the PocketSword project.</p>\n\
+    <p>MCGI Bible was based on the PocketSword project written by Nick Carter under the GPL License</p>\n\
     \n\
     <p>PocketSword benefits from the following Open Source projects:<br />\n\
       <ul><li><a href=\"http://www.crosswire.org/sword/index.jsp\">The SWORD Project</a></li>\n\
