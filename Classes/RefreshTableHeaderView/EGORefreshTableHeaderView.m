@@ -162,7 +162,8 @@
 }
 
 - (void)setup:(CGRect)frame {
-	if([PSResizing iPad]) {
+	/*
+    if([PSResizing iPad]) {
 		_statusLabelFrame      = CGRectMake(0.0f, frame.size.height - 50.0f, self.frame.size.width, 20.0f);
 		_arrowImageFrame       = CGRectMake(25.0f, frame.size.height - 75.0f, 30.0f, 55.0f);
 		_activityViewFrame     = CGRectMake(25.0f, frame.size.height - 48.0f, 20.0f, 20.0f);
@@ -174,10 +175,10 @@
     
     _arrowPullingTransform = CATransform3DMakeRotation((M_PI / 180.0) * 180.0f, 0.0f, 0.0f, 1.0f);
     _arrowNormalTransform  = CATransform3DIdentity;
-    
-    _releaseLabelText = NSLocalizedString(@"Release for previous chapter...", @"Release to refresh status");
-    _pullingLabelText = NSLocalizedString(@"Pull down for previous chapter...", @"Pull down to refresh status");
-    _loadingLabelText = NSLocalizedString(@"Loading...", @"Loading Status");
+    */
+   // _releaseLabelText = NSLocalizedString(@"Release for previous chapter...", @"Release to refresh status");
+    //_pullingLabelText = NSLocalizedString(@"Pull down for previous chapter...", @"Pull down to refresh status");
+    //_loadingLabelText = NSLocalizedString(@"Loading...", @"Loading Status");
 }
 
 - (void)dealloc {

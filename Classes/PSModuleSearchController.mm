@@ -15,7 +15,11 @@
 #import "PSSearchHistoryItem.h"
 #import "PocketSwordAppDelegate.h"
 #import "SwordManager.h"
-
+#import "PSBookmarkFolder.h"
+#import "SwordModule.h"
+#import "globals.h"
+#import "SwordManager.h"
+#import "ZipArchive.h"
 @implementation PSModuleSearchController
 
 @synthesize results, savedTablePosition;
@@ -36,6 +40,7 @@
 	self = [super initWithNibName:nil bundle:nil];
 	if(self) {
 		UITabBarItem *tBI = [[UITabBarItem alloc] initWithTabBarSystemItem:UITabBarSystemItemSearch tag:0];
+        
 		self.tabBarItem = tBI;
 		[tBI release];
 		switchingTabs = YES;
@@ -65,7 +70,7 @@
 	UISearchBar *searchQuerySearchBar = [[UISearchBar alloc] initWithFrame:CGRectMake(0, 0, viewWidth, 44)];
 	searchQuerySearchBar.autoresizingMask = UIViewAutoresizingFlexibleWidth;
 	searchQuerySearchBar.delegate = self;
-	searchQuerySearchBar.barStyle = UIBarStyleBlack;
+    searchQuerySearchBar.barStyle = UIBarStyleDefault;
 	
 	UITableView *searchQueryOptionsTable = [[UITableView alloc] initWithFrame:CGRectMake(0, searchQuerySearchBar.frame.size.height, viewWidth, (viewHeight - searchQuerySearchBar.frame.size.height)) style:UITableViewStyleGrouped];
 	searchQueryOptionsTable.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
@@ -95,6 +100,10 @@
 	
 	self.navigationItem.leftBarButtonItem = [[[UIBarButtonItem alloc] initWithTitle: NSLocalizedString(@"CloseButtonTitle", @"Close") style: UIBarButtonItemStyleBordered target: self action: @selector(closeButtonPressed)] autorelease];
 	self.navigationItem.rightBarButtonItem = [[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemSearch target:self action:@selector(searchButtonPressed:)] autorelease];
+    
+    self.navigationItem.leftBarButtonItem.tintColor = [UIColor whiteColor];
+    self.navigationItem.rightBarButtonItem.tintColor = [UIColor whiteColor];
+    
 	
 }
 
@@ -151,10 +160,11 @@
 }
 
 - (void)closeButtonPressed {
+    
 	[self notifyDelegateOfNewHistoryItem];
 	[[NSNotificationCenter defaultCenter] postNotificationName:NotificationToggleMultiList object:nil];
-}
 
+}
 - (void)viewDidAppear:(BOOL)animated {
 	[super viewDidAppear:animated];
 	BOOL showIndexController = NO;
@@ -171,15 +181,232 @@
 			break;
 	}
 	if(showIndexController) {
-		UIAlertView *alertView = [[UIAlertView alloc] initWithTitle: NSLocalizedString(@"NoSearchIndexTitle", @"No Search Index") message: NSLocalizedString(@"NoSearchIndexMsg", @"No search index is installed for this module, install one?") delegate: self cancelButtonTitle: NSLocalizedString(@"No", @"No") otherButtonTitles: NSLocalizedString(@"Yes", @"Yes"), nil];
+        [self SetupIndexes];
+		 /*
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle: NSLocalizedString(@"NoSearchIndexTitle", @"No Search Index") message: NSLocalizedString(@"NoSearchIndexMsg", @"No search index is installed for this module, install one?") delegate: self cancelButtonTitle: NSLocalizedString(@"No", @"No") otherButtonTitles: NSLocalizedString(@"Yes", @"Yes"), nil];
 		[alertView show];
-		[alertView release];
+		[alertView release];*/
 	} else  if(!self.results) {
 		searchQueryView.bounds = searchResultsTable.bounds;
 		searchQueryView.center = searchResultsTable.center;
 		[self.view addSubview:searchQueryView];
-		//[self searchButtonPressed:nil];
+		//[self searchButtonPressed:nil];*/
 	}
+    
+    [self refreshView];
+}
+-(BOOL)isInstalled:(NSString*)moduleName
+{
+    BOOL rValue=YES;
+    
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    BOOL ADBIndex = [defaults boolForKey:@"ADBIndex"];
+    
+    BOOL AKJVIndex = [defaults boolForKey:@"AKJVIndex"];
+    
+    BOOL ASVIndex = [defaults boolForKey:@"ASVIndex"];
+    
+    BOOL ChiNCVsIndex = [defaults boolForKey:@"ChiNCVsIndex"];
+    
+    BOOL ChiNCVtIndex = [defaults boolForKey:@"ChiNCVtIndex"];
+    
+    BOOL ESVIndex = [defaults boolForKey:@"ESVIndex"];
+    
+    BOOL Geneva1599Index = [defaults boolForKey:@"Geneva1599Index"];
+    
+    BOOL PorARIndex = [defaults boolForKey:@"PorARIndex"];
+    
+    BOOL PorCapIndex = [defaults boolForKey:@"PorCapVsIndex"];
+    
+    BOOL KJVIndex = [defaults boolForKey:@"KJVIndex"];
+    
+    BOOL SpaRVIndex = [defaults boolForKey:@"SpaRVIndex"];
+    
+    BOOL SpaRV1909Index = [defaults boolForKey:@"SpaRV1909Index"];
+    
+    BOOL SpaRVGIndex = [defaults boolForKey:@"SparVGIndex"];
+    
+    BOOL SpaRSEVIndex = [defaults boolForKey:@"SpaRSEVIndex"];
+    
+    if ([moduleName isEqualToString:@"AKJV"]) {
+        if (!AKJVIndex) {
+            [defaults setBool:YES forKey:@"AKJVIndex"];
+            rValue = NO;
+        }
+        else
+        {
+            rValue = YES;
+        }
+    }
+    
+    if ([moduleName isEqualToString:@"ASV"]) {
+        if (!ASVIndex) {
+            [defaults setBool:YES forKey:@"ASVIndex"];
+            rValue=NO;
+        }
+        else
+        {
+            rValue = YES;
+        }
+    }
+    
+    if ([moduleName isEqualToString:@"ChiNCVsIndex"]) {
+        if (!ChiNCVsIndex) {
+            [defaults setBool:YES forKey:@"ChiNCVsIndex"];
+            rValue=NO;
+        }
+        else
+        {
+            rValue = YES;
+        }
+    }
+    
+    if ([moduleName isEqualToString:@"ChiNCVtIndex"]) {
+        if (!ChiNCVtIndex) {
+            [defaults setBool:YES forKey:@"ChiNCVtIndex"];
+            rValue=NO;
+        }
+            else
+        {
+            rValue = YES;
+        }
+    }
+    
+    if ([moduleName isEqualToString:@"ESVIndex"]) {
+        if (!ESVIndex) {
+            [defaults setBool:YES forKey:@"ESVIndex"];
+            rValue=NO;
+        }
+        else
+        {
+            rValue = YES;
+        }
+    }
+    
+    if ([moduleName isEqualToString:@"Geneva1599Index"]) {
+        if (!Geneva1599Index) {
+            [defaults setBool:YES forKey:@"Geneva1599Index"];
+            rValue=NO;
+        }
+        else
+        {
+            rValue = YES;
+        }
+    }
+    
+    if ([moduleName isEqualToString:@"PorARIndex"]) {
+        if (!PorARIndex) {
+            [defaults setBool:YES forKey:@"PorARIndex"];
+            rValue=NO;
+        }
+        else
+            rValue = YES;
+    }
+    
+    if ([moduleName isEqualToString:@"PorCapIndex"]) {
+        if (!PorCapIndex) {
+            [defaults setBool:YES forKey:@"PorCapIndex"];
+            rValue=NO;
+        }
+        else
+            rValue = YES;
+    }
+    
+    if ([moduleName isEqualToString:@"KJVIndex"]) {
+        if (!KJVIndex) {
+            [defaults setBool:YES forKey:@"KJVIndex"];
+            rValue=NO;
+        }
+        else
+            rValue = YES;
+    }
+    
+    if ([moduleName isEqualToString:@"SpaRVIndex"]) {
+        if (!SpaRVIndex) {
+            [defaults setBool:YES forKey:@"SpaRVIndex"];
+            rValue=NO;
+        }
+        else
+            rValue = YES;
+    }
+    
+    if ([moduleName isEqualToString:@"SpaRV1909Index"]) {
+        if (!SpaRV1909Index) {
+            [defaults setBool:YES forKey:@"SpaRV1909Index"];
+            rValue=NO;
+        }
+        else
+            rValue = YES;
+    }
+    
+    if ([moduleName isEqualToString:@"SpaRVGIndex"]) {
+        if (!SpaRVGIndex) {
+            [defaults setBool:YES forKey:@"SpaRVGIndex"];
+            rValue=NO;
+        }
+        else
+            rValue = YES;
+    }
+    
+    if ([moduleName isEqualToString:@"SpaRSEVIndex"]) {
+        if (!SpaRSEVIndex) {
+            [defaults setBool:YES forKey:@"SpaRSEVIndex"];
+            rValue=NO;
+        }
+        else
+            rValue = YES;
+    }
+    
+    return rValue;
+}
+-(void)SetupIndexes
+{
+   
+    
+    
+    //additional bibles
+    
+ 
+    //Use responseData
+    
+    SwordModule *selectedMod;
+    
+    selectedMod = [[PSModuleController defaultModuleController] primaryBible];
+    
+    NSString *moduleName=[selectedMod name];
+    
+    /*
+    if ([self isInstalled:moduleName]) {
+        return;
+    }*/
+    
+    SwordModule *mod = [[[PSModuleController defaultModuleController] swordManager] moduleWithName:moduleName];
+    
+    NSString *outfileDir = [mod configEntryForKey:@"AbsoluteDataPath"];
+    
+    NSString *v = [mod configEntryForKey:SWMOD_CONFENTRY_VERSION];
+    
+    if(v == nil)
+        v = @"0.0";//if there's no version information, it's version 0.0!
+    
+    NSString *indexName = [NSString stringWithFormat: @"%@-i", [mod name]];
+    
+    NSString *zippedIndex = [[NSBundle mainBundle] pathForResource:indexName ofType:@"zip"];
+    
+    
+    //[outfileDir stringByAppendingPathComponent: [NSString stringWithFormat: @"%@.zip", indexName]];
+    
+    NSString *cluceneDir = [outfileDir stringByAppendingPathComponent: @"lucene"];
+    ZipArchive *arch = [[ZipArchive alloc] init];
+    [arch UnzipOpenFile:zippedIndex];
+    [arch UnzipFileTo:cluceneDir overWrite:YES];
+    [arch UnzipCloseFile];
+    [arch release];
+    
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+    [fileManager removeItemAtPath:zippedIndex error:NULL];
+    
+    DLog(@"Index (%@) installed successfully", [selectedMod name]);
 }
 
 - (BOOL)tabBarController:(UITabBarController *)tabBarController shouldSelectViewController:(UIViewController *)viewController {
@@ -469,9 +696,11 @@
 		cell.accessoryType = UITableViewCellAccessoryNone;
 		cell.textLabel.text = NSLocalizedString(@"SearchStartSearchButton", @"Start Search");
 		cell.detailTextLabel.text = @"";
+       
 		cell.textLabel.textColor = [UIColor whiteColor];
+        cell.textAlignment = UITextAlignmentCenter;
+        
 	}
-	
 	return cell;
 }
 
@@ -532,13 +761,14 @@
 			[results replaceObjectAtIndex:indexPath.row withObject:entry];
 		}
 	}
+    
 	mainLabel.text = ((SwordModuleTextEntry *)[results objectAtIndex: indexPath.row]).key;
 	NSMutableString *txt = [((SwordModuleTextEntry *)[results objectAtIndex: indexPath.row]).text mutableCopy];
 	[txt replaceOccurrencesOfString:@"\n" withString:@" " options:NSLiteralSearch range:NSMakeRange(0, [txt length])];
 	//DLog(@"\n%@", txt);
 	secondLabel.text = txt;
 	[txt release];
-	
+    
 	return cell;
 }
 
@@ -556,7 +786,9 @@
 		cell.backgroundColor = [UIColor blackColor];
 	} else if([tableView isEqual:searchQueryTable] && indexPath.section == 1) {
 		// our search row:
-		cell.backgroundColor = [UIColor blueColor];
+		cell.backgroundColor = [PSBookmarkFolder colorFromHexString:@"#0084ca"]; // [UIColor blueColor];
+        cell.textAlignment = UITextAlignmentCenter;
+        
 	} else {
 		cell.backgroundColor = [UIColor whiteColor];
 	}
@@ -575,24 +807,31 @@
 		[[NSUserDefaults standardUserDefaults] synchronize];
 
 		switch(listType) {
-			case BibleTab:
+            case BibleTab:
 				[[NSNotificationCenter defaultCenter] postNotificationName:NotificationRedisplayPrimaryBible object:nil];
 				[PSHistoryController addHistoryItem:BibleTab];
-				break;
-			case CommentaryTab:
+                break;
+            case CommentaryTab:
 				[[NSNotificationCenter defaultCenter] postNotificationName:NotificationRedisplayPrimaryCommentary object:nil];
 				[PSHistoryController addHistoryItem:CommentaryTab];
-				break;
+                break;
 			default:
 				break;
 		}
+        
 		[[NSNotificationCenter defaultCenter] postNotificationName:NotificationToggleMultiList object:nil];
-	} else if([tableView isEqual:searchQueryTable]) {
+        
+	}else if([tableView isEqual:searchQueryTable]) {
+        
 		[searchBar resignFirstResponder];
-		//searchBar.text = searchTermToDisplay;
-		self.searchTermToDisplay = searchBar.text;
-		if(indexPath.section == 0) {
-			PSSearchOptionTableViewController *optionTVC = nil;
+		
+        //searchBar.text = searchTermToDisplay;
+		
+        self.searchTermToDisplay = searchBar.text;
+		
+        if(indexPath.section == 0) {
+			
+            PSSearchOptionTableViewController *optionTVC = nil;
 			switch(indexPath.row) {
 				case SearchTypeSection:
 				{
@@ -600,11 +839,13 @@
 					optionTVC.searchType = self.searchType;
 				}
 					break;
+                    
 				case SearchRangeSection:
 				{
 					optionTVC = [[PSSearchOptionTableViewController alloc] initWithTableType:PSSearchOptionTableRangeSelector];
 					optionTVC.searchRange = self.searchRange;
 					NSString *currentBook = bookName;
+                    
 					if(!self.bookName) {
 						currentBook = [PSModuleController createRefString:[PSModuleController getCurrentBibleRef]];
 						NSRange lastSpace = [currentBook rangeOfString:@" " options:NSBackwardsSearch];
@@ -612,9 +853,12 @@
 							currentBook = [currentBook substringToIndex:lastSpace.location];
 						}
 					}
+                    
 					optionTVC.bookName = currentBook;
 				}
+                    
 					break;
+                    
 				case SearchFuzzySection:
 				{
 					optionTVC = [[PSSearchOptionTableViewController alloc] initWithTableType:PSSearchOptionTableFuzzySelector];
@@ -628,10 +872,12 @@
 				}
 					break;
 			}
+            
 			optionTVC.delegate = self;
 			[self.navigationController pushViewController:optionTVC animated:YES];
 			[optionTVC release];
-		} else if(indexPath.section == 1) {
+		
+        } else if(indexPath.section == 1) {
 			[tableView deselectRowAtIndexPath:indexPath animated:YES];
 			[self searchBarSearchButtonClicked:nil];
 		}
@@ -639,6 +885,7 @@
 }
 
 - (void)createSearchTerm {
+    
 	NSMutableArray *components = [NSMutableArray arrayWithCapacity:1];
 	NSInteger i =0;
 	BOOL insideQuotes = NO;

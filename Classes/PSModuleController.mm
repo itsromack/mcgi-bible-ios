@@ -23,7 +23,6 @@
 #import "PSTabBarControllerDelegate.h"
 #import "SwordDictionary.h"
 #import "PSResizing.h"
-
 #import "SwordManager.h"
 #import "SwordInstallManager.h"
 #import "globals.h"

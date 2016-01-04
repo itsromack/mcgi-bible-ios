@@ -123,6 +123,10 @@
     
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(highlightVerse) name:NotificationHighlightChanged object:nil];
     
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(shareVerse) name:@"NotificationShareVerse" object:nil];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(copyVerse) name:@"NotificationCopyVerse" object:nil];
+    
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(nightModeChanged) name:NotificationNightModeChanged object:nil];
 	finishedLoading = NO;
 }
@@ -377,7 +381,7 @@
 		topLength = [[self topLayoutGuide] length];
 		bottomLength = [[self bottomLayoutGuide] length];
 	}
-	[webView setupRefreshViews:topLength bottom:bottomLength];
+//	[webView setupRefreshViews:topLength bottom:bottomLength];
  
  
 }
@@ -570,8 +574,70 @@
         
         [webView stringByEvaluatingJavaScriptFromString:jsFunction];
         
+        
+        NSString *jsFunction2 = [NSString stringWithFormat:@"document.getElementById('vv%@').innerHTML", verse];
+        
+        NSString *verseText = [webView stringByEvaluatingJavaScriptFromString:jsFunction2];
+        
+        NSLog(@"Selected verse: %@", verseText);
+        
+        
         [[NSNotificationCenter defaultCenter] postNotificationName:NotificationRedisplayPrimaryBible object:nil];
        
+    }
+}
+
+-(void)copyVerse
+{
+       HighlightedVerseObject *verseObj =[PocketSwordAppDelegate sharedAppDelegate].highlitedVerse;
+    
+    
+    if(verseObj.ref) {
+        
+        NSString *verse = [[verseObj.ref componentsSeparatedByString:@":"] objectAtIndex: 1];
+        
+        
+        NSString *jsFunction2 = [NSString stringWithFormat:@"document.getElementById('vvv%@').innerHTML", verse];
+        
+        NSString *verseText = [webView stringByEvaluatingJavaScriptFromString:jsFunction2];
+        
+        NSLog(@"Selected verse: %@", verseText);
+        
+        UIPasteboard *pasteBoard = [UIPasteboard generalPasteboard];
+        pasteBoard.string = [NSString stringWithFormat:@"%@ %@", verseObj.ref, verseText];
+        
+    }
+    
+}
+-(void)shareVerse
+{
+    HighlightedVerseObject *verseObj =[PocketSwordAppDelegate sharedAppDelegate].highlitedVerse;
+    
+    
+    if(verseObj.ref) {
+        
+        NSString *verse = [[verseObj.ref componentsSeparatedByString:@":"] objectAtIndex: 1];
+        
+       // NSString *jsFunction2 = [NSString stringWithFormat:@"document.getElementById('vvv%@').innerHTML", verse];
+        
+        NSString *jsFunction2 = [NSString stringWithFormat:@"document.getElementById('vvv%@').innerHTML", verse];
+        
+        
+        NSString *verseText = [webView stringByEvaluatingJavaScriptFromString:jsFunction2];
+        
+        NSString *verse2 = [NSString stringWithFormat:@"%@ %@", verseObj.ref, verseText];
+        
+        NSLog(@"Selected verse: %@", verse2);
+   
+        //  UIPasteboard *pasteBoard = [UIPasteboard generalPasteboard];
+        //  pasteBoard.string = verse2;
+     
+        NSArray *dataToShare = @[verse2];
+        
+        //UIActivityViewController *actVC = [[UIActivityViewController alloc]initWithActivityItems:dataToShare applicationActivities:nil];
+       
+      //  [self presentViewController:actVC animated:YES completion:nil];
+        
     }
 }
 
@@ -654,7 +720,7 @@
 				[[NSUserDefaults standardUserDefaults] setObject: [components objectAtIndex:3] forKey: @"bibleScrollPosition"];
 				[[NSUserDefaults standardUserDefaults] setObject: [components objectAtIndex:2] forKey: DefaultsBibleVersePosition];
 			} else {
-				[[NSUserDefaults standardUserDefaults] setObject: [components objectAtIndex:3] forKey: @"commentaryScrollPosition"];
+				[[NSUserDefaults standardUserDefasults] setObject: [components objectAtIndex:3] forKey: @"commentaryScrollPosition"];
 				[[NSUserDefaults standardUserDefaults] setObject: [components objectAtIndex:2] forKey: DefaultsCommentaryVersePosition];
 			}
 			[[NSUserDefaults standardUserDefaults] synchronize];
@@ -668,9 +734,8 @@
 			//DLog(@"    %@", tappedVerse);
 			NSInteger tappedVerseInt = [tappedVerse integerValue];
 			NSString *sheetTitle = [NSString stringWithFormat:NSLocalizedString(@"RefSelectorVerseTitle", @""), tappedVerseInt];
-			UIActionSheet *sheet = [[UIActionSheet alloc] initWithTitle:sheetTitle delegate:self cancelButtonTitle:NSLocalizedString(@"Cancel", @"") destructiveButtonTitle:nil otherButtonTitles:NSLocalizedString(@"VerseContextualMenuCopy",@""), NSLocalizedString(@"VerseContextualMenuAddBookmark",@""), NSLocalizedString(@"VerseContextualMenuHighlight",@""),
-                NSLocalizedString(@"VerseContextualMenuAddNote",@""),
-                nil]; // NSLocalizedString(@"VerseContextualMenuCommentary", @""), nil];
+			UIActionSheet *sheet = [[UIActionSheet alloc] initWithTitle:sheetTitle delegate:self cancelButtonTitle:NSLocalizedString(@"Cancel", @"") destructiveButtonTitle:nil otherButtonTitles:NSLocalizedString(@"VerseContextualMenuAddBookmark",@"Add Bookmark"), NSLocalizedString(@"VerseContextualMenuHighlight",@"Highlight"),
+                @"Share/Copy", nil]; // NSLocalizedString(@"VerseContextualMenuCopy",@"")NSLocalizedString(@"VerseContextualMenuCommentary", @""), nil];
 			[sheet showFromTabBar:self.tabBarController.tabBar];
             
 			// TODO: for iPad, use showFromRect:inView:animated: instead, after determining the rect of the verse number.

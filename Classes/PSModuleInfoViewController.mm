@@ -20,6 +20,10 @@
 
 @synthesize infoWebView, swordModule;
 
+-(void)viewWillAppear:(BOOL)animated
+{
+        self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
+}
 - (void)loadView {
 	CGFloat viewWidth = [[UIScreen mainScreen] bounds].size.width;
 	CGFloat viewHeight = [[UIScreen mainScreen] bounds].size.height;
@@ -42,6 +46,8 @@
 	UIBarButtonItem *trashButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemTrash target:self action:@selector(trashModule:)];
 	self.tabBarController.navigationItem.rightBarButtonItem = trashButton;
 	[trashButton release];
+    
+    
 
 	self.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
 	[infoWebView loadHTMLString:@"<html><body bgcolor=\'black\'>&nbsp;</body></html>" baseURL: nil];
@@ -54,6 +60,7 @@
 
 - (void)viewDidAppear:(BOOL)animated {
 	[super viewDidAppear:animated];
+ 
 	
 	SwordModule *mod = [[[PSModuleController defaultModuleController] swordManager] moduleWithName: self.tabBarController.navigationItem.title];
 	if(askToUnlock && mod) {

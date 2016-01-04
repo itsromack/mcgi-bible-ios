@@ -2,7 +2,13 @@ function PS_HighlightVerseWithHexColour(verse,colour) {
 	var elementToHighlight = document.getElementById("vvv"+verse);
 	elementToHighlight.style.backgroundColor = colour;
 	elementToHighlight.style.color = "black";
-	//elementToHighlight.style.opacity = 0.8;
+	 //elementToHighlight.style.opacity = 0.8;
+}
+
+function PS_CopySelectedVerse(verse){
+    var element = document.getElementById("vvv"+verse);
+    
+    return element.text();
 }
 
 function PS_RemoveHighlights(verseMax,fontColour) {

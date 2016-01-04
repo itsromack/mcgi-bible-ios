@@ -406,38 +406,43 @@
 		multiListController.delegate = searchController;
 		searchController.delegate = self;
 		NSArray* controllers = [NSArray arrayWithObjects:historyNavigationController, searchNavigationController, nil];
-		multiListController.viewControllers = controllers;
+	//disable search temporarily
+      
+    //    NSArray* controllers = [NSArray arrayWithObjects:historyNavigationController,  nil];
+        
+        
+        multiListController.viewControllers = controllers;
 		
 		if([[bibleTabController webView] isDescendantOfView:tabBarController.selectedViewController.view] || bibleTabController.isFullScreen) {
 			[historyController setListType:BibleTab];
-			[searchController setListType:BibleTab];
+		 	[searchController setListType:BibleTab];
 			if(savedSearchResultsTab == BibleTab && savedSearchHistoryItem && savedSearchHistoryItem.results) {
 				//restore the previous search term:
-				[searchController setSearchHistoryItem:savedSearchHistoryItem];
-				//[multiListController setSelectedViewController:searchNavigationController];
+				 [searchController setSearchHistoryItem:savedSearchHistoryItem];
+			 [multiListController setSelectedViewController:searchNavigationController];
 			} else if(savedSearchHistoryItem && savedSearchHistoryItem.searchTerm) {
-				[searchController setSearchHistoryItem:savedSearchHistoryItem];
+		 [searchController setSearchHistoryItem:savedSearchHistoryItem];
 				self.savedSearchHistoryItem = nil;
-				[multiListController setSelectedViewController:searchNavigationController];
+	 	[multiListController setSelectedViewController:searchNavigationController];
 			}
 		} else {
 			[historyController setListType:CommentaryTab];
-			[searchController setListType:CommentaryTab];
+			 [searchController setListType:CommentaryTab];
 			if(savedSearchResultsTab == CommentaryTab && savedSearchHistoryItem && savedSearchHistoryItem.results) {
 				//restore the previous search term:
-				[searchController setSearchHistoryItem:savedSearchHistoryItem];
+		 	[searchController setSearchHistoryItem:savedSearchHistoryItem];
 				//[multiListController setSelectedViewController:searchNavigationController];
 			}
 		}
 		
 		if([[NSUserDefaults standardUserDefaults] integerForKey:DefaultsLastMultiListTab] == SearchTab) {
-			[multiListController setSelectedViewController:searchNavigationController];
+			 [multiListController setSelectedViewController:searchNavigationController];
 		}
 		[tabBarController presentModalViewController:multiListController animated:YES];
-		[searchNavigationController release];
+	 	[searchNavigationController release];
 		[historyNavigationController release];
 		[historyController release];
-		[searchController release];
+	 	[searchController release];
 		[multiListController release];
 	}
 	

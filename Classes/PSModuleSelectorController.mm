@@ -68,6 +68,9 @@
 	} else if(![PSResizing iPad]) {
 		UIBarButtonItem	*modulesCloseButton = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"CloseButtonTitle", @"") style:UIBarButtonItemStyleBordered target:self action:@selector(dismissModuleSelector)];
 		self.navigationItem.leftBarButtonItem = modulesCloseButton;
+        
+        self.navigationItem.leftBarButtonItem.tintColor = [UIColor whiteColor];
+        
 		[modulesCloseButton release];
 	//	UIBarButtonItem *modulesAddButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(addModuleButtonPressed)];
 		//self.navigationItem.rightBarButtonItem = modulesAddButton;
@@ -189,6 +192,7 @@
 		case DownloadsTab:
 			break;
 	}
+    
 	return 0;
 }
 
@@ -439,15 +443,18 @@
 			[barButton release];
 		}
 		if([swordModule hasFeature: SWMOD_FEATURE_SCRIPTREF]) {
-			if(GetBoolPrefForMod(DefaultsScriptRefsPreference, [swordModule name])) {
+			
+            if(GetBoolPrefForMod(DefaultsScriptRefsPreference, [swordModule name])) {
 				imageName = @"enabled-Xrefs.png";
 			} else {
 				imageName = @"disabled-Xrefs.png";
 			}
 			UIBarButtonItem *barButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:imageName] style:UIBarButtonItemStylePlain target:self action:@selector(xrefsButtonPressed:)];
 			[buttons addObject:barButton];
-			[barButton release];
+			
+            [barButton release];
 		}
+        
 		if([swordModule hasFeature: SWMOD_FEATURE_REDLETTERWORDS]) {
 			if(GetBoolPrefForMod(DefaultsRedLetterPreference, [swordModule name])) {
 				imageName = @"enabled-RedLetter.png";
@@ -458,6 +465,7 @@
 			[buttons addObject:barButton];
 			[barButton release];
 		}
+        
 		if([swordModule hasFeature:SWMOD_FEATURE_GLOSSES] || [swordModule hasFeature:@"Ruby"]) {
 			if(GetBoolPrefForMod(DefaultsGlossesPreference, [swordModule name])) {
 				imageName = @"enabled-Glosses.png";
@@ -475,14 +483,17 @@
 		} else {
 			imageName = @"disabled-VPL.png";
 		}
+        
 		UIBarButtonItem *vplBarButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:imageName] style:UIBarButtonItemStylePlain target:self action:@selector(vplButtonPressed:)];
-		[buttons addObject:vplBarButton];
+		
+        [buttons addObject:vplBarButton];
 		[vplBarButton release];
 		vplBarButton = nil;
 
 		
 		// add buttons to the bottom toolbar.
 		[modulesToolbar setItems:buttons animated:animated];
+        modulesToolbar.tintColor = [UIColor whiteColor];
 	}
 }
 

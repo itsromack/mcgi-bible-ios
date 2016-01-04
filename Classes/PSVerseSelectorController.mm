@@ -22,6 +22,7 @@
 		self.tableView.backgroundColor = [UIColor whiteColor];
 	}
 	self.navigationItem.title = [NSString stringWithFormat:@"%@ %d", [book name], chapter];
+    [[UINavigationBar appearance]setTintColor:[UIColor whiteColor]];
     [super viewWillAppear:animated];
 }
 

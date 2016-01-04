@@ -55,8 +55,11 @@
 	[self updateRefSelectorBooks];
 	[self.tableView reloadData];
 	self.navigationItem.title = NSLocalizedString(@"RefSelectorBookTitle", @"Book");
-	[self.navigationController popToRootViewControllerAnimated:NO];
+	
+    
+    [self.navigationController popToRootViewControllerAnimated:NO];
 	self.navigationItem.leftBarButtonItem = nil;
+    
 	if([[NSUserDefaults standardUserDefaults] boolForKey:DefaultsNightModePreference]) {
 		self.tableView.backgroundColor = [UIColor blackColor];
 	} else {
@@ -68,6 +71,7 @@
     }
 	UIBarButtonItem *cancel = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(dismissNavigation)];
 	self.navigationItem.leftBarButtonItem = cancel;
+    self.navigationItem.leftBarButtonItem.tintColor = [UIColor whiteColor];
 	[cancel release];
 }
 

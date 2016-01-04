@@ -50,7 +50,7 @@
 		return;
 	}
 	
-	[self dataSourceDidFinishLoadingNewData];
+	//[self dataSourceDidFinishLoadingNewData];
 	
 	UIScrollView* currentScrollView = nil;
     for (UIView* subView in self.subviews) {
@@ -116,8 +116,10 @@
     
 	refreshFooterView = [[EGORefreshTableFooterView alloc] initWithFrame:CGRectMake(0.0f, [self tableViewHeight], rectWidth, 600.0f)];
 	refreshFooterView.backgroundColor = [UIColor colorWithRed:226.0/255.0 green:231.0/255.0 blue:237.0/255.0 alpha:1.0];
-	[currentScrollView addSubview:refreshFooterView];
-	//currentScrollView.showsVerticalScrollIndicator = YES;
+	
+    //[currentScrollView addSubview:refreshFooterView];
+	
+    //currentScrollView.showsVerticalScrollIndicator = YES;
 	[refreshFooterView release];
 
 	NSString *currentRef = [PSModuleController getCurrentBibleRef];

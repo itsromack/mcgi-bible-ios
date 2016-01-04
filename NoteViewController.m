@@ -11,6 +11,7 @@
 @interface NoteViewController ()
 {
     UITextView *textView ;
+    TPKeyboardAvoidingScrollView *avoidingScroll;
 }
 @end
 
@@ -24,10 +25,18 @@
     CGFloat screenWidth = screenRect.size.width;
     CGFloat screenHeight = screenRect.size.height;
     
+    
+    
+    avoidingScroll =[[TPKeyboardAvoidingScrollView alloc]initWithFrame:CGRectMake(0,0,screenWidth,screenHeight) ];
+    [self.view addSubview:avoidingScroll];
+    
     textView = [[UITextView alloc] initWithFrame:CGRectMake(0,0,screenWidth,screenHeight)];
     
-    [self.view addSubview:textView];
+    [avoidingScroll addSubview:textView];
+    
     [textView becomeFirstResponder];
+    
+    textView.font = [UIFont systemFontOfSize:13];
 
     UIBarButtonItem *saveButton = [[UIBarButtonItem alloc] initWithTitle:@"Done" style:UIBarButtonItemStylePlain target:self action:@selector(saveButtonPressed)];
     self.navigationItem.rightBarButtonItem= saveButton;
@@ -63,16 +72,15 @@
     FMDatabase *database = [FMDatabase databaseWithPath:databasePath];
     [database open];
     
-   
-    FMResultSet *results = [database executeQuery: [NSString stringWithFormat:@"select * from Notes where id = %d", self.noteObj.ID]];
+    FMResultSet *results = [database executeQuery: [NSString stringWithFormat:@"select * from Notes where id = %d", self.note_id]];
     
     while([results next]) {
         textView.text = [results stringForColumn:@"note"];
-        self.note_id =self.noteObj.ID;
+        //self.note_id =self.noteObj.ID;
     }
     
     [database close];
-    
+
 }
 -(BOOL)isExist:(int)noteId{
     
@@ -84,7 +92,7 @@
     FMResultSet *results = [database executeQuery: [NSString stringWithFormat:@"select * from Notes where id = %d", noteId]];
     
     while([results next]) {
-        textView.text = [results stringForColumn:@"note"];
+        //textView.text = [results stringForColumn:@"note"];
         exists=YES;
     }
     
@@ -96,14 +104,14 @@
     
         NSString *databasePath = [[PocketSwordAppDelegate sharedAppDelegate] getDbPath];
         
-    NSString *ref = textView.text;
+        NSString *ref = textView.text;
     
         FMDatabase *database = [FMDatabase databaseWithPath:databasePath];
         [database open];
     
         
         NSString *queryInsert = [NSString stringWithFormat:@"insert into Notes (note,folder_id, date_created) values ('%@','%d',date('now'))",
-                                 ref,self.noteObj.folder_id];
+                                 ref,self.folder_id];
     
     NSString *queryUpdate = [NSString stringWithFormat:@"update Notes set note='%@' where id=%d", ref,self.note_id];
     

@@ -69,10 +69,23 @@ PocketSwordAppDelegate *appDelegate;
 	}
     else if([buttonPressedTitle isEqualToString:NSLocalizedString(@"VerseContextualMenuCopy", @"")]) {
         
-        //Copy verse to clipboard
-        NSString *refToBookmark = [PSModuleController createRefString:[PSModuleController getCurrentBibleRef]];
+        NSString *refToShare= [PSModuleController createRefString:[PSModuleController getCurrentBibleRef]];
         
         NSString *verse = self.tappedVerse;
+        
+        NSString *ref = [NSString stringWithFormat:@"%@:%@", refToShare, verse];
+        
+        HighlightedVerseObject *highlitedObject = [[HighlightedVerseObject alloc]init];
+        
+        highlitedObject.ref = ref;
+        
+        
+        [PocketSwordAppDelegate sharedAppDelegate].highlitedVerse = highlitedObject;
+        
+        
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"NotificationCopyVerse" object:nil];
+        
+        self.tappedVerse = nil;
         
     
         self.tappedVerse = nil;
@@ -95,20 +108,30 @@ PocketSwordAppDelegate *appDelegate;
        // [self.navigationController pushViewController:csvc animated:YES];
         [csvc release];
         
-    }else if([buttonPressedTitle isEqualToString:NSLocalizedString(@"VerseContextualMenuCommentary", @"")]) {
+    }else if([buttonPressedTitle isEqualToString:@"Share/Copy"]){//isEqualToString:NSLocalizedString(@"VerseContextualMenuCommentary", @"")]) {
 		
 		//switch to the equivalent commentary entry.
 		//commentaryView.jsToShow = [NSString stringWithFormat:@"scrollToVerse(%@);\n", tappedVerse];
-		[commentaryView setVerseToShow:[tappedVerse integerValue]];
-		BOOL fs = [self isFullScreen];
-		if(fs) {
-			[self toggleFullscreen];
-			[commentaryView viewWillAppear:YES];
-		}
-		[[NSNotificationCenter defaultCenter] postNotificationName:NotificationShowCommentaryTab object:nil];
-		if(fs) {
-			[commentaryView toggleFullscreen];
-		}
+        NSString *refToShare= [PSModuleController createRefString:[PSModuleController getCurrentBibleRef]];
+        
+        NSString *verse = self.tappedVerse;
+        
+        NSString *ref = [NSString stringWithFormat:@"%@:%@", refToShare, verse];
+	 
+        HighlightedVerseObject *highlitedObject = [[HighlightedVerseObject alloc]init];
+        
+        highlitedObject.ref = ref;
+      
+        
+        [PocketSwordAppDelegate sharedAppDelegate].highlitedVerse = highlitedObject;
+        
+        
+      [[NSNotificationCenter defaultCenter] postNotificationName:@"NotificationShareVerse" object:nil];
+        
+        //*******share verse***********
+        
+        
+        
 		self.tappedVerse = nil;
 		
 	}

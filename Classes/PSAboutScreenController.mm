@@ -38,7 +38,7 @@
   	 <center><i><a href=\"https://github.com/MCGI/mcgi-bible-ios\">MCGI Bible on Github</a></i></center>\n\
 <br /><strong>&nbsp;&nbsp;&nbsp;Licenses</strong>\n\
     <div class=\"crosswire\">\n\
-    <h2 class=\"headbar\">PocketSword</h2>\n\
+    <h3>PocketSword</h3>\n\
     <p>MCGI Bible was based on the PocketSword project.</p>\n\
     \n\
     <p>PocketSword benefits from the following Open Source projects:<br />\n\
@@ -290,15 +290,20 @@
 {
     NSString *recipients = @"inquiries@mcgi.org.sg";
 	
-	NSString *subject = [NSString stringWithFormat:@"MCGI Bible Feedback (v%@ - %@ %@ (%@))", [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleShortVersionString"], [[UIDevice currentDevice] systemName], [[UIDevice currentDevice] systemVersion], [self platformString]];
+	NSString *subject =  @"MCGI Bible Feedback";
 	
 	if([MFMailComposeViewController canSendMail]) {
 		MFMailComposeViewController *mailComposeViewController = [[MFMailComposeViewController alloc] init];
 		[mailComposeViewController setSubject:subject];
 		[mailComposeViewController setToRecipients:[NSArray arrayWithObject:recipients]];
 		mailComposeViewController.mailComposeDelegate = self;
-		mailComposeViewController.navigationBar.barStyle = UIBarStyleBlack;
-		[self.tabBarController presentModalViewController:mailComposeViewController animated:YES];
+        
+        mailComposeViewController.navigationBar.barStyle = UIBarStyleDefault;
+        
+        mailComposeViewController.navigationBar.barTintColor = [UIColor whiteColor];
+        mailComposeViewController.navigationBar.tintColor = [UIColor blackColor];
+        
+        [self.tabBarController presentModalViewController:mailComposeViewController animated:YES];
 		[mailComposeViewController release];
 	}
 }

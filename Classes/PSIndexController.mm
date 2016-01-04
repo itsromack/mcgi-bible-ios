@@ -7,13 +7,13 @@
 //
 
 #import "PSIndexController.h"
-#import "ZipArchive.h"
+
 #import "PocketSwordAppDelegate.h"
 #import "PSModuleController.h"
 #import "SwordModule.h"
 #import "globals.h"
 #import "SwordManager.h"
-
+#import "ZipArchive.h"
 @implementation PSIndexController
 
 @synthesize files;
@@ -76,6 +76,15 @@
 		NSURLRequest *request = [NSURLRequest requestWithURL: [NSURL URLWithString: remoteDir]
 												 cachePolicy: NSURLRequestReloadIgnoringLocalCacheData timeoutInterval: 10.0];
 		NSData *data = [NSURLConnection sendSynchronousRequest: request returningResponse: NULL error: NULL];
+        
+        
+        NSURLRequest * urlRequest = [NSURLRequest requestWithURL:[NSURL URLWithString:remoteDir]];
+        NSURLResponse * response = nil;
+        NSError * error = nil;
+        NSData *_data = [NSURLConnection sendSynchronousRequest:urlRequest
+                                              returningResponse:&response
+                                                          error:&error];
+        
 		[[NSNotificationCenter defaultCenter] postNotificationName:NotificationHideNetworkIndicator object:nil];
 		if (!data) {
 			
@@ -142,12 +151,15 @@
 //	[hud removeFromSuperview];
 //	[hud release];
 //	hud = nil;
-	if(removingHUDViewInProgress) {
+	
+    if(removingHUDViewInProgress) {
 		removingHUDViewInProgress = NO;
 		return;
 	}
-	// if we were updating, now show the appropriate dialogue
-	if(self.files) {
+	
+    // if we were updating, now show the appropriate dialogue
+	
+    if(self.files) {
 		[self checkForRemoteIndex];
 	}
 	// else if we were installing, now finish up.
@@ -183,8 +195,9 @@
 			}
 		}
 	}
+    
 	self.files = nil;
-
+    
 	NSString *msg = [NSString stringWithFormat:@"%@\n%@", NSLocalizedString(@"IndexControllerNoneRemote", @"No available search index for:"), moduleToInstall];
 	UIAlertView *alertView = [[UIAlertView alloc] initWithTitle: NSLocalizedString(@"NoSearchIndexTitle", @"") message: msg delegate: self cancelButtonTitle: NSLocalizedString(@"Ok", @"Ok") otherButtonTitles: nil];
 	[alertView show];

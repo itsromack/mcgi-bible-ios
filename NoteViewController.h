@@ -8,9 +8,10 @@
 
 #import <UIKit/UIKit.h>
 #import "NoteObj.h"
+#import "TPKeyboardAvoidingScrollView.h"
+
 @interface NoteViewController : UIViewController<UITextViewDelegate>
-{
-    int folder_id;
+{   int folder_id;
     NoteObj *noteObj;
     int note_id;
 }

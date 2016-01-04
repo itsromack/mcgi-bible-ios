@@ -230,11 +230,12 @@ FMDatabase *database = [FMDatabase databaseWithPath:databasePath];
     NoteViewController *note = [[NoteViewController  alloc]init];
     note.note_id = _noteObj.ID;
     note.noteObj = _noteObj;
+    note.folder_id = self.noteFolderObj.ID;
     
     [self.navigationController pushViewController:note animated:YES];
     self.navigationItem.leftBarButtonItem.tintColor = [UIColor whiteColor];
     
-    [_noteObj release];
+   // [_noteObj release];
     
 }
 

@@ -40,7 +40,10 @@
 		self.tableView.backgroundColor = [UIColor whiteColor];
 	}
 	self.navigationItem.title = [book name];//[NSString stringWithFormat:@"%@ %@", [book name], NSLocalizedString(@"RefSelectorChapterTitle", @"Chapter")];
-	NSString *currentBook = [[NSUserDefaults standardUserDefaults] stringForKey: DefaultsLastRef];
+    
+    self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
+	
+    NSString *currentBook = [[NSUserDefaults standardUserDefaults] stringForKey: DefaultsLastRef];
 	currentBook = [[currentBook componentsSeparatedByString:@":"] objectAtIndex:0];
 	NSRange spaceRange = [currentBook rangeOfString:@" " options:NSBackwardsSearch];
 	if(spaceRange.location != NSNotFound) {

@@ -23,6 +23,7 @@
 	fontSizeLabel.textColor = [UIColor darkTextColor];
 	fontSizeLabel.text = @"12";
 	fontSizeLabel.backgroundColor = [UIColor clearColor];
+     self.navigationItem.leftBarButtonItem.tintColor = [UIColor whiteColor];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -38,6 +39,7 @@
 			[self.tableView setContentInset:UIEdgeInsetsMake(topLength, 0.0f, 0.0f, 0.0f)];
 		}
 	}
+    
 }
 
 - (void)displayPrefsForModule:(SwordModule*)swordModule {
