@@ -175,6 +175,7 @@
     
     //additional bibles
     BOOL angdatingbiblia =[defaults boolForKey:@"angdatingbiblia"];
+  //  BOOL japanessebible = =[defaults boolForKey:@"japanese];
     
     BOOL SpaSEV =[defaults boolForKey:@"SpaSEV"];
     BOOL PorAR =[defaults boolForKey:@"PorAR"];

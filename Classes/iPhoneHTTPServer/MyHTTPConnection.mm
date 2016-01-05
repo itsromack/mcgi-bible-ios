@@ -50,7 +50,7 @@
 		displayName = [NSMutableString stringWithFormat:@" (%@)", displayName];
 	}
 	[outdata appendFormat:@"<head>\n<title>Installed Modules%@</title>\n", displayName];
-	[outdata appendString: @"<meta http-equiv=\"content-type\" content=\"application/xhtml+xml;charset=utf-8\" />"];
+	[outdata appendString: @"<meta http-equiv=\"content-type\" content=\"application/xhtml+xml;charset=utf8_unicode_ci\" />"];
     [outdata appendString:@"<style type=\"text/css\">html {background-color:#eeeeee} body { background-color:#FFFFFF; font-family:Helvetica,Tahoma,Arial,sans-serif; font-size:18x; margin-left:15%; margin-right:15%; border:3px groove #006600; padding:15px; } </style>\n"];
     [outdata appendString:@"</head>\n<body>\n"];
 	[outdata appendFormat:@"<h1>Installed Modules%@</h1>\n", displayName];

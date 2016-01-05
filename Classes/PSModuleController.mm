@@ -1011,6 +1011,8 @@ static NSString *firstRefAvailable = @"Genesis 1";
 	}
 	NSString *fontSizeMinusOne = [NSString stringWithFormat:@"<font style=\"font-size: %dpt;line-height: 0%%;\">", (int)(fs-2)];
 	NSString *finalBody = [body stringByReplacingOccurrencesOfString:@"<font size=\"-1\">" withString:fontSizeMinusOne];
+//    finalBody =
+
 	NSString *iPadPadding = @"";
 	NSString *lineHeight = @"1.4";
 	//int normalPaddingStart = 3, largePaddingStart = 5;
@@ -1050,7 +1052,7 @@ static NSString *firstRefAvailable = @"Genesis 1";
 		}
 	}
 	
-	static NSString *viewportString = @"<meta name='viewport' content='width=device-width' />\n";
+	static NSString *viewportString = @"<meta name='viewport' content='width=device-width' />\n <meta http-equiv='Content-Type' content='text/html; charset=utf8_unicode_ci' />";
 
 	NSMutableString *returnString = [NSMutableString stringWithFormat: @"<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n\
 									 <!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.1//EN\"\n\
@@ -1121,6 +1123,8 @@ static NSString *firstRefAvailable = @"Genesis 1";
 			hugePadding, hugeIndent,
 			RUBY_CSS, javascript];
 
+    finalBody = [finalBody stringByReplacingOccurrencesOfString:@"&#226;&#8364;&#8482;" withString:@"'"];
+    finalBody = [finalBody stringByReplacingOccurrencesOfString:@"&#226;&#8364;&#8220;" withString:@""];
 	 [returnString appendFormat:@"<body>\n<div>%@</div>\n</body>\n</html>",
 			finalBody];
 	

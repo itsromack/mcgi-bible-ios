@@ -596,7 +596,7 @@
         
         NSString *verseText = [webView stringByEvaluatingJavaScriptFromString:jsFunction2];
         
-        NSLog(@"Selected verse: %@", verseText);
+        NSLog(@"Selected verse: %@", [webView stringByEvaluatingJavaScriptFromString:@"document.body.documentElement.outerHTML"]);
         
         UIPasteboard *pasteBoard = [UIPasteboard generalPasteboard];
         pasteBoard.string = [NSString stringWithFormat:@"%@ %@", verseObj.ref, verseText];
@@ -626,7 +626,7 @@
         NSString *verse2 = [NSString stringWithFormat:@"%@ %@", verseObj.ref, verseText];
         
         
-        
+             NSLog(@"Selected verse: %@", [webView stringByEvaluatingJavaScriptFromString:@"document.documentElement.outerHTML"]);
         NSLog(@"Selected verse: %@", verse2);
    
         //  UIPasteboard *pasteBoard = [UIPasteboard generalPasteboard];

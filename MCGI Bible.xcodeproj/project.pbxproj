@@ -484,8 +484,8 @@
 		F13849CB1C2FEA99008276CE /* ASV-i.zip in Resources */ = {isa = PBXBuildFile; fileRef = F13849C71C2FEA99008276CE /* ASV-i.zip */; };
 		F13849CC1C2FEA99008276CE /* AKJV-i.zip in Resources */ = {isa = PBXBuildFile; fileRef = F13849C81C2FEA99008276CE /* AKJV-i.zip */; };
 		F14CC21E1C1C3B8E003D02B4 /* database.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = F14CC21D1C1C3B8E003D02B4 /* database.sqlite */; };
-		F1717A2F1C3AB4FA00E9683C /* ADB.zip in Resources */ = {isa = PBXBuildFile; fileRef = F1717A2E1C3AB4FA00E9683C /* ADB.zip */; };
 		F1717A351C3AC5D200E9683C /* ADB-i.zip in Resources */ = {isa = PBXBuildFile; fileRef = F1717A341C3AC5D200E9683C /* ADB-i.zip */; };
+		F1717A371C3B055E00E9683C /* ADB.zip in Resources */ = {isa = PBXBuildFile; fileRef = F1717A361C3B055E00E9683C /* ADB.zip */; };
 		F1886BC11C12CD2900275352 /* NoteFolderObj.m in Sources */ = {isa = PBXBuildFile; fileRef = F1886BAB1C12CD2900275352 /* NoteFolderObj.m */; };
 		F1886BC21C12CD2900275352 /* NoteObj.m in Sources */ = {isa = PBXBuildFile; fileRef = F1886BAD1C12CD2900275352 /* NoteObj.m */; };
 		F1886BC31C12CD2900275352 /* NotesInFolderTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F1886BAF1C12CD2900275352 /* NotesInFolderTableViewController.m */; };
@@ -1454,8 +1454,8 @@
 		F13849C71C2FEA99008276CE /* ASV-i.zip */ = {isa = PBXFileReference; lastKnownFileType = archive.zip; path = "ASV-i.zip"; sourceTree = "<group>"; };
 		F13849C81C2FEA99008276CE /* AKJV-i.zip */ = {isa = PBXFileReference; lastKnownFileType = archive.zip; path = "AKJV-i.zip"; sourceTree = "<group>"; };
 		F14CC21D1C1C3B8E003D02B4 /* database.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = database.sqlite; sourceTree = "<group>"; };
-		F1717A2E1C3AB4FA00E9683C /* ADB.zip */ = {isa = PBXFileReference; lastKnownFileType = archive.zip; path = ADB.zip; sourceTree = "<group>"; };
 		F1717A341C3AC5D200E9683C /* ADB-i.zip */ = {isa = PBXFileReference; lastKnownFileType = archive.zip; path = "ADB-i.zip"; sourceTree = "<group>"; };
+		F1717A361C3B055E00E9683C /* ADB.zip */ = {isa = PBXFileReference; lastKnownFileType = archive.zip; path = ADB.zip; sourceTree = "<group>"; };
 		F1886BAA1C12CD2900275352 /* NoteFolderObj.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NoteFolderObj.h; sourceTree = "<group>"; };
 		F1886BAB1C12CD2900275352 /* NoteFolderObj.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NoteFolderObj.m; sourceTree = "<group>"; };
 		F1886BAC1C12CD2900275352 /* NoteObj.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NoteObj.h; sourceTree = "<group>"; };
@@ -2339,8 +2339,8 @@
 			isa = PBXGroup;
 			children = (
 				F13849C41C2FEA85008276CE /* Indeces */,
-				F1717A2E1C3AB4FA00E9683C /* ADB.zip */,
 				F1886ECB1C12D2EB00275352 /* AKJV.zip */,
+				F1717A361C3B055E00E9683C /* ADB.zip */,
 				F1886ECC1C12D2EB00275352 /* ASV.zip */,
 				F1886ECD1C12D2EB00275352 /* ChiNCVs.zip */,
 				F1886ECE1C12D2EB00275352 /* ChiNCVt.zip */,
@@ -3281,6 +3281,7 @@
 				E9BD1D540ED34003006A60E9 /* LICENSE.txt in Resources */,
 				E9A6CF9D0FF5508400399E78 /* Localizable.strings in Resources */,
 				F1886EF71C12D2EB00275352 /* bookmark-64x64.png in Resources */,
+				F1717A371C3B055E00E9683C /* ADB.zip in Resources */,
 				05E6A75817FADF790063B18C /* splash-iPad-portrait.png in Resources */,
 				F11A90E81C315DC100243ABD /* PorAR-i.zip in Resources */,
 				F1886EE31C12D2EB00275352 /* ASV.zip in Resources */,
@@ -3358,7 +3359,6 @@
 				0505FECD12C9A9D900A3C65B /* enabled-Strongs.png in Resources */,
 				0505FECE12C9A9D900A3C65B /* enabled-Xrefs.png in Resources */,
 				056BC70E12F0E3F00029F3A2 /* bookmark.png in Resources */,
-				F1717A2F1C3AB4FA00E9683C /* ADB.zip in Resources */,
 				056BC70F12F0E3F00029F3A2 /* bookmark@2x.png in Resources */,
 				F11A90E91C315DC100243ABD /* KJV-i.zip in Resources */,
 				056BC73C12F0E8E00029F3A2 /* folder.png in Resources */,
@@ -3863,7 +3863,7 @@
 				);
 				OTHER_LDFLAGS = "-licucore";
 				PRODUCT_NAME = MCGIBible;
-				PROVISIONING_PROFILE = "c9c33198-3cf4-4e4a-840d-71e9ba018732";
+				PROVISIONING_PROFILE = "2c0f4335-0753-4991-9835-3e3ec96049dc";
 			};
 			name = Debug;
 		};
@@ -3904,7 +3904,7 @@
 				);
 				OTHER_LDFLAGS = "-licucore";
 				PRODUCT_NAME = "MCGI Bible";
-				PROVISIONING_PROFILE = "c9c33198-3cf4-4e4a-840d-71e9ba018732";
+				PROVISIONING_PROFILE = "2c0f4335-0753-4991-9835-3e3ec96049dc";
 			};
 			name = Release;
 		};
@@ -4017,7 +4017,7 @@
 				);
 				OTHER_LDFLAGS = "-licucore";
 				PRODUCT_NAME = "MCGI Bible";
-				PROVISIONING_PROFILE = "c9c33198-3cf4-4e4a-840d-71e9ba018732";
+				PROVISIONING_PROFILE = "2c0f4335-0753-4991-9835-3e3ec96049dc";
 			};
 			name = Distribution;
 		};
