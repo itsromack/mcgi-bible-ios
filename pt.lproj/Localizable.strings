@@ -225,7 +225,7 @@
 "ModuleLanguagesHeaderText" = "Selecione o Idioma:";
 "PreferencesModulePreferencesTitle" = "Preferências do Módulo";
 "PreferencesFullscreenModeTitle" = "Modo de Tela Cheia Automático";
-"PreferencesFullscreenNote" = "Com o Modo de Tela Cheia Automático desabilitado você ainda pode trocar de/para tela cheia utilizando toque de 2 dedos nas abas Bíblia e Comentário.";
+"PreferencesFullscreenNote" = "Com o Modo de Tela Cheia Automático desabilitado você ainda pode trocar de/para tela cheia utilizando toque de 2 dedos nas abas Bíblia";
 
 // new v1.3.4 strings:
 "PreferencesRotationLock" = "Travar Rotação";

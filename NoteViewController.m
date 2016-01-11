@@ -12,6 +12,7 @@
 {
     UITextView *textView ;
     TPKeyboardAvoidingScrollView *avoidingScroll;
+    CGFloat defaultSize;
 }
 @end
 
@@ -26,7 +27,7 @@
     CGFloat screenHeight = screenRect.size.height;
     
     
-    
+    defaultSize = textView.font.pointSize;
     avoidingScroll =[[TPKeyboardAvoidingScrollView alloc]initWithFrame:CGRectMake(0,0,screenWidth,screenHeight) ];
     [self.view addSubview:avoidingScroll];
     
@@ -36,13 +37,63 @@
     
     [textView becomeFirstResponder];
     
-    textView.font = [UIFont systemFontOfSize:13];
+  //  textView.font = [UIFont systemFontOfSize:13];
 
     UIBarButtonItem *saveButton = [[UIBarButtonItem alloc] initWithTitle:@"Done" style:UIBarButtonItemStylePlain target:self action:@selector(saveButtonPressed)];
-    self.navigationItem.rightBarButtonItem= saveButton;
+    //self.navigationItem.rightBarButtonItem= saveButton;
     self.navigationItem.rightBarButtonItem.tintColor = [UIColor whiteColor];
     [saveButton release];
+   
+    UIView *myView= [[UIView alloc]initWithFrame:CGRectMake(0,0,200,30)];
     
+    UIButton *btnFontBigger =  [UIButton buttonWithType:UIButtonTypeRoundedRect];
+  btnFontBigger.frame  = CGRectMake(65, 0, 35, 30);
+    
+    [btnFontBigger setTitle:@"Aa" forState:UIControlStateNormal];
+    
+    btnFontBigger.backgroundColor = [UIColor clearColor ];
+    [btnFontBigger setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    btnFontBigger.font = [UIFont systemFontOfSize:28];
+    [btnFontBigger addTarget:self action:@selector(biggerFont) forControlEvents:UIControlEventTouchUpInside];
+    
+    [myView addSubview:btnFontBigger];
+    
+    UIButton *btnFontSmaller =
+    [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    
+    btnFontSmaller.frame =  CGRectMake(100, 0, 35, 30);
+    
+   
+    
+    
+    [btnFontSmaller  setTitle:@"Aa" forState:UIControlStateNormal];
+    
+    btnFontSmaller.backgroundColor = [UIColor clearColor ];
+    [btnFontSmaller setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    btnFontSmaller.font = [UIFont systemFontOfSize:20];
+    
+    [btnFontSmaller addTarget:self action:@selector(smallerFont) forControlEvents:UIControlEventTouchUpInside];
+    
+    [myView addSubview:btnFontSmaller];
+    
+    UIButton *btnDone = [UIButton buttonWithType:UIButtonTypeSystem];
+    btnDone.frame = CGRectMake(155, 0, 45, 30);
+    [btnDone  setTitle:@"Done" forState:UIControlStateNormal];
+    
+    btnDone.backgroundColor = [UIColor clearColor ];
+    [btnDone setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    btnDone.font = [UIFont systemFontOfSize:17];
+    [btnDone addTarget:self action:@selector(saveButtonPressed) forControlEvents:UIControlEventTouchUpInside];
+    
+    [myView addSubview:btnDone];
+    
+    
+    
+    UIBarButtonItem *customItem = [[UIBarButtonItem alloc] initWithCustomView:myView];
+    
+    
+    self.navigationItem.rightBarButtonItem = customItem;
+    [customItem release];
     
   UIBarButtonItem *backButton = [[UIBarButtonItem alloc] initWithTitle:@"Back" style:UIBarButtonItemStylePlain target:self action:@selector(backButtonPressed)];
      self.navigationItem.leftBarButtonItem = backButton;
@@ -50,7 +101,48 @@
      [backButton release];
     [self LoadNote];
 }
+-(void)biggerFont
+{
+    CGFloat size = textView.font.pointSize;
+   
+    size = size + 2;
+   
+    size = textView.font.pointSize;
+    
+    int maxSize=30;
+    if ([PSResizing iPad] ) {
+        maxSize=36;
+    }
+    
+    if ( size >= maxSize) {
+        return;
+    }else {
+        textView.font = [UIFont systemFontOfSize:size
+                         + 2];
+        [textView setNeedsDisplay];
+   
+    }
+   
+}
+-(void)smallerFont
 
+{
+    CGFloat size = textView.font.pointSize;
+    size = size-2;
+   size = textView.font.pointSize;
+  
+    if ( size < 9) {
+        return;
+    }else{
+
+        textView.font = [UIFont systemFontOfSize:size-2];
+     
+        [textView setNeedsDisplay];
+    }
+  
+    
+    
+}
 -(void)backButtonPressed
 {   [self saveNote];
     [self.navigationController popViewControllerAnimated:YES];
@@ -76,9 +168,13 @@
     
     while([results next]) {
         textView.text = [results stringForColumn:@"note"];
+        int size = [results intForColumn:@"font_size"];
+        CGFloat fSize= (float)size;
+        textView.font = [UIFont systemFontOfSize:fSize];
+        
         //self.note_id =self.noteObj.ID;
     }
-    
+    [textView setNeedsDisplay];
     [database close];
 
 }
@@ -102,24 +198,30 @@
 -(void)saveNote
 {
     
-        NSString *databasePath = [[PocketSwordAppDelegate sharedAppDelegate] getDbPath];
-        
+    
         NSString *ref = textView.text;
     
+
+        
+        NSString *databasePath = [[PocketSwordAppDelegate sharedAppDelegate] getDbPath];
+        
         FMDatabase *database = [FMDatabase databaseWithPath:databasePath];
         [database open];
     
-        
-        NSString *queryInsert = [NSString stringWithFormat:@"insert into Notes (note,folder_id, date_created) values ('%@','%d',date('now'))",
-                                 ref,self.folder_id];
+    int size = (int)roundf(textView.font.pointSize);
     
-    NSString *queryUpdate = [NSString stringWithFormat:@"update Notes set note='%@' where id=%d", ref,self.note_id];
+        NSString *queryInsert = [NSString stringWithFormat:@"insert into Notes (note,folder_id, date_created, font_size) values ('%@','%d',date('now'), '%d' )",
+                                 ref,self.folder_id,size]   ;
+    
+    NSString *queryUpdate = [NSString stringWithFormat:@"update Notes set note='%@', font_size='%d' where id=%d", ref,self.note_id, size];
     
     
     if ([self isExist:self.note_id]) {
          [database executeUpdate:queryUpdate];
     }else{
+            if (ref.length> 0) {
          [database executeUpdate:queryInsert];
+            }
     NSString *queryLast = @"SELECT MAX(id) FROM Notes";
         
       
@@ -132,7 +234,8 @@
         [database close];
         
     }
-    
+        
+   
 }
 
 - (void)didReceiveMemoryWarning {

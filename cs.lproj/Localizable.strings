@@ -225,7 +225,7 @@
 "ModuleLanguagesHeaderText" = "Vyber jazyk:";
 "PreferencesModulePreferencesTitle" = "Nastavení modulu";
 "PreferencesFullscreenModeTitle" = "Automaticky na celý display";
-"PreferencesFullscreenNote" = "I když je automatické zobrazení na celý display vypnuté, můžete se do něj přepnout poklepáním dvěma prsty během čtení Bible nebo komentáře.";
+"PreferencesFullscreenNote" = "I když je automatické zobrazení na celý display vypnuté, můžete se do něj přepnout poklepáním dvěma prsty během čtení Bible";
 
 // new v1.3.4 strings:
 "PreferencesRotationLock" = "Zabránit otáčení dipleje";

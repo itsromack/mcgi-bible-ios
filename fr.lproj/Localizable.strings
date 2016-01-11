@@ -225,7 +225,7 @@
 "ModuleLanguagesHeaderText" = "Selection de langue :";
 "PreferencesModulePreferencesTitle" = "Préférences Module";
 "PreferencesFullscreenModeTitle" = "Plein écran Auto";
-"PreferencesFullscreenNote" = "Avec Plein écran Auto désactivé, il est toujours possible de basculer en mode plein écran par action à 2 doigts dans un onglet Bible ou Commentaire.";
+"PreferencesFullscreenNote" = "Avec Plein écran Auto désactivé, il est toujours possible de basculer en mode plein écran par action à 2 doigts dans un onglet Bible";
 
 // new v1.3.4 strings:
 "PreferencesRotationLock" = "Verrouiller la rotation";

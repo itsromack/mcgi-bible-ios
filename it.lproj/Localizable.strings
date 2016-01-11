@@ -226,7 +226,7 @@
 "ModuleLanguagesHeaderText" = "Scelta Lingua:";
 "PreferencesModulePreferencesTitle" = "Preferenze moduli";
 "PreferencesFullscreenModeTitle" = "Tutto schermo Auto";
-"PreferencesFullscreenNote" = "Disabilitando Tutto schermo Auto, si può attivare e disattivare la modalità a tutto schermo, nelle sezioni Bibbia e Commentario, con un tocco a due dita.";
+"PreferencesFullscreenNote" = "Disabilitando Tutto schermo Auto, si può attivare e disattivare la modalità a tutto schermo, nelle sezioni Bibbia, con un tocco a due dita.";
 
 // new v1.3.4 strings:
 "PreferencesRotationLock" = "Blocco Rotazione";

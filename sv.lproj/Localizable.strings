@@ -226,7 +226,7 @@
 "ModuleLanguagesHeaderText" = "Välj språk:";
 "PreferencesModulePreferencesTitle" = "Modulinställningar";
 "PreferencesFullscreenModeTitle" = "Automatisk helskärmsläge";
-"PreferencesFullscreenNote" = "Med automatisk helskärmsläge aktiverat kan du fortfarande byta från och till helskärmsläge med en tvåfingrars beröring i bibel- eller kommentarflikarna.";
+"PreferencesFullscreenNote" = "Med automatisk helskärmsläge aktiverat kan du fortfarande byta från och till helskärmsläge med en tvåfingrars beröring i bibel";
 
 // new v1.3.4 strings:
 "PreferencesRotationLock" = "Förhindra rotation";

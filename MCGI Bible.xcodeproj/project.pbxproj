@@ -485,7 +485,6 @@
 		F13849CC1C2FEA99008276CE /* AKJV-i.zip in Resources */ = {isa = PBXBuildFile; fileRef = F13849C81C2FEA99008276CE /* AKJV-i.zip */; };
 		F14CC21E1C1C3B8E003D02B4 /* database.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = F14CC21D1C1C3B8E003D02B4 /* database.sqlite */; };
 		F1717A351C3AC5D200E9683C /* ADB-i.zip in Resources */ = {isa = PBXBuildFile; fileRef = F1717A341C3AC5D200E9683C /* ADB-i.zip */; };
-		F1717A371C3B055E00E9683C /* ADB.zip in Resources */ = {isa = PBXBuildFile; fileRef = F1717A361C3B055E00E9683C /* ADB.zip */; };
 		F1886BC11C12CD2900275352 /* NoteFolderObj.m in Sources */ = {isa = PBXBuildFile; fileRef = F1886BAB1C12CD2900275352 /* NoteFolderObj.m */; };
 		F1886BC21C12CD2900275352 /* NoteObj.m in Sources */ = {isa = PBXBuildFile; fileRef = F1886BAD1C12CD2900275352 /* NoteObj.m */; };
 		F1886BC31C12CD2900275352 /* NotesInFolderTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F1886BAF1C12CD2900275352 /* NotesInFolderTableViewController.m */; };
@@ -518,6 +517,7 @@
 		F1886EF81C12D2EB00275352 /* bookmark@2x_old.png in Resources */ = {isa = PBXBuildFile; fileRef = F1886EE11C12D2EB00275352 /* bookmark@2x_old.png */; };
 		F1A3DAA21C38041900ACCA91 /* TPKeyboardAvoidingScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = F1A3DAA11C38041900ACCA91 /* TPKeyboardAvoidingScrollView.m */; };
 		F1A3DAA51C3804A200ACCA91 /* UIScrollView+TPKeyboardAvoidingAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = F1A3DAA41C3804A200ACCA91 /* UIScrollView+TPKeyboardAvoidingAdditions.m */; };
+		F1D286D61C40A95E000BD9A7 /* ADB.zip in Resources */ = {isa = PBXBuildFile; fileRef = F1D286D51C40A95E000BD9A7 /* ADB.zip */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -1455,7 +1455,6 @@
 		F13849C81C2FEA99008276CE /* AKJV-i.zip */ = {isa = PBXFileReference; lastKnownFileType = archive.zip; path = "AKJV-i.zip"; sourceTree = "<group>"; };
 		F14CC21D1C1C3B8E003D02B4 /* database.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = database.sqlite; sourceTree = "<group>"; };
 		F1717A341C3AC5D200E9683C /* ADB-i.zip */ = {isa = PBXFileReference; lastKnownFileType = archive.zip; path = "ADB-i.zip"; sourceTree = "<group>"; };
-		F1717A361C3B055E00E9683C /* ADB.zip */ = {isa = PBXFileReference; lastKnownFileType = archive.zip; path = ADB.zip; sourceTree = "<group>"; };
 		F1886BAA1C12CD2900275352 /* NoteFolderObj.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NoteFolderObj.h; sourceTree = "<group>"; };
 		F1886BAB1C12CD2900275352 /* NoteFolderObj.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NoteFolderObj.m; sourceTree = "<group>"; };
 		F1886BAC1C12CD2900275352 /* NoteObj.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NoteObj.h; sourceTree = "<group>"; };
@@ -1511,6 +1510,7 @@
 		F1A3DAA11C38041900ACCA91 /* TPKeyboardAvoidingScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TPKeyboardAvoidingScrollView.m; sourceTree = "<group>"; };
 		F1A3DAA31C3804A200ACCA91 /* UIScrollView+TPKeyboardAvoidingAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIScrollView+TPKeyboardAvoidingAdditions.h"; sourceTree = "<group>"; };
 		F1A3DAA41C3804A200ACCA91 /* UIScrollView+TPKeyboardAvoidingAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+TPKeyboardAvoidingAdditions.m"; sourceTree = "<group>"; };
+		F1D286D51C40A95E000BD9A7 /* ADB.zip */ = {isa = PBXFileReference; lastKnownFileType = archive.zip; path = ADB.zip; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -2340,7 +2340,7 @@
 			children = (
 				F13849C41C2FEA85008276CE /* Indeces */,
 				F1886ECB1C12D2EB00275352 /* AKJV.zip */,
-				F1717A361C3B055E00E9683C /* ADB.zip */,
+				F1D286D51C40A95E000BD9A7 /* ADB.zip */,
 				F1886ECC1C12D2EB00275352 /* ASV.zip */,
 				F1886ECD1C12D2EB00275352 /* ChiNCVs.zip */,
 				F1886ECE1C12D2EB00275352 /* ChiNCVt.zip */,
@@ -3281,7 +3281,7 @@
 				E9BD1D540ED34003006A60E9 /* LICENSE.txt in Resources */,
 				E9A6CF9D0FF5508400399E78 /* Localizable.strings in Resources */,
 				F1886EF71C12D2EB00275352 /* bookmark-64x64.png in Resources */,
-				F1717A371C3B055E00E9683C /* ADB.zip in Resources */,
+				F1D286D61C40A95E000BD9A7 /* ADB.zip in Resources */,
 				05E6A75817FADF790063B18C /* splash-iPad-portrait.png in Resources */,
 				F11A90E81C315DC100243ABD /* PorAR-i.zip in Resources */,
 				F1886EE31C12D2EB00275352 /* ASV.zip in Resources */,
@@ -3863,7 +3863,7 @@
 				);
 				OTHER_LDFLAGS = "-licucore";
 				PRODUCT_NAME = MCGIBible;
-				PROVISIONING_PROFILE = "2c0f4335-0753-4991-9835-3e3ec96049dc";
+				PROVISIONING_PROFILE = "d74fcd44-c9b5-471b-b7ad-1e4e7142052f";
 			};
 			name = Debug;
 		};
@@ -3904,7 +3904,7 @@
 				);
 				OTHER_LDFLAGS = "-licucore";
 				PRODUCT_NAME = "MCGI Bible";
-				PROVISIONING_PROFILE = "2c0f4335-0753-4991-9835-3e3ec96049dc";
+				PROVISIONING_PROFILE = "d74fcd44-c9b5-471b-b7ad-1e4e7142052f";
 			};
 			name = Release;
 		};
@@ -4017,7 +4017,7 @@
 				);
 				OTHER_LDFLAGS = "-licucore";
 				PRODUCT_NAME = "MCGI Bible";
-				PROVISIONING_PROFILE = "2c0f4335-0753-4991-9835-3e3ec96049dc";
+				PROVISIONING_PROFILE = "d74fcd44-c9b5-471b-b7ad-1e4e7142052f";
 			};
 			name = Distribution;
 		};

@@ -237,7 +237,7 @@
 						if([PSResizing iPad]) {
 							fontSizeSlider.maximumValue = 36.0;
 						} else {
-							fontSizeSlider.maximumValue = 20.0;
+							fontSizeSlider.maximumValue = 26.0;
 						}
 						NSInteger fontSize = [[NSUserDefaults standardUserDefaults] integerForKey:DefaultsFontSizePreference];
 						if(fontSize != 0) {//defaults default to 0 if it's not previously set...
@@ -647,7 +647,7 @@
 					break;
 				case FULLSCREEN_NOTE_ROW :
 				{
-					cell.textLabel.text = NSLocalizedString(@"PreferencesFullscreenNote", @"With fullscreen mode disabled, you can still switch to and from fullscreen with a 2-finger tap in the Bible and Commentary tabs.");
+					cell.textLabel.text = NSLocalizedString(@"PreferencesFullscreenNote", @"With fullscreen mode disabled, you can still switch to and from fullscreen with a 2-finger tap in the Bible");
 					cell.textLabel.lineBreakMode = UILineBreakModeWordWrap;
 					cell.textLabel.numberOfLines = 4;
 					cell.textLabel.textColor = [UIColor darkGrayColor];

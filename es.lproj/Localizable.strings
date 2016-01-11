@@ -225,7 +225,7 @@
 "ModuleLanguagesHeaderText" = "Seleccionar el idioma:";
 "PreferencesModulePreferencesTitle" = "Preferencias de módulo";
 "PreferencesFullscreenModeTitle" = "Pantalla completa automática";
-"PreferencesFullscreenNote" = "Con la pantalla completa automática deshabilitada, todavía podrás cambiar a pantalla completa tocando las pestañas de Biblia y Comentario con dos dedos.";
+"PreferencesFullscreenNote" = "Con la pantalla completa automática deshabilitada, todavía podrás cambiar a pantalla completa tocando las pestañas de Biblia.";
 
 // new v1.3.4 strings:
 "PreferencesRotationLock" = "Bloqueo de rotación";

@@ -765,8 +765,11 @@
 	mainLabel.text = ((SwordModuleTextEntry *)[results objectAtIndex: indexPath.row]).key;
 	NSMutableString *txt = [((SwordModuleTextEntry *)[results objectAtIndex: indexPath.row]).text mutableCopy];
 	[txt replaceOccurrencesOfString:@"\n" withString:@" " options:NSLiteralSearch range:NSMakeRange(0, [txt length])];
-	//DLog(@"\n%@", txt);
-	secondLabel.text = txt;
+	 DLog(@"\n%@", txt);
+    NSString *text = txt;
+      text = [text stringByReplacingOccurrencesOfString:@"â€“" withString:@""];
+     text = [ text stringByReplacingOccurrencesOfString:@"â€™" withString:@"'"];
+	secondLabel.text = text;
 	[txt release];
     
 	return cell;

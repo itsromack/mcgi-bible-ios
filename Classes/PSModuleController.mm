@@ -1125,6 +1125,7 @@ static NSString *firstRefAvailable = @"Genesis 1";
 
     finalBody = [finalBody stringByReplacingOccurrencesOfString:@"&#226;&#8364;&#8482;" withString:@"'"];
     finalBody = [finalBody stringByReplacingOccurrencesOfString:@"&#226;&#8364;&#8220;" withString:@""];
+    
 	 [returnString appendFormat:@"<body>\n<div>%@</div>\n</body>\n</html>",
 			finalBody];
 	

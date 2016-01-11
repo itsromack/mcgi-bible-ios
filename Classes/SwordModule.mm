@@ -277,7 +277,12 @@
 	[ret appendFormat:@"<p><b>%@</b>%@</p>", NSLocalizedString(@"AboutModuleType", @""), [self typeString]];
     
     // module lang
-	[ret appendFormat:@"<p><b>%@</b>%@</p>", NSLocalizedString(@"AboutModuleLang", @""), [self langString]];
+    
+    NSString *lang =[self langString];
+    if ([[self name] isEqualToString:@"ADB"]) {
+        lang=@"Tagalog";
+    }
+	[ret appendFormat:@"<p><b>%@</b>%@</p>", NSLocalizedString(@"AboutModuleLang", @""), lang];
     
     // module version
 	if(currentVersionString) {

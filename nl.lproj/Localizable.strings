@@ -226,7 +226,7 @@
 "ModuleLanguagesHeaderText" = "Selecteer taal:";
 "PreferencesModulePreferencesTitle" = "Module voorkeuren";
 "PreferencesFullscreenModeTitle" = "Auto Fullscreen";
-"PreferencesFullscreenNote" = "Met Auto Fullscreen uitgeschakeld kunt u nog steeds van en naar fullscreen schakelen door met 2 vingers op het scherm te tikken in de Bijbel en commentaar tabbladen.";
+"PreferencesFullscreenNote" = "Met Auto Fullscreen uitgeschakeld kunt u nog steeds van en naar fullscreen schakelen door met 2 vingers op het scherm te tikken in de Bijbel";
 
 // new v1.3.4 strings:
 "PreferencesRotationLock" = "Rotatieslot";
